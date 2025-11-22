@@ -1,0 +1,23 @@
+export const semiPreciousGems = [
+    { name: "Amethyst", image: "/gems_images/semiprecious/Amethyst.jpg" },
+    { name: "Aquamarine", image: "/gems_images/semiprecious/Aquamarine.jpg" },
+    { name: "Color Change Garnet", image: "/gems_images/semiprecious/Color Change Garnet.jpg" },
+    { name: "Diamond", image: "/gems_images/semiprecious/Diamond.jpg" },
+    { name: "Emerald", image: "/gems_images/semiprecious/Emerald.jpg" },
+    { name: "Garnet", image: "/gems_images/semiprecious/Garnet.jpg" },
+    { name: "hessonite", image: "/gems_images/semiprecious/hessonite.jpg" },
+    { name: "Kunzite", image: "/gems_images/semiprecious/Kunzite.jpg" },
+    { name: "Tanzanite", image: "/gems_images/semiprecious/Tanzanite.jpg" },
+    { name: "Moonstone", image: "/gems_images/semiprecious/Moonstone.jpg" },
+    { name: "Morganite", image: "/gems_images/semiprecious/Morganite.jpg" },
+    { name: "Opal", image: "/gems_images/semiprecious/Opal.jpg" },
+    { name: "Paraiba Tourmaline", image: "/gems_images/semiprecious/Paraiba Tourmaline.jpg" },
+    { name: "Pearl", image: "/gems_images/semiprecious/Pearl.jpg" },
+    { name: "Peridot", image: "/gems_images/semiprecious/Peridot.jpg" },
+    { name: "Spinel", image: "/gems_images/semiprecious/Spinel.jpg" },
+    { name: "Topaz", image: "/gems_images/semiprecious/Topaz.jpg" },
+    { name: "Tourmaline", image: "/gems_images/semiprecious/Tourmaline.jpg" },
+    { name: "Tsavorite", image: "/gems_images/semiprecious/Tsavorite.jpg" },
+    { name: "Zircon", image: "/gems_images/semiprecious/Zircon.jpg" },
+  ];
+  

@@ -1,0 +1,147 @@
+.hero {
+  position: relative;
+  width: 100%;
+  height: 92vh;
+  overflow: hidden;
+  margin: 0 auto;
+  
+}
+
+.embla {
+  height: 100%;
+}
+
+.emblaContainer {
+  display: flex;
+  height: 100%;
+}
+
+.emblaSlide {
+  flex: 0 0 100%;
+  position: relative;
+}
+
+.slideImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Dark gradient overlay */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.35),
+    rgba(0, 0, 0, 0.7)
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.title {
+  font-size: 5.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.description {
+  font-size: 1.25rem;
+  color: #e6e6e6;
+}
+
+/* Navigation Buttons */
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.55);
+  border: none;
+  width: 48px;
+  height: 48px;
+  font-size: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: 0.25s ease;
+}
+
+.navButton:hover {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.leftBtn {
+  left: 20px;
+}
+
+.rightBtn {
+  right: 20px;
+}
+
+/* Responsive Text */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.3rem;
+  }
+  .description {
+    font-size: 1rem;
+  }
+}
+.emblaSlide {
+  flex: 0 0 100%;
+  min-width: 100%;
+}
+
+.scrollIndicator {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: #fff;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  opacity: 0.9;
+  animation: scrollDown 1.4s infinite ease-in-out;
+  animation-timing-function: linear;
+}
+
+.line {
+  width: 2px;
+  height: 38px;
+  background: linear-gradient(to bottom, white, transparent);
+  animation: scrollDown 1.4s infinite ease-in-out;
+  animation-timing-function: linear;
+}
+
+@keyframes scrollDown {
+  0% {
+    opacity: 1;
+    transform: translateY(-6px);
+  }
+  25%{
+    transform: translateY(4px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(12px);
+  }
+  75%{
+    transform: translateY(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-6px);
+  }
+}

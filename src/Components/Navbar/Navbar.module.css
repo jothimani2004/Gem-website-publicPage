@@ -1,0 +1,25 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 60px;
+  background: white;
+  border-bottom: 1px solid #eee;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 1px;
+  font-size: 16px;
+}
+
+.menu li {
+  cursor: pointer;
+}
+
