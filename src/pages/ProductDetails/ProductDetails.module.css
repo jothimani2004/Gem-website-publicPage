@@ -1,0 +1,77 @@
+.page {
+    padding: 40px 60px;
+  }
+  
+  .breadcrumb {
+    font-size: 14px;
+    margin-bottom: 20px;
+    color: #666;
+  }
+  
+  .main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+
+  @media  (width<500px) {
+    .main{
+      grid-template-rows:1fr 1fr;
+      grid-template-columns: 1fr; 
+    }
+    
+  }
+  
+  .gallery {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+  }
+  
+
+  
+  .info {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+  }
+  
+  .bottom {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+  }
+  
+  .related {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+  }
+  
+  .relatedGrid {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .relatedGrid div {
+    width: 120px;
+    height: 120px;
+    background: #ddd;
+  }
+  
+  .certificate {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+  }
+  
+  .certBox {
+    height: 120px;
+    background: #f3f4f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  

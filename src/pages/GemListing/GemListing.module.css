@@ -1,270 +1,205 @@
+/* ===========================
+   Page Wrapper
+=========================== */
+
 .page {
-    max-width: 1300px;
-    margin: auto;
-    padding: 40px 24px;
-    font-family: "Inter", sans-serif;
-    color: #1f2937;
+
+  padding: 1% 4%;
+  background-color: #f9fafb;
+  min-height: 100vh;
+}
+
+
+
+/* ===========================
+   Breadcrumb
+=========================== */
+
+.breadcrumb {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 16px;
+}
+
+.breadcrumb span {
+  color: #111827;
+  font-weight: 500;
+}
+
+
+/* ===========================
+   Page Title
+=========================== */
+
+.header {
+  margin-bottom: 32px;
+}
+
+.header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
+}
+
+
+/* ===========================
+   Layout (Sidebar + Grid)
+=========================== */
+
+.layout {
+  display: grid;
+  grid-template-columns: 30% 1fr;
+  gap: 20px;
+}
+
+
+/* ===========================
+   Sidebar (Filters)
+=========================== */
+
+.sidebar {
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+  height: fit-content;
+  position: sticky;
+  top: 100px;
+}
+
+
+/* ===========================
+   Main Content Area
+=========================== */
+
+.content {
+
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+}
+
+
+/* ===========================
+   Result Count (Optional)
+=========================== */
+
+.resultInfo {
+  font-size: 14px;
+  margin-bottom: 20px;
+  color: #6b7280;
+}
+
+
+/* ===========================
+   Responsive Design
+=========================== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .page {
+    padding: 30px 30px;
   }
-  
-  /* Breadcrumbs */
-  .breadcrumbs {
-    font-size: 14px;
-    color: #6b7280;
-    margin-bottom: 10px;
-  }
-  
-  /* Page Title */
-  .pageTitle {
-    font-size: 36px;
-    font-weight: 600;
-    margin-bottom: 40px;
-  }
-  
-  /* Main Layout */
+
   .layout {
-    display: flex;
-    gap: 40px;
+    grid-template-columns: 220px 1fr;
+    gap: 30px;
   }
-  
-  /* LEFT FILTERS */
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .page {
+    padding: 20px;
+  }
+
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
   .sidebar {
-    width: 260px;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
+    position: static;
+    margin-bottom: 20px;
   }
-  
-  .filterBlock h3 {
-    font-size: 15px;
-    font-weight: 600;
-    margin-bottom: 14px;
+
+  .content {
+    padding: 16px;
   }
-  
-  /* Shape Grid */
-  .shapeGrid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+}
+
+
+/* Filter button */
+.filterBtn {
+  display: none;
+  background: #1e3a8a;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Mobile drawer */
+.mobileSidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 85%;
+  height: 100%;
+  background: white;
+  z-index: 1001;
+  padding: 20px;
+  overflow-y: auto;
+  box-shadow: -4px 0 20px rgba(0,0,0,0.1);
+  animation: slideIn 0.3s ease;
+}
+
+.mobileHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.closeBtn {
+  border: none;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 1000;
+}
+
+/* Animation */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
   }
-  
-  .shapeButton {
-    background: #fff;
-    border: 1px solid #d1d5db;
-    padding: 10px 6px;
-    border-radius: 10px;
-    font-size: 12px;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    transition: 0.2s ease;
+  to {
+    transform: translateX(0);
   }
-  
-  .shapeButton:hover {
-    border-color: #3b82f6;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+
+  .sidebar {
+    display: none;
   }
-  
-  .activeShape {
-    background: #e0ecff;
-    border-color: #2563eb;
+
+  .filterBtn {
+    display: block;
   }
-  
-  /* placeholder icon styling */
-  .shapeIcon {
-    width: 22px;
-    height: 22px;
-    background: #cbd5e1;
-    border-radius: 4px;
-  }
-  
-  /* Carat slider */
-  .slider {
-    width: 100%;
-    appearance: none;
-    height: 4px;
-    border-radius: 4px;
-    background: #ddd;
-  }
-  
-  .rangeLabels {
+
+  .header {
     display: flex;
     justify-content: space-between;
-    font-size: 13px;
-    margin-top: 6px;
-  }
-  
-  /* RIGHT GRID */
-  .grid {
-    flex: 1;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 28px;
-  }
-  
-  /* CARD */
-  .card {
-    background: #fff;
-    padding: 18px;
-    border-radius: 14px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-    text-align: center;
-    transition: 0.25s ease;
-  }
-  
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 22px rgba(0,0,0,0.12);
-  }
-  
-  .image {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 12px;
-  }
-  
-  .card h3 {
-    font-size: 15px;
-    font-weight: 600;
-    margin-bottom: 4px;
-  }
-  
-  .card p {
-    font-size: 13px;
-    color: #4b5563;
-  }
-  .icon {
-    width: 30px;
-    height: 30px;
-    border: 2px solid #777;
-    background: transparent;
-    display: inline-block;
-  }
-  
-  /* Round */
-  .round {
-    border-radius: 50%;
-  }
-  
-  /* Princess (Square with sharp edges) */
-  .princess {
-    border-radius: 2px;
-  }
-  
-  /* Square */
-  .square {
-    border-radius: 4px;
-  }
-  
-  /* Cushion (soft rounded square) */
-  .cushion {
-    border-radius: 12px;
-  }
-  
-  /* Oval */
-  .oval {
-    border-radius: 50%;
-    transform: scaleX(1.4);
-  }
-  
-  /* Emerald (rectangular with clipped corners) */
-  .emerald {
-    clip-path: polygon(
-      20% 0%,
-      80% 0%,
-      100% 20%,
-      100% 80%,
-      80% 100%,
-      20% 100%,
-      0% 80%,
-      0% 20%
-    );
-  }
-  
-  /* Radiant (square with clipped corners) */
-  .radiant {
-    clip-path: polygon(
-      15% 0%,
-      85% 0%,
-      100% 15%,
-      100% 85%,
-      85% 100%,
-      15% 100%,
-      0% 85%,
-      0% 15%
-    );
-  }
-  
-  /* Trillion (triangle) */
-  .trillion {
-    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-  }
-  
-  /* Pear */
-  .pear {
-    clip-path: path(
-      "M15 0 C30 20 30 50 15 60 C0 50 0 20 15 0 Z"
-    );
-  }
-  
-  /* Marquise */
-  .marquise {
-    clip-path: ellipse(60% 35% at 50% 50%);
-  }
-  
-  /* Heart */
-  .heart {
-    clip-path: path(
-      "M24 4 C24 -2 14 -2 14 4 C14 10 24 12 24 20 C24 28 14 36 14 36 C14 36 4 28 4 20 C4 12 14 10 14 4 C14 -2 4 -2 4 4"
-    );
-  }
-  
-  /* Mixed — show stacked circles */
-  .mixed {
-    position: relative;
-  }
-  
-  .mixed::after,
-  .mixed::before {
-    content: "";
-    position: absolute;
-    width: 18px;
-    height: 18px;
-    border: 2px solid #777;
-    border-radius: 50%;
-  }
-  
-  .mixed::before {
-    top: 0;
-    left: 0;
-  }
-  
-  .mixed::after {
-    bottom: 0;
-    right: 0;
-  }
-  .shapeButton {
-    background: #fff;
-    border: 1px solid #d1d5db;
-    padding: 10px 6px;
-    border-radius: 10px;
-    font-size: 13px;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 6px;
-    transition: 0.25s ease;
   }
-  
-  .shapeButton:hover {
-    border-color: #2563eb;
-  }
-  
-  .activeShape {
-    background: #eaf1ff;
-    border-color: #2563eb;
-  }
-  
+}

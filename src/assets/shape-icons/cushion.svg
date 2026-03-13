@@ -1,0 +1,22 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M25 10C15 10 10 15 10 25V75C10 85 15 90 25 90H75C85 90 90 85 90 75V25C90 15 85 10 75 10H25Z" stroke="black" stroke-width="2.5" stroke-linejoin="round"/>
+  
+  <path d="M35 30C32 30 30 32 30 35V65C30 68 32 70 35 70H65C68 70 70 68 70 65V35C70 32 68 30 65 30H35Z" stroke="black" stroke-width="1.5"/>
+
+  <line x1="10" y1="25" x2="30" y2="35" stroke="black" stroke-width="1"/>
+  <line x1="25" y1="10" x2="35" y2="30" stroke="black" stroke-width="1"/>
+  
+  <line x1="75" y1="10" x2="65" y2="30" stroke="black" stroke-width="1"/>
+  <line x1="90" y1="25" x2="70" y2="35" stroke="black" stroke-width="1"/>
+  
+  <line x1="90" y1="75" x2="70" y2="65" stroke="black" stroke-width="1"/>
+  <line x1="75" y1="90" x2="65" y2="70" stroke="black" stroke-width="1"/>
+  
+  <line x1="25" y1="90" x2="35" y2="70" stroke="black" stroke-width="1"/>
+  <line x1="10" y1="75" x2="30" y2="65" stroke="black" stroke-width="1"/>
+
+  <line x1="50" y1="10" x2="50" y2="30" stroke="black" stroke-width="1" stroke-opacity="0.6"/>
+  <line x1="50" y1="70" x2="50" y2="90" stroke="black" stroke-width="1" stroke-opacity="0.6"/>
+  <line x1="10" y1="50" x2="30" y2="50" stroke="black" stroke-width="1" stroke-opacity="0.6"/>
+  <line x1="70" y1="50" x2="90" y2="50" stroke="black" stroke-width="1" stroke-opacity="0.6"/>
+</svg>

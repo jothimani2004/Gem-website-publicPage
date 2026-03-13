@@ -1,0 +1,53 @@
+.sliderWrapper {
+    position: relative;
+    width: 100%;
+    height: 20px;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Grey background track */
+  .track {
+    position: absolute;
+    width: 100%;
+    height: 6px;
+    background: #ddd;
+    border-radius: 6px;
+  }
+  
+  /* Blue filled progress */
+  .progress {
+    position: absolute;
+    height: 6px;
+    background: #0f3d7a;
+    border-radius: 6px;
+    left: 0;
+  }
+  
+  /* Range input */
+  .slider {
+    position: relative;
+    width: 100%;
+    appearance: none;
+    background: transparent;
+    z-index: 2;
+  }
+  
+  /* Remove default track */
+  .slider::-webkit-slider-runnable-track {
+    height: 6px;
+    background: transparent;
+  }
+  
+  /* Thumb */
+  .slider::-webkit-slider-thumb {
+    appearance: none;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: #0f3d7a;
+    cursor: pointer;
+    border: none;
+    margin-top: -6px;
+  }
+  

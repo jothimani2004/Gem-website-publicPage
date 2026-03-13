@@ -1,0 +1,15 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M100 180C100 180 30 140 30 85C30 55 55 35 80 35C90 35 100 45 100 45C100 45 110 35 120 35C145 35 170 55 170 85C170 140 100 180 100 180Z" stroke="black" stroke-width="3" stroke-linejoin="round"/>
+  
+  <path d="M100 130C100 130 65 110 65 85C65 72 75 62 85 62C92 62 100 68 100 68C100 68 108 62 115 62C125 62 135 72 135 85C135 110 100 130 100 130Z" stroke="black" stroke-width="2"/>
+
+  <line x1="100" y1="45" x2="100" y2="68" stroke="black" stroke-width="1.5"/>
+  <line x1="100" y1="130" x2="100" y2="180" stroke="black" stroke-width="1.5"/>
+  <line x1="30" y1="85" x2="65" y2="85" stroke="black" stroke-width="1.5"/>
+  <line x1="170" y1="85" x2="135" y2="85" stroke="black" stroke-width="1.5"/>
+  
+  <line x1="55" y1="45" x2="75" y2="70" stroke="black" stroke-width="1"/>
+  <line x1="145" y1="45" x2="125" y2="70" stroke="black" stroke-width="1"/>
+  <line x1="50" y1="140" x2="75" y2="115" stroke="black" stroke-width="1"/>
+  <line x1="150" y1="140" x2="125" y2="115" stroke="black" stroke-width="1"/>
+</svg>

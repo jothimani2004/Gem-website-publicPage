@@ -1,0 +1,26 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 40px;
+  list-style: none;
+}
+
+.page a,
+.nav a {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.active a {
+  background: #0f3d7a;
+  color: white;
+  border: none;
+}
+
+.disabled a {
+  opacity: 0.4;
+  pointer-events: none;
+}

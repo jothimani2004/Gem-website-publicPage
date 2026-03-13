@@ -1,0 +1,24 @@
+<svg width="200" height="250" viewBox="0 0 200 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M65 40H135L170 75V175L135 210H65L30 175V75L65 40Z" stroke="black" stroke-width="4" stroke-linejoin="round"/>
+  
+  <rect x="75" y="85" width="50" height="80" stroke="black" stroke-width="3"/>
+
+  <line x1="65" y1="40" x2="75" y2="85" stroke="black" stroke-width="2"/>
+  <line x1="135" y1="40" x2="125" y2="85" stroke="black" stroke-width="2"/>
+  <line x1="170" y1="75" x2="125" y2="85" stroke="black" stroke-width="2"/>
+  <line x1="170" y1="175" x2="125" y2="165" stroke="black" stroke-width="2"/>
+  <line x1="135" y1="210" x2="125" y2="165" stroke="black" stroke-width="2"/>
+  <line x1="65" y1="210" x2="75" y2="165" stroke="black" stroke-width="2"/>
+  <line x1="30" y1="175" x2="75" y2="165" stroke="black" stroke-width="2"/>
+  <line x1="30" y1="75" x2="75" y2="85" stroke="black" stroke-width="2"/>
+
+  <line x1="100" y1="40" x2="100" y2="85" stroke="black" stroke-width="2"/>
+  <line x1="100" y1="165" x2="100" y2="210" stroke="black" stroke-width="2"/>
+  <line x1="30" y1="125" x2="75" y2="125" stroke="black" stroke-width="2"/>
+  <line x1="125" y1="125" x2="170" y2="125" stroke="black" stroke-width="2"/>
+
+  <line x1="50" y1="60" x2="75" y2="100" stroke="black" stroke-width="1.5" stroke-opacity="0.7"/>
+  <line x1="150" y1="60" x2="125" y2="100" stroke="black" stroke-width="1.5" stroke-opacity="0.7"/>
+  <line x1="150" y1="190" x2="125" y2="150" stroke="black" stroke-width="1.5" stroke-opacity="0.7"/>
+  <line x1="50" y1="190" x2="75" y2="150" stroke="black" stroke-width="1.5" stroke-opacity="0.7"/>
+</svg>

@@ -1,93 +1,115 @@
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
+import { fetchGems } from "../../features/gems/gemSlice";
+
+import Filtersidebar from "../../components/filters/FilterSidebar/Filtersidebar";
+import Gemgrid from "../../Components/gem/GemGrid/Gemgrid";
+import Pagination from "../../Components/common/Pagination/Pagination";
+
 import styles from "./GemListing.module.css";
-import { useState } from "react";
-import { spinelGems } from "../../data/spinel-gems";
 
 function GemListing() {
-  const [selectedShape, setSelectedShape] = useState("All");
-  const [carat, setCarat] = useState(10);
+  const dispatch = useDispatch();
+  const { category, gemName } = useParams();
 
-  const SHAPES = [
-    "All",
-    "Round",
-    "Princess",
-    "Radiant",
-    "Emerald",
-    "Cushion",
-    "Trillion",
-    "Oval",
-    "Pear",
-    "Marquise",
-    "Heart",
-    "Square",
-    "Mixed",
-  ];
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+
+  const [appliedFilters, setAppliedFilters] = useState({
+    type: "single",
+    shape: "",
+    color: "",
+    maxCarat: 10,
+    page: 1,
+  });
+
+  useEffect(() => {
+    dispatch(
+      fetchGems({
+        category,
+        gemName,
+        ...appliedFilters,
+      })
+    );
+  }, [category, gemName]);
+
+  const handleApply = (filters) => {
+    const updatedFilters = {
+      ...filters,
+      page: 1,
+    };
+
+    setAppliedFilters(updatedFilters);
+
+    dispatch(
+      fetchGems({
+        category,
+        gemName,
+        ...updatedFilters,
+      })
+    );
+
+    setIsFilterOpen(false); // close on apply
+  };
 
   return (
     <div className={styles.page}>
-      {/* Breadcrumb */}
-      <nav className={styles.breadcrumbs}>
-        Home › Semi Precious › Spinel
-      </nav>
 
-      {/* Page Title */}
-      <h1 className={styles.pageTitle}>Natural Blue Sapphires</h1>
+      {/* Header */}
+      <div className={styles.header}>
+        <h1>{gemName}</h1>
+
+        {/* Mobile Filter Button */}
+        <button
+          className={styles.filterBtn}
+          onClick={() => setIsFilterOpen(true)}
+        >
+          Filter
+        </button>
+      </div>
 
       <div className={styles.layout}>
-        
-        {/* LEFT FILTERS */}
+
+        {/* Desktop Sidebar */}
         <aside className={styles.sidebar}>
-          <div className={styles.filterBlock}>
-            <h3>Shape</h3>
-
-            <div className={styles.shapeGrid}>
-              {SHAPES.map((shapeItem) => (
-                <button
-                  key={shapeItem}
-                  className={`${styles.shapeButton} ${
-                    selectedShape === shapeItem ? styles.activeShape : ""
-                  }`}
-                  onClick={() => setSelectedShape(shapeItem)}
-                >
-                  <div className={`${styles.icon} ${styles[shapeItem.toLowerCase()]}`} />
-                  <span>{shapeItem}</span>
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className={styles.filterBlock}>
-            <h3>Carat Weight</h3>
-
-            <input
-              type="range"
-              min="0"
-              max="10"
-              step="0.1"
-              value={carat}
-              onChange={(e) => setCarat(e.target.value)}
-              className={styles.slider}
-            />
-
-            <div className={styles.rangeLabels}>
-              <span>0.0 ct</span>
-              <span>{carat} ct</span>
-            </div>
-          </div>
+          <Filtersidebar onApply={handleApply} />
         </aside>
 
-        {/* RIGHT PRODUCT GRID */}
-        <main className={styles.grid}>
-          {spinelGems.slice(0, 12).map((g) => (
-            <div key={g.id} className={styles.card}>
-              <img src={g.image} alt={g.name} className={styles.image} />
-              <h3>{g.name}</h3>
-              <p>
-                {Array.isArray(g.carat) ? g.carat.join(", ") : g.carat} ct •{" "}
-                {Array.isArray(g.shape) ? "Mixed" : g.shape}
-              </p>
+        {/* Mobile Drawer */}
+        {isFilterOpen && (
+          <>
+            <div
+              className={styles.overlay}
+              onClick={() => setIsFilterOpen(false)}
+            />
+
+            <div className={styles.mobileSidebar}>
+              <div className={styles.mobileHeader}>
+                <h3>Filters</h3>
+
+                <button
+                  onClick={() => setIsFilterOpen(false)}
+                  className={styles.closeBtn}
+                >
+                  ✕
+                </button>
+              </div>
+
+              <Filtersidebar onApply={handleApply} />
             </div>
-          ))}
+          </>
+        )}
+
+        {/* Content */}
+        <main className={styles.content}>
+          <Gemgrid />
+
+          <Pagination
+            category={category}
+            gemName={gemName}
+          />
         </main>
+
       </div>
     </div>
   );
