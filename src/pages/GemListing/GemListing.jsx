@@ -64,7 +64,7 @@ function GemListing() {
 
       {/* Breadcrumb */}
       <div className={styles.breadcrumb}>
-        <Link to="/" style={{textTransform: "capitalize"}}>
+        <Link to="/" style={{ textTransform: "capitalize" }}>
           {category === "precious" || category === "semiprecious" ? category : "Home"}
         </Link> / <span>{gemName}</span>
       </div>
@@ -86,7 +86,7 @@ function GemListing() {
 
         {/* Desktop Sidebar */}
         <aside className={styles.sidebar}>
-          <Filtersidebar onApply={handleApply} />
+          <FilterSidebar onApply={handleApply} />
         </aside>
 
         {/* Mobile Drawer */}
