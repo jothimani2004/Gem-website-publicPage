@@ -1,20 +1,35 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import api from "../../services/api";
 
-const initialState = {
-  items: [
-    { id: 1, name: "Red", slug: "red", hex: "#dc2626" },
-    { id: 2, name: "Blue", slug: "blue", hex: "#2563eb" },
-    { id: 3, name: "Green", slug: "green", hex: "#16a34a" },
-    { id: 4, name: "Yellow", slug: "yellow", hex: "#facc15" },
-    { id: 5, name: "Purple", slug: "purple", hex: "#9333ea" },
-    { id: 6, name: "Pink", slug: "pink", hex: "#ec4899" },
-  ],
-};
+export const fetchColors = createAsyncThunk("colors/fetchColors", async () => {
+  const response = await api.get("/public/color_types");
+  // The API just exposes names like "Red", "Blue".
+  // CSS natively supports these as background colors, so we map hex directly to the lowercase name!
+  return response.data.data.map((color) => ({
+    id: color.color_id,
+    name: color.color_name,
+    slug: color.color_name.toLowerCase(),
+    hex: color.color_name.toLowerCase(),
+  }));
+});
 
 const colorSlice = createSlice({
   name: "colors",
-  initialState,
+  initialState: {
+    items: [],
+    status: "idle",
+  },
   reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchColors.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchColors.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.items = action.payload;
+      });
+  },
 });
 
 export default colorSlice.reducer;

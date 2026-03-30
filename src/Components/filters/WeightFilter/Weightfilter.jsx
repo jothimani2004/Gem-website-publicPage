@@ -1,14 +1,15 @@
 import styles from "./weightfilter.module.css"
 
 function weightfilter({ value, onChange }){
-    const percentage = ((value - 0.1) / (150 - 0.1)) * 100;
+    const safeValue = value === "" || value === null || value === undefined ? 10 : Number(value);
+    const percentage = ((safeValue - 0.1) / (150 - 0.1)) * 100;
 
     return(
   <div className={styles.block}>
       <h3 className={styles.title}>Carat Weight</h3>
 
       <div className={styles.value}>
-         <strong>{value.toFixed(1)} ct</strong>
+         <strong>{safeValue.toFixed(1)} ct</strong>
       </div>
 
       <div className={styles.sliderWrapper}>
@@ -24,7 +25,7 @@ function weightfilter({ value, onChange }){
     min="0.1"
     max="150"
     step="0.1"
-    value={value}
+    value={safeValue}
     onChange={(e) => onChange(Number(e.target.value))}
     className={styles.slider}
   />

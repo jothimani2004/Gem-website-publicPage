@@ -1,12 +1,30 @@
-import { useState } from "react";
+import { useState, useCallback, useEffect } from "react";
+import useEmblaCarousel from "embla-carousel-react";
 import styles from "./GemGallery.module.css";
 
 const GemGallery = ({ media }) => {
-  const [selected, setSelected] = useState(media?.[0]);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
 
   const isVideo = (file) => {
-    return file?.toLowerCase().endsWith(".mp4");
+    return file?.toLowerCase().includes(".mp4") || file?.toLowerCase().includes("#video");
   };
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi, setSelectedIndex]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onSelect);
+  }, [emblaApi, onSelect]);
+
+  const scrollTo = useCallback((index) => {
+    if (emblaApi) emblaApi.scrollTo(index);
+  }, [emblaApi]);
 
   if (!media || media.length === 0) {
     return <p>No media available</p>;
@@ -15,26 +33,32 @@ const GemGallery = ({ media }) => {
   return (
     <div className={styles.gallery}>
 
-      {/* Main Preview */}
-      <div className={ styles.mainPreview }>
-        {isVideo(selected) ? (
-          <video controls className={styles.main-media}>
-            <source src={selected} type="video/mp4" />
-          </video>
-        ) : (
-          <img src={selected} alt="product" className={styles.main-media }/>
-        )}
+      {/* Main Preview Carousel (Swipeable) */}
+      <div className={styles.mainPreview} ref={emblaRef}>
+        <div className={styles.emblaContainer}>
+          {media.map((item, index) => (
+            <div className={styles.emblaSlide} key={index}>
+              {isVideo(item) ? (
+                <video controls className={styles['main-media']}>
+                  <source src={item} type="video/mp4" />
+                </video>
+              ) : (
+                <img src={item} alt="product slide" className={styles['main-media']} />
+              )}
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Thumbnails */}
-      <div className={styles.thumbnailcontainer} >
+      <div className={styles.thumbnailcontainer}>
         {media.map((item, index) => (
           <div
             key={index}
             className={`${styles.thumbnail} ${
-              selected === item ? styles.active : ""
+              selectedIndex === index ? styles.active : ""
             }`}
-            onClick={() => setSelected(item)}
+            onClick={() => scrollTo(index)}
           >
             {isVideo(item) ? (
               <div className={styles.videothumb}>🎥</div>

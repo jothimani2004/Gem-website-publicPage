@@ -2,6 +2,7 @@ import styles from "./Gemgrid.module.css";
 import { useSelector } from "react-redux";
 import GemCard from "../GemCard/GemCard";
 import { useParams } from "react-router-dom";
+import Loader from "../../common/Loader/Loader";
 
 function Gemgrid(){
 
@@ -11,14 +12,12 @@ function Gemgrid(){
 
     const { items = [], status, error } = useSelector(
         (state) => state.gems || {}
-      );
+    );
+      
+      
     
       if (status === "loading") {
-        return (
-          <div className={styles.center}>
-            Loading gems...
-          </div>
-        );
+        return <Loader text="Loading Collection..." />;
       }
     
       if (status === "failed") {

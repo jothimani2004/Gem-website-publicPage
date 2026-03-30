@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { fetchGems } from "../../features/gems/gemSlice";
-
+import { fetchShapes } from "../../features/shapes/shapeSlice";
+import { fetchColors } from "../../features/colors/colorSlice";
 import Filtersidebar from "../../components/filters/FilterSidebar/Filtersidebar";
 import Gemgrid from "../../Components/gem/GemGrid/Gemgrid";
 import Pagination from "../../Components/common/Pagination/Pagination";
@@ -19,9 +20,15 @@ function GemListing() {
     type: "single",
     shape: "",
     color: "",
-    maxCarat: 10,
+    maxCarat: "",
     page: 1,
   });
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    dispatch(fetchShapes());
+    dispatch(fetchColors());
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(
@@ -54,6 +61,13 @@ function GemListing() {
 
   return (
     <div className={styles.page}>
+
+      {/* Breadcrumb */}
+      <div className={styles.breadcrumb}>
+        <Link to="/" style={{textTransform: "capitalize"}}>
+          {category === "precious" || category === "semiprecious" ? category : "Home"}
+        </Link> / <span>{gemName}</span>
+      </div>
 
       {/* Header */}
       <div className={styles.header}>

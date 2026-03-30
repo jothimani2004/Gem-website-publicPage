@@ -30,7 +30,7 @@ function ShapeFilter({ value, onChange }) {
                 isActive ? styles.active : ""
               }`}
               onClick={() => onChange?.(shape.slug)}
-            >
+              >
               <div className={styles.icon}>
                 <ShapeIcon slug={shape.slug} />
               </div>

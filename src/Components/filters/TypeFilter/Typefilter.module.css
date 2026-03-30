@@ -1,41 +1,43 @@
 .block {
-    margin-bottom: 32px;
-  }
+  margin-bottom: 40px;
+}
   
-  .title {
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 12px;
-  }
-  
-  .wrapper {
-    display: flex;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    overflow: hidden;
-  }
-  
-  .button {
-    flex: 1;
-    padding: 10px 0;
-    background: #fff;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-    transition: 0.2s ease;
-  }
-  
-  .button:not(:last-child) {
-    border-right: 1px solid #ddd;
-  }
-  
-  .button:hover {
-  
-  }
-  
-  .active {
-    background: #0f3d7a;
-    color: #fff;
-    font-weight: 600;
-  }
-  
+.title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 16px;
+}
+
+.wrapper {
+  display: flex;
+  background: #f1f5f9;
+  border-radius: 30px;
+  padding: 4px;
+  position: relative;
+}
+
+.button {
+  flex: 1;
+  padding: 10px 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: #64748b;
+  border-radius: 30px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.button:hover {
+  color: #111827;
+}
+
+.active {
+  background: #ffffff;
+  color: #111827;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}

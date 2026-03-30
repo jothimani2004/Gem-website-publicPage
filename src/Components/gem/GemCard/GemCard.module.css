@@ -1,82 +1,185 @@
 .card {
-  width: 300px;
-  background: #fff;
-  cursor: pointer;
-  border-radius: 12px;
-  padding: 14px;
-  text-align: center;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.12);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow;
+  position: relative;
+  height: 100%;
 }
 
 .card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.20);
+  transform: translateY(-8px);
+  box-shadow: 0 16px 60px 10px rgba(0, 0, 0, 0.3);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.imageWrapper {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background-color: #f8fafc;
+  position: relative;
 }
 
 .card img {
   width: 100%;
-  height: 160px;
+  height: 100%;
   object-fit: cover;
-  border-radius: 8px;
-}
-.card p {
-  margin-top: 10px;
-  font-size: 16px;
-  font-weight: 500;
-  color: #222;
-  
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
 }
 
-.card:hover p {
-  color: #000;
-  transition: 0.25s ease;
+.card:hover img {
+  transform: scale(1.08);
 }
 
+.content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  text-align: left;
+  border-top: 1px solid #f3f4f6;
+  background: #ffffff;
+}
 
-/* Tablet */
-@media (max-width: 992px) {
-  .card p {
-    font-size: 15px;
+.title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: -0.3px;
+  margin: 0 0 10px 0;
+  line-height: 1.3;
+}
+
+.card:hover .title {
+  color: #1e3a8a;
+  transition: color 0.3s ease;
+}
+
+.data {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  padding-bottom: 4px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Times New Roman', Times, serif;
+  /* Normal font */
+  font-size: 11px;
+  font-weight: 600;
+  color: #070809;
+  background-color: #f3f4f6;
+  padding: 6px 14px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+/* Add a subtle shine overlay on hover */
+.card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0) 100%);
+  transform: skewX(-20deg);
+  transition: none;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.card:hover::after {
+  animation: shine 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes shine {
+  100% {
+    left: 200%;
   }
 }
 
-/* Mobile */
 @media (max-width: 600px) {
-  .card p {
-    font-size: 14px;
+  .content {
+    padding: 16px;
   }
-}
 
-/* Extra Small Mobile */
-@media (max-width: 380px) {
-  .card p {
+  .lot {
+    font-size: 10px;
+    padding: 3px 10px;
+    margin: 0 0 12px 0;
+  }
+
+  .meta {
     font-size: 13px;
   }
 }
 
-@media (max-width: 600px) {
-  .card {
-    width: 100%;
-  }
+/* ==================================
+   Minimalist Museum Variant (Homepage)
+   ================================== */
+.categoryVariant {
+  box-shadow: none !important;
+  border: none !important;
+  background: transparent !important;
+  position: relative;
 }
 
-.content {
-  padding: 12px;
+.categoryVariant:hover {
+  transform: translateY(0) !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
 }
 
-.title {
-  font-size: 15px;
-  font-weight: 600;
+.categoryVariant .imageWrapper {
+  aspect-ratio: 1 / 1;
+  background: #f8fafc;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid #f1f5f9;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.lot {
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 4px;
+.categoryVariant:hover .imageWrapper {
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
+  transform: translateY(-6px);
+  border-color: #cbd5e1;
 }
 
-.meta {
-  font-size: 13px;
-  color: #666;
+.categoryVariant .content {
+  background: transparent !important;
+  border-top: none !important;
+  padding: 20px 0 0 0 !important;
+  text-align: center;
+}
+
+.catTitleAlt {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.categoryVariant:hover .catTitleAlt {
+  color: #1e3a8a;
 }

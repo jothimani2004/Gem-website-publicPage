@@ -1,53 +1,80 @@
+.block {
+  margin-bottom: 40px;
+}
+
+.title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 20px;
+}
+
 .sliderWrapper {
-    position: relative;
-    width: 100%;
-    height: 20px;
-    display: flex;
-    align-items: center;
-  }
-  
-  /* Grey background track */
-  .track {
-    position: absolute;
-    width: 100%;
-    height: 6px;
-    background: #ddd;
-    border-radius: 6px;
-  }
-  
-  /* Blue filled progress */
-  .progress {
-    position: absolute;
-    height: 6px;
-    background: #0f3d7a;
-    border-radius: 6px;
-    left: 0;
-  }
-  
-  /* Range input */
-  .slider {
-    position: relative;
-    width: 100%;
-    appearance: none;
-    background: transparent;
-    z-index: 2;
-  }
-  
-  /* Remove default track */
-  .slider::-webkit-slider-runnable-track {
-    height: 6px;
-    background: transparent;
-  }
-  
-  /* Thumb */
-  .slider::-webkit-slider-thumb {
-    appearance: none;
-    height: 18px;
-    width: 18px;
-    border-radius: 50%;
-    background: #0f3d7a;
-    cursor: pointer;
-    border: none;
-    margin-top: -6px;
-  }
-  
+  position: relative;
+  width: 100%;
+  height: 24px;
+  display: flex;
+  align-items: center;
+}
+
+/* Base Track */
+.track {
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background: #e2e8f0;
+  border-radius: 4px;
+}
+
+/* Active Progress */
+.progress {
+  position: absolute;
+  height: 4px;
+  background: #111827;
+  border-radius: 4px;
+  left: 0;
+}
+
+/* System Slider Overlay */
+.slider {
+  position: relative;
+  width: 100%;
+  appearance: none;
+  background: transparent;
+  z-index: 2;
+  margin: 0;
+}
+
+.slider:focus {
+  outline: none;
+}
+
+.slider::-webkit-slider-runnable-track {
+  height: 24px;
+  background: transparent;
+}
+
+.slider::-moz-range-track {
+  height: 24px;
+  background: transparent;
+}
+
+/* Elevated Thumb */
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid #111827;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  cursor: pointer;
+  margin-top: 0;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}

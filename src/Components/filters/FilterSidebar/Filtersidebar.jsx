@@ -5,24 +5,36 @@ import Colorfilter from "../ColorFilter/Colorfilter";
 import Applyresetbutton from "../ApplyResetButtons/Applyresetbutton";
 import Weightfilter from "../WeightFilter/Weightfilter";
 
-function Filtersidebar() {
-  const [selectedShape, setSelectedShape] = useState(null);
+function Filtersidebar({ onApply }) {
+  const [selectedShape, setSelectedShape] = useState("");
   const [selectedType, setSelectedType] = useState("single");
   const [selectedColor, setSelectedColor] = useState("");
-  const [carat, setCarat] = useState(10);
-
-
-
-
+  const [carat, setCarat] = useState("");
 
   const handleReset = () => {
     setSelectedShape("");
     setSelectedColor("");
     setSelectedType("single");
-    setCarat(10);
+    setCarat("");
+    if (onApply) {
+      onApply({
+        type: "single",
+        shape: "",
+        color: "",
+        maxCarat: ""
+      });
+    }
   };
+
   const handleApply = () => {
-    
+    if (onApply) {
+      onApply({
+        type: selectedType,
+        shape: selectedType === "mixed" ? "" : selectedShape,
+        color: selectedType === "mixed" ? "" : selectedColor,
+        maxCarat: carat,
+      });
+    }
   };
 
   return (

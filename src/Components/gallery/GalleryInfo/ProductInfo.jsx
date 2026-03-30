@@ -3,51 +3,37 @@ import styles from "./ProductInfo.module.css";
 const ProductInfo = ({ product }) => {
   return (
     <div className={styles.info}>
-
       <h1 className={styles.title}>{product.name}</h1>
+      
+      <div className={styles.divider}></div>
 
-      <p className={styles.price}>
-       
-      </p>
-
-      <div className={styles.specs}>
-        <p><strong>Shape:</strong> {product.shape}</p>
-        <p><strong>Weight:</strong> {product.weight}</p>
-        <p><strong>Color:</strong> {product.color}</p>
-        <p><strong>Origin:</strong> {product.origin}</p>
+      <div className={styles.specsGrid}>
+        <div className={styles.specCard}>
+          <span className={styles.specLabel}>Shape</span>
+          <span className={styles.specValue}>{product.shape}</span>
+        </div>
+        <div className={styles.specCard}>
+          <span className={styles.specLabel}>Weight</span>
+          <span className={styles.specValue}>{product.weight}</span>
+        </div>
+        <div className={styles.specCard}>
+          <span className={styles.specLabel}>Color</span>
+          <span className={styles.specValue}>{product.color}</span>
+        </div>
+        <div className={styles.specCard}>
+          <span className={styles.specLabel}>Origin</span>
+          <span className={styles.specValue}>{product.origin}</span>
+        </div>
       </div>
 
-      <p className={styles.description}>
-        {product.description}
-      </p>
+      <div className={styles.divider}></div>
 
-
-       {/* Certificate Section */}
-       {product.certificate && (
-        <div className={styles.certificateSection}>
-          
-          <h3 className={styles.certTitle}>Certificate</h3>
-
-          {/* PDF Viewer */}
-          <iframe
-            src={product.certificate}
-            title="Gem Certificate"
-            className={styles.pdfViewer}
-          />
-
-          {/* Download Button */}
-          <a
-            href={product.certificate}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.downloadBtn}
-          >
-            Download Certificate
-          </a>
-
-        </div>
-      )}
-    
+      <div className={styles.descriptionBox}>
+        <h4 className={styles.descTitle}>Description</h4>
+        <p className={styles.descriptionText}>
+          {product.description}
+        </p>
+      </div>
     </div>
   );
 };

@@ -1,25 +1,29 @@
 import styles from "./GemCard.module.css";
 import { Link } from "react-router-dom";
+import fallbackGem from "../../../assets/images/gem2.png";
 
 function GemCard({ gem, variant = "category" }) {
   return (
-    <Link to={gem.link} className={styles.card}>
+    <Link to={gem.link} className={`${styles.card} ${variant === "category" ? styles.categoryVariant : ""}`}>
       <div className={styles.imageWrapper}>
-        <img src={gem.image} alt={gem.name} loading="lazy" />
+        <img
+          src={gem.image || fallbackGem}
+          alt={gem.name}
+          loading="lazy"
+          onError={(e) => { e.target.src = fallbackGem; }}
+        />
       </div>
 
       <div className={styles.content}>
         {variant === "category" && (
-          <p className={styles.title}>{gem.name}</p>
+          <p className={styles.catTitleAlt}>{gem.name}</p>
         )}
 
         {variant === "listing" && (
-          <>
-            <h4 className={styles.lot}>Lot #{gem.lotNumber}</h4>
-            <p className={styles.meta}>
-              {gem.shape} • {gem.carat} ct • {gem.color}
-            </p>
-          </>
+          <div className={styles.data}>
+            <span className={styles.pill}>LOT #{gem.lotNumber || 'N/A'}</span>
+            <span className={styles.pill}>{gem.carat} CT</span>
+          </div>
         )}
       </div>
     </Link>

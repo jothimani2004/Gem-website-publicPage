@@ -1,26 +1,34 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import api from "../../services/api";
 
-const initialState = {
-  items: [
-    { id: 1, name: "Round", slug: "round" },
-    { id: 2, name: "Oval", slug: "oval" },
-    { id: 3, name: "Pear", slug: "pear" },
-    { id: 4, name: "Emerald", slug: "emerald" },
-    { id: 5, name: "Radiant", slug: "radiant" },
-    { id: 6, name: "Heart", slug: "heart" },
-    { id: 7, name: "Marquise", slug: "marquise" },
-    { id: 8, name: "Square", slug: "square" },
-    { id: 9, name: "Trillion", slug: "trillion" },
-    { id: 10, name: "Cushion", slug: "cushion" },
-    { id: 11, name: "Princess", slug: "princess" },
+export const fetchShapes = createAsyncThunk("shapes/fetchShapes", async () => {
+  const response = await api.get("/public/shape_types");
+  console.log(response.data.data);
+  return response.data.data.map((shape) => ({
+    id: shape.shape_id,
+    name: shape.shape_name,
+    slug: shape.shape_name.toLowerCase(),
+  }));
+});
 
-  ],
-};
 
 const shapeSlice = createSlice({
   name: "shapes",
-  initialState,
+  initialState: {
+    items: [],
+    status: "idle",
+  },
   reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchShapes.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchShapes.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.items = action.payload;
+      });
+  },
 });
 
 export default shapeSlice.reducer;

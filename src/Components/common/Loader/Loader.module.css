@@ -1,0 +1,47 @@
+.loaderContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 300px;
+  gap: 24px;
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid #e2e8f0;
+  border-top-color: #111827; 
+  animation: spin 1s infinite cubic-bezier(0.55, 0.15, 0.45, 0.85); 
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.text {
+  font-size: 12px;
+  font-weight: 700;
+  color: #64748b;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  animation: pulse 2s infinite ease-in-out;
+  margin: 0;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+.fullScreen {
+  min-height: 100vh;
+  position: fixed;
+  inset: 0;
+  background: rgba(255,255,255,0.95);
+  z-index: 9999;
+  backdrop-filter: blur(8px);
+}

@@ -11,6 +11,13 @@ import defaultIcon from "../../../assets/shape-icons/default.svg";
 import cushion from "../../../assets/shape-icons/cushion.svg";
 import princess from "../../../assets/shape-icons/princess.svg";
 
+import octagon from "../../../assets/shape-icons/octagon.svg";
+import cube from "../../../assets/shape-icons/cube.svg";
+import cylinder from "../../../assets/shape-icons/cylinder.svg";
+import triangle from "../../../assets/shape-icons/triangle.svg";
+import cone from "../../../assets/shape-icons/cone.svg";
+import sphere from "../../../assets/shape-icons/sphere.svg";
+
 import style from "./ShapeIcon.module.css";
 
 const iconMap = {
@@ -24,12 +31,19 @@ const iconMap = {
   marquise,
   square,
   trillion,
-  princess
-
+  princess,
+  octagon,
+  cube,
+  cylinder,
+  triangle,
+  cone,
+  sphere
 };
 
 function ShapeIcon({ slug }) {
-  const icon = iconMap[slug] || defaultIcon;
+  const icon = iconMap[slug];
+
+  if (!icon) return null;
 
   return <img src={icon} alt={slug} width="40" height="40"  />;
 }
