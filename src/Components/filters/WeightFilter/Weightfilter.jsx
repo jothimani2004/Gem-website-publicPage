@@ -1,4 +1,4 @@
-import styles from "./weightfilter.module.css"
+import styles from "./Weightfilter.module.css"
 
 function weightfilter({ value, onChange }){
     const safeValue = value === "" || value === null || value === undefined ? 10 : Number(value);

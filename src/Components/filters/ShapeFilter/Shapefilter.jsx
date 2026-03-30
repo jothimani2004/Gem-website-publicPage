@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import ShapeIcon from "../../common/ShapeIcon/ShapeIcon";
-import styles from "./ShapeFilter.module.css";
+import styles from "./Shapefilter.module.css";
 
 function ShapeFilter({ value, onChange }) {
   const { items: shapes = [], status } = useSelector(
