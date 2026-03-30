@@ -4,7 +4,7 @@ import { useParams, Link } from "react-router-dom";
 import { fetchGems } from "../../features/gems/gemSlice";
 import { fetchShapes } from "../../features/shapes/shapeSlice";
 import { fetchColors } from "../../features/colors/colorSlice";
-import Filtersidebar from "../../components/filters/FilterSidebar/FilterSidebar";
+import FilterSidebar from "../../components/filters/FilterSidebar/FilterSidebar";
 import Gemgrid from "../../Components/gem/GemGrid/Gemgrid";
 import Pagination from "../../Components/common/Pagination/Pagination";
 
@@ -109,7 +109,7 @@ function GemListing() {
                 </button>
               </div>
 
-              <Filtersidebar onApply={handleApply} />
+              <FilterSidebar onApply={handleApply} />
             </div>
           </>
         )}
