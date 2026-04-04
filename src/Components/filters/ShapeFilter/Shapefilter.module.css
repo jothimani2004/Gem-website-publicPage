@@ -1,61 +1,95 @@
 .block {
-  margin-bottom: 40px;
+  margin-bottom: 48px;
 }
 
+/* TITLE */
 .title {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
-  color: #64748b;
+  color: #94a3b8;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
-  margin-bottom: 16px;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
 }
 
+/* GRID */
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  gap: 14px;
 }
 
+/* CARD */
 .card {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px 14px;
-  border: 1px solid #f1f5f9;
-  border-radius: 12px;
-  background: #ffffff;
+  gap: 14px;
+  padding: 14px 16px;
+
+  border-radius: 16px;
+
+  /* 💎 Glass + depth */
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(0, 0, 0, 0.05);
+
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.04),
+    inset 0 1px 0 rgba(255,255,255,0.5);
+
   cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* ✨ HOVER (premium lift) */
 .card:hover {
-  border-color: #cbd5e1;
-  background: #f8fafc;
-  transform: translateY(-2px);
+  transform: translateY(-4px) scale(1.02);
+
+  box-shadow:
+    0 12px 30px rgba(0,0,0,0.08),
+    0 0 0 1px rgba(124,58,237,0.2);
+
+  border-color: rgba(124,58,237,0.3);
 }
 
+/* ICON */
 .icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.3s ease;
+
+  width: 42px;
+  height: 42px;
+
+  border-radius: 12px;
+
+  background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+
+  transition: all 0.3s ease;
 }
 
 .card:hover .icon {
-  transform: scale(1.1);
+  transform: rotate(8deg) scale(1.1);
 }
 
+/* LABEL */
 .label {
   font-size: 14px;
   font-weight: 500;
-  color: #475569;
-  transition: color 0.2s ease;
+  color: #334155;
+  letter-spacing: 0.3px;
 }
 
+/* 💎 ACTIVE STATE (LUXURY) */
 .active {
-  border-color: #111827;
-  background: #111827;
+  background: linear-gradient(135deg, #111827, #1f2937);
+  border: 1px solid rgba(255,255,255,0.1);
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.25),
+    0 0 20px rgba(124,58,237,0.3);
 }
 
 .active .label {
@@ -64,16 +98,32 @@
 }
 
 .active .icon {
-  filter: brightness(0) invert(1);
+  background: linear-gradient(135deg, #7c3aed, #ec4899);
+  color: white;
+  transform: scale(1.1);
 }
 
+/* DISABLED */
 .disabled {
   opacity: 0.3;
   pointer-events: none;
 }
 
+/* 📱 RESPONSIVE */
+
 @media (max-width: 1041px) {
   .grid {
     grid-template-columns: repeat(1, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
   }
 }

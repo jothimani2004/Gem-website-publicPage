@@ -1,47 +1,105 @@
-.loaderContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  min-height: 300px;
-  gap: 24px;
-}
-
-.spinner {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  border: 2px solid #e2e8f0;
-  border-top-color: #111827; 
-  animation: spin 1s infinite cubic-bezier(0.55, 0.15, 0.45, 0.85); 
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.text {
-  font-size: 12px;
-  font-weight: 700;
-  color: #64748b;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  animation: pulse 2s infinite ease-in-out;
-  margin: 0;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 1; }
-}
-
-.fullScreen {
-  min-height: 100vh;
+/* 🌌 BACKGROUND */
+.container {
   position: fixed;
   inset: 0;
-  background: rgba(255,255,255,0.95);
-  z-index: 9999;
-  backdrop-filter: blur(8px);
+  background: radial-gradient(circle at center, #0f172a, #020617);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  overflow: hidden;
+}
+
+/* ✨ PARTICLES */
+.particles::before,
+.particles::after {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background-image: radial-gradient(white 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.1;
+  animation: moveParticles 20s linear infinite;
+}
+
+@keyframes moveParticles {
+  from { transform: translateY(0); }
+  to { transform: translateY(-200px); }
+}
+
+/* 💎 GEM WRAPPER */
+.gemWrapper {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+
+/* 💎 GEM */
+.gem {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, #38bdf8, #7c3aed, #ec4899);
+  clip-path: polygon(
+    50% 0%, 90% 25%, 75% 85%, 
+    50% 100%, 25% 85%, 10% 25%
+  );
+  position: absolute;
+  top: 10px;
+  left: 10px;
+
+  animation: rotateGem 3s ease-in-out infinite;
+  box-shadow:
+    0 0 30px rgba(124,58,237,0.6),
+    0 0 60px rgba(236,72,153,0.4);
+}
+
+/* 🔄 ROTATION */
+@keyframes rotateGem {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.15); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* 🌈 SHINE SWEEP */
+.shine {
+  position: absolute;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.6),
+    transparent
+  );
+  top: 0;
+  left: -100%;
+  animation: shineMove 2s infinite;
+}
+
+@keyframes shineMove {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* 🔤 TITLE */
+.title {
+  color: white;
+  font-size: 22px;
+  letter-spacing: 6px;
+  font-weight: 600;
+}
+
+/* ✨ SUBTITLE */
+.subtitle {
+  color: #94a3b8;
+  font-size: 12px;
+  letter-spacing: 3px;
+  animation: fadeText 2s infinite;
+}
+
+@keyframes fadeText {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
 }

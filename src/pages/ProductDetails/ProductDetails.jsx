@@ -7,6 +7,8 @@ import RelatedGems from "../../Components/gem/RelatedGems/RelatedGems";
 import api from "../../services/api";
 import Loader from "../../Components/common/Loader/Loader";
 
+
+
 function ProductDetails() {
   const { category, gemName, id } = useParams();
   

@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import styles from "./GemGallery.module.css";
+import GemVideo from "../GemVideo/GemVideo";
 
 const GemGallery = ({ media }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -39,9 +40,7 @@ const GemGallery = ({ media }) => {
           {media.map((item, index) => (
             <div className={styles.emblaSlide} key={index}>
               {isVideo(item) ? (
-                <video controls className={styles['main-media']}>
-                  <source src={item} type="video/mp4" />
-                </video>
+                  <GemVideo src={item} />
               ) : (
                 <img src={item} alt="product slide" className={styles['main-media']} />
               )}

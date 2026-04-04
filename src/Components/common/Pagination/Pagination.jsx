@@ -5,7 +5,7 @@ import styles from "./Pagination.module.css";
 
 function Pagination({ category, gemName }) {
   const dispatch = useDispatch();
-  const { total, limit, filters } = useSelector((state) => state.gems);
+  const { total, limit, filters, page } = useSelector((state) => state.gems);
 
   const pageCount = Math.ceil(total / limit);
 
@@ -30,6 +30,7 @@ function Pagination({ category, gemName }) {
       nextLabel="Next ›"
       previousLabel="‹ Prev"
       pageCount={pageCount}
+      forcePage={page - 1}
       marginPagesDisplayed={1}
       pageRangeDisplayed={3}
       onPageChange={handlePageClick}
