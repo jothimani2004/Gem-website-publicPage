@@ -21,15 +21,19 @@
 /* Mobile */
 @media (max-width: 600px) {
   .section h2 {
-    font-size: 20px;
+    font-size: 22px;
     margin-bottom: 20px;
+  }
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
   }
 }
 
 /* Extra Small Mobile */
 @media (max-width: 380px) {
   .section h2 {
-    font-size: 18px;
+    font-size: 22px;
     margin-bottom: 18px;
   }
 }
