@@ -99,7 +99,7 @@ function ProductDetails() {
 
           {/* PDF Viewer */}
           <iframe
-            src={product.certificate}
+            src={`https://docs.google.com/gview?url=${encodeURIComponent(product.certificate)}&embedded=true`}
             title="Gem Certificate"
             className={styles.pdfViewer}
           />
