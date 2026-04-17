@@ -22,7 +22,7 @@ function GemCard({ gem, variant = "category" }) {
         {variant === "listing" && (
           <div className={styles.data}>
             <span className={styles.pill}>LOT #{gem.lotNumber || 'N/A'}</span>
-            <span className={styles.pill}>{gem.carat} CT</span>
+            <span className={styles.pilll}>{gem.carat} CT</span>
           </div>
         )}
       </div>
