@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Hero from "../../Components/Hero/Hero";
 import GemCategory from "../../Components/gem/GemCategory/GemCategory";
 import api from "../../services/api";
-
+import TrustBanner from "../../Components/banner/TrustBanner";
 import styles from "./Home.module.css";
 
 function Home() {
@@ -39,10 +39,12 @@ function Home() {
   return (
     <>
       <Hero />
+      <TrustBanner />
       <section className={styles.sectionHeading}>
         <h1>Our Exquisite Gemstone Collections</h1>
         <p>Premium, certified gemstones — crafted by nature, curated for you.</p>
       </section>
+      
 
       {loading ? (
          <div style={{textAlign: "center", padding: "50px"}}>Loading categories...</div>

@@ -1,0 +1,29 @@
+.page {
+  padding: 60px 20px;
+  background: #f8fafc;
+  min-height: 100vh;
+}
+
+/* CENTER CONTAINER */
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* HEADER */
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 10px;
+}
+
+.header p {
+  font-size: 14px;
+  color: #64748b;
+}

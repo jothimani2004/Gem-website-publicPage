@@ -62,12 +62,24 @@ function GemListing() {
   return (
     <div className={styles.page}>
 
-      {/* Breadcrumb */}
-      <div className={styles.breadcrumb}>
-        <Link to="/" style={{ textTransform: "capitalize" }}>
-          {category === "precious" || category === "semiprecious" ? category : "Home"}
-        </Link> / <span>{gemName}</span>
-      </div>
+
+      {/* 💎 BEAUTIFUL BREADCRUMB */}
+
+      
+<div className={styles.breadcrumb}>
+  <Link to="/" className={styles.link}>
+    {category === "precious" || category === "semiprecious"
+      ? category
+      : "Home"}
+  </Link>
+
+  <span className={styles.separator}>›</span>
+
+  <span className={styles.current}>{gemName}</span>
+</div>
+
+
+
 
       {/* Header */}
       <div className={styles.header}>
@@ -78,8 +90,10 @@ function GemListing() {
           className={styles.filterBtn}
           onClick={() => setIsFilterOpen(true)}
         >
+        <i class="fa-solid fa-filter"></i>
           Filter
         </button>
+          
       </div>
 
       <div className={styles.layout}>
@@ -100,6 +114,7 @@ function GemListing() {
             <div className={styles.mobileSidebar}>
               <div className={styles.mobileHeader}>
                 <h3>Filters</h3>
+            
 
                 <button
                   onClick={() => setIsFilterOpen(false)}

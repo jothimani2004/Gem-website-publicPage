@@ -3,10 +3,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/layout/NavBar/Navbar.jsx";
 import Footer from "./Components/layout/Footer/Footer";
 import Loader from "./Components/common/Loader/Loader";
-
 import store from "./app/store.js"; // adjust path if needed
 import { Provider } from "react-redux";
-
+import FaqPage from "./pages/Faq/FaqPage.jsx";
+import WhatsAppButton from "./Components/common/whatsapp/WhatsAppButton.jsx";
 // Code splitting - dynamically fetching pages only when the user routes to them
 const Home = lazy(() => import("./pages/Home/Home.jsx"));
 const GemListing = lazy(() => import("./pages/GemListing/GemListing"));
@@ -26,8 +26,13 @@ function App() {
               path="/:category/:gemName/:id"
               element={<ProductDetails />}
             />
+            <Route
+              path="/faq"
+              element={<FaqPage />}
+            />
           </Routes>
         </Suspense>
+        <WhatsAppButton />
         <Footer />
       </BrowserRouter>
     </Provider>

@@ -1,0 +1,52 @@
+.banner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  text-align: center;
+
+  padding: 30px 40px;
+  background: #eeeff0;
+  margin-top: 5%;
+}
+
+/* ITEM */
+.item {
+  position: relative;
+}
+
+/* ICON */
+.icon {
+  font-size: 26px;
+  color: #7c3aed;
+  margin-bottom: 10px;
+}
+
+/* TEXT */
+.item p {
+  font-size: 14px;
+  color: #111827;
+  font-weight: 500;
+}
+
+/* DIVIDER */
+.item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 20%;
+  height: 60%;
+  width: 1px;
+  background: #e2e8f0;
+}
+
+/* 📱 RESPONSIVE */
+@media (max-width: 768px) {
+  .banner {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .item:not(:last-child)::after {
+    display: none;
+  }
+}

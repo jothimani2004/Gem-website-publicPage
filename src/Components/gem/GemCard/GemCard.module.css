@@ -87,6 +87,7 @@
   letter-spacing: 1px;
   white-space: nowrap;
 }
+
 .pilll {
   display: inline-flex;
   align-items: center;
@@ -103,6 +104,7 @@
   letter-spacing: 1px;
   white-space: nowrap;
 }
+
 /* Add a subtle shine overlay on hover */
 .card::after {
   content: "";
@@ -202,10 +204,11 @@
 /* Extreme Mobile Minimization */
 @media (max-width: 600px) {
   .categoryVariant .imageWrapper {
-    aspect-ratio: 4 / 3; /* Less bulky than a pure square */
+    aspect-ratio: 4 / 3;
+    /* Less bulky than a pure square */
     border-radius: 16px;
   }
-  
+
   .categoryVariant .content {
     padding: 12px 0 0 0 !important;
   }
@@ -214,19 +217,23 @@
     font-size: 13px;
     letter-spacing: 1.5px;
   }
-  .data{
+
+  .data {
     flex-direction: column;
     align-items: start;
   }
-  .card{
+
+  .card {
     border-radius: 10px;
   }
-  .pill{
+
+  .pill {
     font-size: 9px;
+    padding: 4px 10px;
   }
-  .pilll{
-    font-size: 7px;
+
+  .pilll {
+    font-size: 8px;
+   padding: 4px 10px;
   }
 }
-
-
