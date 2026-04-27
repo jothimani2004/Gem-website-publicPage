@@ -4,6 +4,10 @@ import GemCategory from "../../Components/gem/GemCategory/GemCategory";
 import api from "../../services/api";
 import TrustBanner from "../../Components/banner/TrustBanner";
 import styles from "./Home.module.css";
+import AboutSection from "../../Components/aboutus/AboutSection";
+import Testimonials from "../../Components/Testimonials/Testimonials";  
+import FaqPage from "../Faq/FaqPage";
+import { Link } from "react-router-dom";
 
 function Home() {
   const [preciousGems, setPreciousGems] = useState([]);
@@ -39,7 +43,9 @@ function Home() {
   return (
     <>
       <Hero />
+       <AboutSection />
       <TrustBanner />
+     
       <section className={styles.sectionHeading}>
         <h1>Our Exquisite Gemstone Collections</h1>
         <p>Premium, certified gemstones — crafted by nature, curated for you.</p>
@@ -52,16 +58,18 @@ function Home() {
          <>
           <GemCategory 
              title="Precious Gemstones" 
-             gems={preciousGems.map(g => ({...g, name: g.gemName, image: `https://d1wugj5ru4kx2.cloudfront.net/${g.image}`}))} 
+             gems={preciousGems.slice(0, 4).map(g => ({...g, name: g.gemName, image: `https://d1wugj5ru4kx2.cloudfront.net/${g.image}`}))} 
              category="Precious" 
           />
           <GemCategory 
              title="Semi-Precious Gemstones" 
-             gems={semiPreciousGems.map(g => ({...g, name: g.gemName, image: `https://d1wugj5ru4kx2.cloudfront.net/${g.image}`}))} 
+             gems={semiPreciousGems.slice(0, 4).map(g => ({...g, name: g.gemName, image: `https://d1wugj5ru4kx2.cloudfront.net/${g.image}`}))} 
              category="Semi-Precious" 
           />
          </>
       )}
+      <Testimonials />
+      <FaqPage />
     </>
   );
 }

@@ -1,7 +1,9 @@
 import GemCard from "../GemCard/GemCard";
 import styles from "./GemCategory.module.css";
+import { Link } from "react-router-dom";
 
-function GemCategory({ title, gems, category }) {
+
+function GemCategory({ title, gems, category,showExplore = true }) {
   return (
     <section className={styles.section}>
       <header className={styles.header}>
@@ -22,6 +24,15 @@ function GemCategory({ title, gems, category }) {
         
         ))}
       </div>
+
+       {/* 💎 EXPLORE BUTTON */}
+       {showExplore && (
+  <div className={styles.footer}>
+    <Link to={`/${category}`} className={styles.moreBtn}>
+      Explore More →
+    </Link>
+  </div>
+       )}
     </section>
   );
 }

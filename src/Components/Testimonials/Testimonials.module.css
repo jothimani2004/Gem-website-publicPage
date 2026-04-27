@@ -1,0 +1,92 @@
+.section {
+  padding: 80px 20px;
+  background: linear-gradient(to bottom, #f8fafc, #ffffff);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* HEADER */
+.header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.header h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 10px;
+}
+
+.header p {
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+/* CARD */
+.card {
+  background: white;
+  padding: 24px;
+  border-radius: 18px;
+
+  border: 1px solid #e2e8f0;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+
+  transition: all 0.3s ease;
+  background: rgba(255,255,255,0.7);
+backdrop-filter: blur(10px);
+}
+
+/* HOVER */
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+/* STARS */
+.stars {
+  color: #f59e0b;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+/* TEXT */
+.text {
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+/* NAME */
+.name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* 📱 RESPONSIVE */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+

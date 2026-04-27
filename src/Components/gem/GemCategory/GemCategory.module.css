@@ -2,6 +2,8 @@
   max-width: 1200px;
   margin: 60px auto;
   padding: 0 20px;
+  
+   margin-bottom: 20px;
 }
 
 .section h2 {
@@ -50,4 +52,29 @@
   gap: 32px;
 }
 
-  
+  .footer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.moreBtn {
+  margin-top: 50px;
+  display: inline-block;
+
+  padding: 10px 18px;
+
+  background: linear-gradient(135deg, #7c3aed, #ec4899);
+  color: white;
+
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+
+  transition: all 0.3s ease;
+}
+
+.moreBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(124,58,237,0.3);
+}

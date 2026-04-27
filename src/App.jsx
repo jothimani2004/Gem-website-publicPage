@@ -7,10 +7,15 @@ import store from "./app/store.js"; // adjust path if needed
 import { Provider } from "react-redux";
 import FaqPage from "./pages/Faq/FaqPage.jsx";
 import WhatsAppButton from "./Components/common/whatsapp/WhatsAppButton.jsx";
+import GemCategory from "./Components/gem/GemCategory/GemCategory.jsx";
+
+import MoreGems from "./pages/moregems/MoreGems.jsx";
 // Code splitting - dynamically fetching pages only when the user routes to them
 const Home = lazy(() => import("./pages/Home/Home.jsx"));
 const GemListing = lazy(() => import("./pages/GemListing/GemListing"));
 const ProductDetails = lazy(() => import("./pages/ProductDetails/ProductDetails"));
+
+
 
 function App() {
   return (
@@ -21,6 +26,7 @@ function App() {
         <Suspense fallback={<Loader text="Loading Experience..." fullScreen={false} />}>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/:category" element={<MoreGems />} />
             <Route path="/:category/:gemName" element={<GemListing />} />
             <Route
               path="/:category/:gemName/:id"
