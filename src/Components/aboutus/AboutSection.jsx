@@ -1,6 +1,6 @@
 import styles from "./AboutSection.module.css";
-
 import aboutUsImage from "../../../public/aboutus/aboutus_image.jpg";
+import { motion } from "framer-motion";
 
 function AboutSection() {
   return (
@@ -8,15 +8,27 @@ function AboutSection() {
       <div className={styles.container}>
         
         {/* LEFT - IMAGE */}
-        <div className={styles.image}>
+        <motion.div 
+          className={styles.image}
+          initial={{ opacity: 0, x: -80 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
           <img
             src={aboutUsImage}
             alt="Gemstone"
           />
-        </div>
+        </motion.div>
 
         {/* RIGHT - TEXT */}
-        <div className={styles.content}>
+        <motion.div 
+          className={styles.content}
+          initial={{ opacity: 0, x: 80 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+        >
           <h2>About Aimpluss Gems</h2>
 
           <p>
@@ -33,7 +45,7 @@ function AboutSection() {
           <a href="/about" className={styles.btn}>
             Learn More
           </a>
-        </div>
+        </motion.div>
 
       </div>
     </section>

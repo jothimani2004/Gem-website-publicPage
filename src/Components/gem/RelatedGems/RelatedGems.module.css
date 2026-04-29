@@ -35,6 +35,8 @@
   animation: fadeIn 0.6s ease-out forwards;
   opacity: 0;
   border-radius: 16px;
+  width: 250px;
+  height: 250px;
 }
 
 /* staggered animation */
@@ -81,13 +83,23 @@
     grid-template-columns: repeat(3, 1fr);
   }
   .cardWrapper:nth-child(4) { display: none; }
+  
 }
 
 @media (max-width: 768px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
+     display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 20px;
+    -webkit-overflow-scrolling: touch;
   }
+  .moreContainer {
+  
+  margin-top: 30px;
+}
 }
 
 @media (max-width: 480px) {
@@ -104,9 +116,23 @@
   }
   
   .cardWrapper {
-    min-width: 75vw;
+   
     scroll-snap-align: center;
     padding-top: 20px;
      border-radius: 16px;
+     
   }
+  .moreContainer {
+  
+  margin-top: -20px;
+  margin-bottom: -30px;
+}
+.moreBtn{
+    padding: 8px 18px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+
+}
 }

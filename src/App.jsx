@@ -8,7 +8,7 @@ import { Provider } from "react-redux";
 import FaqPage from "./pages/Faq/FaqPage.jsx";
 import WhatsAppButton from "./Components/common/whatsapp/WhatsAppButton.jsx";
 import GemCategory from "./Components/gem/GemCategory/GemCategory.jsx";
-
+import About from "./pages/about/About.jsx";
 import MoreGems from "./pages/moregems/MoreGems.jsx";
 // Code splitting - dynamically fetching pages only when the user routes to them
 const Home = lazy(() => import("./pages/Home/Home.jsx"));
@@ -35,6 +35,10 @@ function App() {
             <Route
               path="/faq"
               element={<FaqPage />}
+            />
+            <Route
+              path="/about"
+              element={<About />}
             />
           </Routes>
         </Suspense>

@@ -58,12 +58,12 @@ function Home() {
          <>
           <GemCategory 
              title="Precious Gemstones" 
-             gems={preciousGems.slice(0, 4).map(g => ({...g, name: g.gemName, image: `https://d1wugj5ru4kx2.cloudfront.net/${g.image}`}))} 
+             gems={preciousGems.slice(0, 8).map(g => ({...g, name: g.gemName, image: `https://d1wugj5ru4kx2.cloudfront.net/${g.image}`}))} 
              category="Precious" 
           />
           <GemCategory 
              title="Semi-Precious Gemstones" 
-             gems={semiPreciousGems.slice(0, 4).map(g => ({...g, name: g.gemName, image: `https://d1wugj5ru4kx2.cloudfront.net/${g.image}`}))} 
+             gems={semiPreciousGems.slice(0, 8).map(g => ({...g, name: g.gemName, image: `https://d1wugj5ru4kx2.cloudfront.net/${g.image}`}))} 
              category="Semi-Precious" 
           />
          </>

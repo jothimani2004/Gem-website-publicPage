@@ -2,8 +2,37 @@
   max-width: 1200px;
   margin: 60px auto;
   padding: 0 20px;
-  
-   margin-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+
+.header h2 {
+  position: relative; /* 🔥 REQUIRED */
+  display: inline-block;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+/* ✨ UNDERLINE */
+.header h2::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+
+  width: 100%;
+  height: 3px;
+
+  background: linear-gradient(
+    90deg,
+    #5d2bb3,
+    #8561c3,
+    #f3f1f2,
+    transparent
+  );
+
+  border-radius: 999px;
+  opacity: 0.9;
 }
 
 .section h2 {
@@ -12,6 +41,173 @@
   margin-bottom: 28px;
 }
 
+/* --- CAROUSEL WRAPPER & NAV BUTTONS --- */
+.carouselWrapper {
+  position: relative;
+  width: 100%;
+  
+  
+}
+
+.navBtn {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: white;
+  border: 1px solid #f1f5f9;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #1e293b;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.navBtn:hover {
+  background: #f8fafc;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  color: #7c3aed;
+}
+
+.navLeft {
+  left: -15px;
+}
+
+.navRight {
+  right: -15px;
+}
+
+/* --- GRID LAYOUT (For "Show All" Pages) --- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 32px;
+}
+
+/* --- SCROLL LAYOUT (For Home Page) --- */
+.scrollContainer {
+  display: flex;
+  overflow-x: auto;
+  gap: 32px;
+  padding: 30px 30px;
+  border-radius: 16px;
+  
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+  align-items: center;
+    scrollbar-width: none;
+  -ms-overflow-style: none;
+
+}
+
+.scrollContainer::-webkit-scrollbar {
+  height: 6px;
+}
+.scrollContainer::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollContainer::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 10px;
+}
+
+.cardWrapper {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  width: 280px;
+ 
+}
+
+/* 💎 SMALL BUTTON */
+.endArrowBtn {
+  flex: 0 0 auto;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  margin-left: 1.5em;
+
+ 
+
+  padding: 1em;
+
+  border-radius: 50%;
+  text-decoration: none;
+
+  font-size: 1.2em;
+  font-weight: 600;
+
+  /* ✨ subtle luxury gradient */
+  /* background: linear-gradient(135deg, #7c3aed, #ec4899); */
+  background-color:white ;
+  color: rgb(3, 3, 3);
+  border: 1px solid #080808;
+
+  box-shadow: 0 6px 15px rgba(124, 58, 237, 0.25);
+
+  transition: all 0.3s ease;
+}
+
+/* ➡️ Arrow */
+.arrow {
+  font-size: 1em;
+  transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  
+  
+}
+
+/* ✨ Hover */
+.endArrowBtn:hover {
+  /* transform: translateY(-2px); */
+  box-shadow: 0 10px 20px rgba(70, 68, 73, 0.35);
+  color: white;
+  background-color: #080808;
+}
+
+/* 👉 Arrow move */
+.endArrowBtn:hover .arrow {
+  /* transform: translateX(4px); */
+  
+}
+
+/* --- FOOTER & BUTTON --- */
+.footer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.moreBtn {
+  margin-top: 0px;
+  display: inline-block;
+  padding: 10px 18px;
+  background: linear-gradient(135deg, #7c3aed, #ec4899);
+  color: white;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.moreBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.3);
+}
+
+/* --- RESPONSIVE --- */
 /* Tablet */
 @media (max-width: 992px) {
   .section h2 {
@@ -30,6 +226,17 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
   }
+  .scrollContainer {
+    gap: 16px;
+  }
+  .cardWrapper {
+    width: 220px;
+  }
+  .endArrowBtn {
+    width: 60px;
+    height: 60px;
+    font-size: 20px;
+  }
 }
 
 /* Extra Small Mobile */
@@ -38,43 +245,15 @@
     font-size: 22px;
     margin-bottom: 18px;
   }
-    .grid {
+  .grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
   }
+  .scrollContainer {
+    gap: 16px;
+  }
+  .cardWrapper {
+    width: 180px;
+  }
 }
 
-
-  
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 32px;
-}
-
-  .footer {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.moreBtn {
-  margin-top: 50px;
-  display: inline-block;
-
-  padding: 10px 18px;
-
-  background: linear-gradient(135deg, #7c3aed, #ec4899);
-  color: white;
-
-  border-radius: 999px;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-
-  transition: all 0.3s ease;
-}
-
-.moreBtn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(124,58,237,0.3);
-}

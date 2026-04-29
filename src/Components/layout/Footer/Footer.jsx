@@ -1,5 +1,6 @@
 import styles from "./Footer.module.css";
-
+import { FaInstagram, FaGlobe, FaLinkedin } from "react-icons/fa";
+import { Link } from "react-router-dom";
 function Footer() {
   return (
     <footer className={styles.footer}>
@@ -16,12 +17,22 @@ function Footer() {
         <div className={styles.links}>
           <h4>Quick Links</h4>
           <ul>
-            <li>Home</li>
-            <li>Shop</li>
-            <li>About</li>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/about">About</Link></li>
+            <li><Link to="/#faq">FAQ</Link></li> {/* scroll to faq */}
             <li>Contact</li>
           </ul>
         </div>
+
+     <div className={styles.gems}>
+          <h4>Gems</h4>
+          <ul>
+            <li><Link to="/Precious">Precious</Link></li>
+            <li><Link to="/Semi-Precious">Semi-Precious</Link></li>
+          </ul>
+        </div>
+
+
 
         {/* 📞 CONTACT */}
         <div className={styles.contact}>
@@ -34,9 +45,9 @@ function Footer() {
         <div className={styles.social}>
           <h4>Follow Us</h4>
           <div className={styles.icons}>
-            <span>🌐</span>
-            <span>📸</span>
-            <span>💼</span>
+            <FaInstagram />
+            <FaGlobe />
+            <FaLinkedin />
           </div>
         </div>
 

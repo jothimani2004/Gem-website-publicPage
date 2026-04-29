@@ -1,4 +1,5 @@
 import styles from "./Testimonials.module.css";
+import { FaQuoteLeft } from "react-icons/fa";
 
 function Testimonials() {
   const reviews = [
@@ -34,6 +35,9 @@ function Testimonials() {
           {reviews.map((review, index) => (
             <div key={index} className={styles.card}>
               
+              {/* ✨ Quote Icon */}
+              <FaQuoteLeft className={styles.quoteIcon} />
+
               {/* ⭐ Rating */}
               <div className={styles.stars}>
                 {"★".repeat(review.rating)}
@@ -42,11 +46,16 @@ function Testimonials() {
 
               {/* 💬 Text */}
               <p className={styles.text}>
-                “{review.text}”
+                {review.text}
               </p>
 
-              {/* 👤 Name */}
-              <h4 className={styles.name}>{review.name}</h4>
+              {/* 👤 USER */}
+              <div className={styles.user}>
+                <div className={styles.avatar}>
+                  {review.name.charAt(0)}
+                </div>
+                <h4>{review.name}</h4>
+              </div>
 
             </div>
           ))}

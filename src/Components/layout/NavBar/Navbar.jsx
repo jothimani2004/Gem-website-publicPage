@@ -1,18 +1,32 @@
 import styles from "./Navbar.module.css";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <div className={styles.navbar}>
-      <div className={styles.logo}>Aimpluss Gems</div>
+    <header className={styles.navbar}>
 
-      <ul className={styles.menu}>
-     
-        
-        
-      </ul>
+      {/* 💎 LOGO */}
+      <Link to="/" className={styles.logo}>
+        Aimpluss Gems
+      </Link>
 
-     
-    </div>
+      {/* 🔗 MENU */}
+      <nav>
+        <ul className={styles.menu}>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/Precious">Precious</Link></li>
+          <li><Link to="/Semi-Precious">Semi-Precious</Link></li>
+          <li><Link to="/about">About</Link></li>
+          <li><Link to="/#faq">FAQ</Link></li>
+        </ul>
+      </nav>
+
+      {/* 💎 CTA */}
+      <Link to="/Precious" className={styles.cta}>
+        Explore Gems
+      </Link>
+
+    </header>
   );
 }
 

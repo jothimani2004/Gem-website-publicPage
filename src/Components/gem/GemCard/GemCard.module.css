@@ -5,17 +5,17 @@
   border-radius: 16px;
   overflow: hidden;
   text-decoration: none;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.06); /* All sides shadow */
   border: 1px solid rgba(0, 0, 0, 0.03);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, box-shadow;
   position: relative;
-  height: 100%;
+
 }
 
 .card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 16px 60px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 50px 12px rgba(0, 0, 0, 0.2); /* All sides hover shadow */
   border-color: rgba(0, 0, 0, 0.08);
 }
 
@@ -25,6 +25,7 @@
   overflow: hidden;
   background-color: #f8fafc;
   position: relative;
+
 }
 
 .card img {
@@ -153,37 +154,37 @@
    Minimalist Museum Variant (Homepage)
    ================================== */
 .categoryVariant {
-  box-shadow: none !important;
-  border: none !important;
-  background: transparent !important;
+  border-radius: 24px !important;
+  background: #ffffff !important;
+  box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.06) !important;
   position: relative;
+  margin-left: 30px;
 }
 
 .categoryVariant:hover {
-  transform: translateY(0) !important;
-  box-shadow: none !important;
-  border-color: transparent !important;
+  transform: translateY(-8px) !important;
+  box-shadow: 0 0 50px 12px rgba(0, 0, 0, 0.2) !important;
 }
 
 .categoryVariant .imageWrapper {
-  /* aspect-ratio: 1 / 1; */
   background: #f8fafc;
-  border-radius: 24px;
+  border-radius: 0;
   overflow: hidden;
-  border: 1px solid #f1f5f9;
+  border: none;
+  box-shadow: none;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
 }
 
 .categoryVariant:hover .imageWrapper {
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
-  transform: translateY(-6px);
-  border-color: #cbd5e1;
+  box-shadow: none;
+  transform: none;
 }
 
 .categoryVariant .content {
   background: transparent !important;
   border-top: none !important;
-  padding: 20px 0 0 0 !important;
+  padding: 20px 10px !important;
   text-align: center;
 }
 
@@ -234,6 +235,22 @@
 
   .pilll {
     font-size: 8px;
-   padding: 4px 10px;
+    padding: 4px 10px;
   }
+}
+
+@media (max-width: 480px) {
+  .card {}
+
+  .pilll {
+    display: flex;
+  }
+}
+
+@media (max-width: 367px) {
+  .card {}
+}
+
+@media (max-width: 340px) {
+  .card {}
 }

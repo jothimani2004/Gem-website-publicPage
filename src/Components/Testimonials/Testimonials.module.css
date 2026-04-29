@@ -1,11 +1,13 @@
+/* SECTION */
 .section {
   padding: 80px 20px;
   background: linear-gradient(to bottom, #f8fafc, #ffffff);
 }
 
+/* CONTAINER */
 .container {
-  max-width: 1100px;
-  margin: 0 auto;
+  max-width: 1200px;
+  margin: auto;
 }
 
 /* HEADER */
@@ -15,10 +17,8 @@
 }
 
 .header h2 {
-  font-size: 28px;
+  font-size: 30px;
   font-weight: 700;
-  color: #111827;
-  margin-bottom: 10px;
 }
 
 .header p {
@@ -35,23 +35,50 @@
 
 /* CARD */
 .card {
-  background: white;
-  padding: 24px;
-  border-radius: 18px;
+  position: relative;
+  padding: 28px;
+  border-radius: 20px;
 
-  border: 1px solid #e2e8f0;
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(12px);
 
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  border: 1px solid rgba(255,255,255,0.4);
 
-  transition: all 0.3s ease;
-  background: rgba(255,255,255,0.7);
-backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+
+  transition: all 0.4s ease;
+}
+
+/* ✨ GLOW EFFECT */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: radial-gradient(
+    circle at top,
+    rgba(124,58,237,0.12),
+    transparent
+  );
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.card:hover::before {
+  opacity: 1;
 }
 
 /* HOVER */
 .card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+}
+
+/* QUOTE ICON */
+.quoteIcon {
+  font-size: 18px;
+  color: #7c3aed;
+  margin-bottom: 10px;
 }
 
 /* STARS */
@@ -65,18 +92,40 @@ backdrop-filter: blur(10px);
 .text {
   font-size: 14px;
   color: #475569;
-  line-height: 1.6;
-  margin-bottom: 16px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+/* USER */
+.user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* AVATAR */
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 600;
+  color: white;
+
+  background: linear-gradient(135deg, #7c3aed, #ec4899);
 }
 
 /* NAME */
-.name {
+.user h4 {
   font-size: 14px;
   font-weight: 600;
-  color: #111827;
 }
 
-/* 📱 RESPONSIVE */
+/* RESPONSIVE */
 @media (max-width: 900px) {
   .grid {
     grid-template-columns: 1fr 1fr;
@@ -88,5 +137,3 @@ backdrop-filter: blur(10px);
     grid-template-columns: 1fr;
   }
 }
-
-

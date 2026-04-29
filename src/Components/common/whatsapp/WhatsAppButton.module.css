@@ -1,10 +1,11 @@
+/* 🟢 SECTION */
 .whatsapp {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 28px;
+  right: 28px;
 
-  width: 56px;
-  height: 56px;
+  width: 60px;
+  height: 60px;
 
   display: flex;
   align-items: center;
@@ -25,6 +26,11 @@
 
   transition: all 0.3s ease;
 }
+.whatsapp i{
+    padding: 10px;
+    font-size: 35px;
+}
+
 a{
     text-decoration: none;
 }
@@ -46,6 +52,7 @@ a{
   content: "Chat with us";
   position: absolute;
   right: 70px;
+  width: 90px;
   background: #111827;
   color: white;
   font-size: 12px;

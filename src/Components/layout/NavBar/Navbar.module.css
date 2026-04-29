@@ -1,25 +1,92 @@
+/* NAVBAR */
 .navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 18px 60px;
-  background: white;
-  border-bottom: 1px solid #eee;
+  justify-content: space-between;
+
+  padding: 14px 40px;
+
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(10px);
+
+  border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
+/* LOGO */
 .logo {
-  font-size: 24px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 700;
+  text-decoration: none;
+  color: #111827;
 }
 
+/* MENU */
 .menu {
-  list-style: none;
   display: flex;
-  gap: 1px;
-  font-size: 16px;
+  gap: 30px;
+  list-style: none;
 }
 
-.menu li {
-  cursor: pointer;
+.menu a {
+  text-decoration: none;
+  color: #475569;
+  font-size: 14px;
+  font-weight: 500;
+  position: relative;
+  transition: 0.3s;
 }
 
+/* ✨ UNDERLINE ANIMATION */
+.menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+
+  background: linear-gradient(90deg, #7c3aed, #ec4899);
+  transition: 0.3s;
+}
+
+.menu a:hover {
+  color: #111827;
+}
+
+.menu a:hover::after {
+  width: 100%;
+}
+
+/* CTA BUTTON */
+.cta {
+  padding: 8px 18px;
+  border-radius: 999px;
+
+  background: linear-gradient(135deg, #7c3aed, #ec4899);
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+
+  transition: 0.3s;
+}
+
+.cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(124,58,237,0.3);
+}
+
+/* 📱 MOBILE */
+@media (max-width: 768px) {
+  .menu {
+    display: none; /* we will add hamburger later */
+  }
+
+  .navbar {
+    padding: 12px 20px;
+  }
+}
