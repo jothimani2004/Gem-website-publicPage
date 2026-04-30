@@ -1,7 +1,11 @@
 import styles from "./Navbar.module.css";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 function Navbar() {
+  const [open, setOpen] = useState(false);
+
   return (
     <header className={styles.navbar}>
 
@@ -11,20 +15,25 @@ function Navbar() {
       </Link>
 
       {/* 🔗 MENU */}
-      <nav>
+      <nav className={`${styles.nav} ${open ? styles.active : ""}`}>
         <ul className={styles.menu}>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/Precious">Precious</Link></li>
-          <li><Link to="/Semi-Precious">Semi-Precious</Link></li>
-          <li><Link to="/about">About</Link></li>
-          <li><Link to="/#faq">FAQ</Link></li>
+          <li><Link to="/" onClick={() => setOpen(false)}>Home</Link></li>
+          <li><Link to="/Precious" onClick={() => setOpen(false)}>Precious</Link></li>
+          <li><Link to="/Semi-Precious" onClick={() => setOpen(false)}>Semi-Precious</Link></li>
+          <li><Link to="/about" onClick={() => setOpen(false)}>About</Link></li>
+          <li><Link to="/#faq" onClick={() => setOpen(false)}>FAQ</Link></li>
         </ul>
       </nav>
 
       {/* 💎 CTA */}
       <Link to="/Precious" className={styles.cta}>
-        Explore Gems
+        Explore
       </Link>
+
+      {/* 🍔 HAMBURGER */}
+      <div className={styles.hamburger} onClick={() => setOpen(!open)}>
+        {open ? <FaTimes /> : <FaBars />}
+      </div>
 
     </header>
   );
