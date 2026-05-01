@@ -2,26 +2,26 @@
 .container {
   position: fixed;
   inset: 0;
-  background: radial-gradient(circle at center, #0f172a, #020617);
+  background: radial-gradient(circle at center, #0a0a0a, #000);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 25px;
   overflow: hidden;
+  perspective: 800px;
 }
 
 /* ✨ PARTICLES */
-.particles::before,
-.particles::after {
+.particles::before {
   content: "";
   position: absolute;
   width: 200%;
   height: 200%;
-  background-image: radial-gradient(white 1px, transparent 1px);
-  background-size: 40px 40px;
-  opacity: 0.1;
-  animation: moveParticles 20s linear infinite;
+  background-image: radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.05;
+  animation: moveParticles 25s linear infinite;
 }
 
 @keyframes moveParticles {
@@ -29,77 +29,91 @@
   to { transform: translateY(-200px); }
 }
 
-/* 💎 GEM WRAPPER */
+/* 💎 WRAPPER */
 .gemWrapper {
-  position: relative;
-  width: 120px;
-  height: 120px;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* 💎 GEM */
+/* 💎 GEM (3D ROTATION) */
 .gem {
   width: 100px;
   height: 100px;
-  background: linear-gradient(135deg, #38bdf8, #7c3aed, #ec4899);
+  position: relative;
+  transform-style: preserve-3d;
+  animation: rotate3D 4s linear infinite;
+}
+
+/* 💎 FACES (FAKE 3D EFFECT) */
+.face {
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.9),
+    rgba(200,200,200,0.1)
+  );
+
   clip-path: polygon(
     50% 0%, 90% 25%, 75% 85%, 
     50% 100%, 25% 85%, 10% 25%
   );
-  position: absolute;
-  top: 10px;
-  left: 10px;
 
-  animation: rotateGem 3s ease-in-out infinite;
-  box-shadow:
-    0 0 30px rgba(124,58,237,0.6),
-    0 0 60px rgba(236,72,153,0.4);
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
-/* 🔄 ROTATION */
-@keyframes rotateGem {
-  0% { transform: rotate(0deg) scale(1); }
-  50% { transform: rotate(180deg) scale(1.15); }
-  100% { transform: rotate(360deg) scale(1); }
+/* ✨ LAYER DEPTH */
+.face:nth-child(1) { transform: translateZ(20px); }
+.face:nth-child(2) { transform: rotateY(90deg) translateZ(20px); }
+.face:nth-child(3) { transform: rotateX(90deg) translateZ(20px); }
+.face:nth-child(4) { transform: rotateY(180deg) translateZ(20px); }
+
+/* 🔄 3D ROTATION */
+@keyframes rotate3D {
+  0%   { transform: rotateX(0deg) rotateY(0deg); }
+  50%  { transform: rotateX(180deg) rotateY(180deg); }
+  100% { transform: rotateX(360deg) rotateY(360deg); }
 }
 
-/* 🌈 SHINE SWEEP */
-.shine {
+/* ✨ LIGHT REFLECTION */
+.gem::after {
+  content: "";
   position: absolute;
-  width: 200%;
-  height: 100%;
+  inset: 0;
   background: linear-gradient(
     120deg,
     transparent,
-    rgba(255,255,255,0.6),
+    rgba(255,255,255,0.5),
     transparent
   );
-  top: 0;
-  left: -100%;
   animation: shineMove 2s infinite;
 }
 
 @keyframes shineMove {
-  0% { left: -100%; }
-  100% { left: 100%; }
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
-/* 🔤 TITLE */
+/* 🔤 TEXT */
 .title {
   color: white;
-  font-size: 22px;
+  font-size: 20px;
   letter-spacing: 6px;
   font-weight: 600;
 }
 
-/* ✨ SUBTITLE */
 .subtitle {
-  color: #94a3b8;
+  color: #9ca3af;
   font-size: 12px;
   letter-spacing: 3px;
   animation: fadeText 2s infinite;
 }
 
 @keyframes fadeText {
-  0%, 100% { opacity: 0.4; }
+  0%,100% { opacity: 0.4; }
   50% { opacity: 1; }
 }

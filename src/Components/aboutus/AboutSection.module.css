@@ -51,8 +51,9 @@
 
   padding: 10px 20px;
 
-  background: linear-gradient(135deg, #7c3aed, #ec4899);
-  color: white;
+  background: white;
+  color: rgb(0, 0, 0);
+  border: 2px solid #1a1a1a;
 
   border-radius: 999px;
   text-decoration: none;
@@ -64,7 +65,9 @@
 
 .btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(124,58,237,0.3);
+  box-shadow: 0 8px 20px rgba(34, 33, 34, 0.3);
+  color: white;
+  background-color: black;
 }
 
 /* 📱 RESPONSIVE */

@@ -1,24 +1,28 @@
 import styles from "./Loader.module.css";
 
-const Loader = () => {
+function Loader() {
   return (
     <div className={styles.container}>
-
-      {/* ✨ Floating particles */}
+      
+      {/* ✨ PARTICLES */}
       <div className={styles.particles}></div>
 
-      {/* 💎 Main Gem */}
+      {/* 💎 GEM */}
       <div className={styles.gemWrapper}>
-        <div className={styles.gem}></div>
-        <div className={styles.shine}></div>
+        <div className={styles.gem}>
+          <div className={styles.face}></div>
+          <div className={styles.face}></div>
+          <div className={styles.face}></div>
+          <div className={styles.face}></div>
+        </div>
       </div>
 
-      {/* 🔤 Text */}
-      <h2 className={styles.title}>GEM STORE</h2>
-      <p className={styles.subtitle}>Crafting Brilliance...</p>
+      {/* TEXT */}
+      <h2 className={styles.title}>AIMPLUSS</h2>
+      <p className={styles.subtitle}>CRAFTING BRILLIANCE</p>
 
     </div>
   );
-};
+}
 
 export default Loader;

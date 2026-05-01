@@ -166,7 +166,7 @@ useEffect(() => {
       <section className={styles.cta}>
         <h2>Explore Our Collection</h2>
         <Link to="/" className={styles.ctaBtn}>
-          Browse Gems →
+          Browse Gems <i class="fa-solid fa-arrow-right"></i> 
         </Link>
       </section>
 
