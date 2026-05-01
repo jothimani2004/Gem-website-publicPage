@@ -46,7 +46,6 @@
   position: relative;
   width: 100%;
   
-  
 }
 
 .navBtn {
@@ -126,61 +125,48 @@
  
 }
 
-/* 💎 SMALL BUTTON */
+/* 💎 BASE (DESKTOP FIRST) */
 .endArrowBtn {
   flex: 0 0 auto;
 
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+  width: 56px;
+  height: 56px;
 
-  margin-left: 1.5em;
-
- 
-
-  padding: 1em;
-
-  border-radius: 50%;
-  text-decoration: none;
-
-  font-size: 1.2em;
-  font-weight: 600;
-
-  /* ✨ subtle luxury gradient */
-  /* background: linear-gradient(135deg, #7c3aed, #ec4899); */
-  background-color:white ;
-  color: rgb(3, 3, 3);
-  border: 1px solid #080808;
-
-  box-shadow: 0 6px 15px rgba(124, 58, 237, 0.25);
-
-  transition: all 0.3s ease;
-}
-
-/* ➡️ Arrow */
-.arrow {
-  font-size: 1em;
-  transition: transform 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
 
-  
-  
+  border-radius: 50%;
+  text-decoration: none;
+
+  background: #ffffff;
+  color: #000;
+
+  border: 1px solid #111;
+
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+
+  transition: all 0.3s ease;
 }
 
-/* ✨ Hover */
+/* ➡️ ARROW */
+.arrow {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+/* ✨ HOVER */
 .endArrowBtn:hover {
-  /* transform: translateY(-2px); */
-  box-shadow: 0 10px 20px rgba(70, 68, 73, 0.35);
-  color: white;
-  background-color: #080808;
+  background: #000;
+  color: #fff;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
-/* 👉 Arrow move */
 .endArrowBtn:hover .arrow {
-  /* transform: translateX(4px); */
-  
+  transform: translateX(4px);
 }
 
 /* --- FOOTER & BUTTON --- */
@@ -214,6 +200,17 @@
     font-size: 24px;
     margin-bottom: 24px;
   }
+  @media (max-width: 992px) {
+  .endArrowBtn {
+    width: 50px;
+    height: 50px;
+  }
+
+  .arrow {
+    font-size: 16px;
+  }
+}
+
 }
 
 /* Mobile */
@@ -232,11 +229,16 @@
   .cardWrapper {
     width: 220px;
   }
+@media (max-width: 600px) {
   .endArrowBtn {
-    width: 60px;
-    height: 60px;
-    font-size: 20px;
+    width: 44px;
+    height: 44px;
   }
+
+  .arrow {
+    font-size: 14px;
+  }
+}
 }
 
 /* Extra Small Mobile */
@@ -255,5 +257,17 @@
   .cardWrapper {
     width: 180px;
   }
+ @media (max-width: 380px) {
+  .endArrowBtn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .arrow {
+    font-size: 13px;
+  }
 }
+
+}
+
 

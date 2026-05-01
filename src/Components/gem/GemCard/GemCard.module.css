@@ -207,11 +207,11 @@
   .categoryVariant .imageWrapper {
     aspect-ratio: 4 / 3;
     /* Less bulky than a pure square */
-    border-radius: 16px;
+    border-radius: 0px;
   }
 
   .categoryVariant .content {
-    padding: 12px 0 0 0 !important;
+    padding: 12px 0 12px 0 !important;
   }
 
   .catTitleAlt {

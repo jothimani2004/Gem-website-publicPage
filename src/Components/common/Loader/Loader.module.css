@@ -1,7 +1,7 @@
 .container {
   position: fixed;
   inset: 0;
-  background: #0a0a0a; /* Deep luxury black */
+  background: #ffffff; /* Deep luxury black */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,7 +23,7 @@
 }
 
 .outline, .line {
-  stroke: white;
+  stroke: rgb(0, 0, 0);
   stroke-width: 1.5;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -59,7 +59,7 @@
 }
 
 .title {
-  color: white;
+  color: rgb(4, 4, 4);
   font-size: 18px;
   letter-spacing: 6px;
   font-weight: 300;
@@ -69,7 +69,7 @@
 .loaderBar {
   width: 40px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, #fff, transparent);
+  background: linear-gradient(90deg, transparent, #000000, transparent);
   margin: 0 auto 12px;
   animation: slide 2s infinite;
 }
