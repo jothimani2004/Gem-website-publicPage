@@ -10,10 +10,10 @@
 
   padding: 14px 40px;
 
-  background: rgba(255,255,255,0.7);
+  background: rgba(0, 0, 0, 0.85);
   backdrop-filter: blur(10px);
 
-  border-bottom: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
 /* LOGO */
@@ -21,7 +21,8 @@
   font-size: 20px;
   font-weight: 700;
   text-decoration: none;
-  color: #111827;
+  color: #ffffff;
+  letter-spacing: 1px;
 }
 
 /* MENU */
@@ -33,14 +34,14 @@
 
 .menu a {
   text-decoration: none;
-  color: #475569;
+  color: #cbd5e1;
   font-size: 14px;
   font-weight: 500;
   position: relative;
   transition: 0.3s;
 }
 
-/* ✨ UNDERLINE ANIMATION */
+/* ✨ UNDERLINE (WHITE MINIMAL) */
 .menu a::after {
   content: "";
   position: absolute;
@@ -49,24 +50,26 @@
   width: 0%;
   height: 2px;
 
-  background: linear-gradient(90deg, #7c3aed, #ec4899);
+  background: #ffffff;
   transition: 0.3s;
 }
 
 .menu a:hover {
-  color: #111827;
+  color: #ffffff;
 }
 
 .menu a:hover::after {
   width: 100%;
 }
 
-/* CTA BUTTON */
+/* CTA BUTTON (OUTLINE STYLE 💎) */
 .cta {
   padding: 8px 18px;
   border-radius: 999px;
-  background: linear-gradient(135deg, #7c3aed, #ec4899);
-  color: white;
+
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #ffffff;
+
   text-decoration: none;
   font-size: 14px;
   font-weight: 600;
@@ -75,18 +78,19 @@
 }
 
 .cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(124,58,237,0.3);
+  background: white;
+  color: black;
 }
 
 /* HAMBURGER */
 .hamburger {
   display: none;
-  font-size: 20px;
+  font-size: 22px;
   cursor: pointer;
+  color: white;
 }
 
-/* NAV WRAPPER */
+/* NAV */
 .nav {
   display: flex;
 }
@@ -98,22 +102,21 @@
 
   .hamburger {
     display: block;
-    z-index: 1100;
+    z-index: 1200;
   }
 
   .cta {
-    display: none; /* cleaner mobile UI */
+    display: none;
   }
 
   .nav {
-    position: fixed;   /* 🔥 IMPORTANT */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
 
-    background: rgba(255,255,255,0.98);
-    backdrop-filter: blur(12px);
+    background: rgba(0, 0, 0, 0.95);
 
     display: flex;
     justify-content: center;
@@ -123,7 +126,7 @@
     opacity: 0;
 
     transition: all 0.3s ease;
-    z-index: 1000; /* 🔥 VERY IMPORTANT */
+    z-index: 1100;
   }
 
   .nav.active {
@@ -134,13 +137,11 @@
   .menu {
     flex-direction: column;
     align-items: center;
-    gap: 20px;
-
-    padding: 20px 0;
+    gap: 30px;
   }
 
   .menu a {
-    font-size: 16px;
+    font-size: 20px;
+    color: white;
   }
 }
-
