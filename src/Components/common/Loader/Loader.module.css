@@ -1,119 +1,87 @@
-/* 🌌 BACKGROUND */
 .container {
   position: fixed;
   inset: 0;
-  background: radial-gradient(circle at center, #0a0a0a, #000);
+  background: #0a0a0a; /* Deep luxury black */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 25px;
-  overflow: hidden;
-  perspective: 800px;
+  gap: 30px;
 }
 
-/* ✨ PARTICLES */
-.particles::before {
-  content: "";
-  position: absolute;
-  width: 200%;
-  height: 200%;
-  background-image: radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px);
-  background-size: 50px 50px;
-  opacity: 0.05;
-  animation: moveParticles 25s linear infinite;
-}
-
-@keyframes moveParticles {
-  from { transform: translateY(0); }
-  to { transform: translateY(-200px); }
-}
-
-/* 💎 WRAPPER */
 .gemWrapper {
-  width: 140px;
-  height: 140px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* 💎 GEM (3D ROTATION) */
-.gem {
-  width: 100px;
-  height: 100px;
   position: relative;
-  transform-style: preserve-3d;
-  animation: rotate3D 4s linear infinite;
+  width: 80px;
+  height: 80px;
 }
 
-/* 💎 FACES (FAKE 3D EFFECT) */
-.face {
-  position: absolute;
-  inset: 0;
-
-  background: linear-gradient(
-    135deg,
-    rgba(255,255,255,0.9),
-    rgba(200,200,200,0.1)
-  );
-
-  clip-path: polygon(
-    50% 0%, 90% 25%, 75% 85%, 
-    50% 100%, 25% 85%, 10% 25%
-  );
-
-  border: 1px solid rgba(255,255,255,0.1);
+.diamond {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
 }
 
-/* ✨ LAYER DEPTH */
-.face:nth-child(1) { transform: translateZ(20px); }
-.face:nth-child(2) { transform: rotateY(90deg) translateZ(20px); }
-.face:nth-child(3) { transform: rotateX(90deg) translateZ(20px); }
-.face:nth-child(4) { transform: rotateY(180deg) translateZ(20px); }
-
-/* 🔄 3D ROTATION */
-@keyframes rotate3D {
-  0%   { transform: rotateX(0deg) rotateY(0deg); }
-  50%  { transform: rotateX(180deg) rotateY(180deg); }
-  100% { transform: rotateX(360deg) rotateY(360deg); }
+.outline, .line {
+  stroke: white;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.8;
 }
 
-/* ✨ LIGHT REFLECTION */
-.gem::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(255,255,255,0.5),
-    transparent
-  );
-  animation: shineMove 2s infinite;
+/* Drawing Animation */
+.outline {
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+  animation: draw 2.5s ease-in-out infinite;
 }
 
-@keyframes shineMove {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+.line {
+  opacity: 0;
+  animation: fadeIn 2.5s ease-in-out infinite;
 }
 
-/* 🔤 TEXT */
+@keyframes draw {
+  0% { stroke-dashoffset: 300; opacity: 0; }
+  50% { stroke-dashoffset: 0; opacity: 1; }
+  100% { stroke-dashoffset: -300; opacity: 0; }
+}
+
+@keyframes fadeIn {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 0.5; }
+}
+
+/* Subtle Text Styling */
+.textContainer {
+  text-align: center;
+}
+
 .title {
   color: white;
-  font-size: 20px;
+  font-size: 18px;
   letter-spacing: 6px;
-  font-weight: 600;
+  font-weight: 300;
+  margin-bottom: 8px;
+}
+
+.loaderBar {
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #fff, transparent);
+  margin: 0 auto 12px;
+  animation: slide 2s infinite;
 }
 
 .subtitle {
-  color: #9ca3af;
-  font-size: 12px;
-  letter-spacing: 3px;
-  animation: fadeText 2s infinite;
+  color: #666;
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
 }
 
-@keyframes fadeText {
-  0%,100% { opacity: 0.4; }
-  50% { opacity: 1; }
+@keyframes slide {
+  0% { transform: scaleX(0.5); opacity: 0.2; }
+  50% { transform: scaleX(1.5); opacity: 1; }
+  100% { transform: scaleX(0.5); opacity: 0.2; }
 }
