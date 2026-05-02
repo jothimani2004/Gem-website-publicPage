@@ -26,14 +26,14 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  animation: bgZoom 15s infinite alternate linear;
+  /* animation: bgZoom 15s infinite alternate linear; */
   opacity: 0.85; /* Enhance text contrast */
 }
-
+/* 
 @keyframes bgZoom {
   0% { transform: scale(1.0); }
   100% { transform: scale(1.12); }
-}
+} */
 
 /* Sophisticated radial overlay to draw attention to center text */
 .overlay {

@@ -31,7 +31,7 @@ function Navbar() {
       </Link>
 
       {/* 🍔 HAMBURGER */}
-      <div className={styles.hamburger} onClick={() => setOpen(!open)}>
+      <div className={styles.hamburger} onClick={() => setOpen(!open)} style={{ color: open ? "white" : "black" }}>
         {open ? <FaTimes /> : <FaBars />}
       </div>
 

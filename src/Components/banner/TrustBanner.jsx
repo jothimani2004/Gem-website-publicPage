@@ -6,7 +6,7 @@ function TrustBanner() {
     { icon: <FaGem />, text: "Guarantee of Purity" },
     { icon: <FaCertificate />, text: "100% Certified" },
     { icon: <FaLeaf />, text: "Ethically Sourced" },
-    { icon: <FaShippingFast />, text: "Free Shipping" },
+    { icon: <FaShippingFast />, text: "global Shipping" },
   ];
 
   return (
