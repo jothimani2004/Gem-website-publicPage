@@ -4,10 +4,10 @@ import GemCard from "../GemCard/GemCard";
 import { useParams } from "react-router-dom";
 import Loader from "../../common/Loader/Loader";
 
-function Gemgrid(){
+function Gemgrid({category}){
 
-  const {category,gemName}=useParams();
-  console.log(gemName);
+  const {gemName}=useParams();
+  console.log("category from gemgrid", category);
  
 
     const { items = [], status, error } = useSelector(

@@ -10,6 +10,8 @@ import WhatsAppButton from "./Components/common/whatsapp/WhatsAppButton.jsx";
 import GemCategory from "./Components/gem/GemCategory/GemCategory.jsx";
 import About from "./pages/about/About.jsx";
 import MoreGems from "./pages/moregems/MoreGems.jsx";
+import NotFoundPage from "./pages/NotFound/NotFound.jsx";
+
 // Code splitting - dynamically fetching pages only when the user routes to them
 const Home = lazy(() => import("./pages/Home/Home.jsx"));
 const GemListing = lazy(() => import("./pages/GemListing/GemListing"));
@@ -18,6 +20,7 @@ const ProductDetails = lazy(() => import("./pages/ProductDetails/ProductDetails"
 
 
 function App() {
+
   return (
     <Provider store={store}>
       <BrowserRouter>
@@ -25,13 +28,26 @@ function App() {
         {/* Seamless loading hook while javascript chunks transfer */}
         <Suspense fallback={<Loader text="Loading Experience..." fullScreen={false} />}>
           <Routes>
+            
             <Route path="/" element={<Home />} />
-            <Route path="/:category" element={<MoreGems />} />
-            <Route path="/:category/:gemName" element={<GemListing />} />
-            <Route
-              path="/:category/:gemName/:id"
-              element={<ProductDetails />}
-            />
+           <Route path="/Precious" element={<MoreGems category="Precious" />} />
+
+<Route path="/Semi-Precious" element={<MoreGems category="Semi-Precious"/>} />
+
+<Route path="/Precious/:gemName" element={<GemListing category="Precious"/>} />
+<Route path="/Semi-Precious/:gemName" element={<GemListing category="Semi-Precious"/>} />
+
+<Route
+  path="/Precious/:gemName/:id"
+  element={<ProductDetails category="Precious"/>}
+/>
+
+<Route
+  path="/Semi-Precious/:gemName/:id"
+  element={<ProductDetails category="Semi-Precious"/>}
+/>
+
+
             <Route
               path="/faq"
               element={<FaqPage />}
@@ -40,6 +56,7 @@ function App() {
               path="/about"
               element={<About />}
             />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
         <WhatsAppButton />

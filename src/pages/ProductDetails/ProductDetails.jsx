@@ -9,9 +9,11 @@ import Loader from "../../Components/common/Loader/Loader";
 
 
 
-function ProductDetails() {
-  const { category, gemName, id } = useParams();
-  
+function ProductDetails({category}) {
+  const {  gemName, id } = useParams();
+  console.log("category", category);
+  console.log("gemName", gemName);
+  console.log("id", id);
   const [product, setProduct] = useState(null);
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -73,10 +75,20 @@ function ProductDetails() {
 
   return (
     <div className={styles.page}>
-      {/* Breadcrumb */}
-      <div className={styles.breadcrumb}>
-        <Link to="/" style={{textTransform: "capitalize"}}>{category}</Link> / <Link to={`/${category}/${gemName}`}>{gemName}</Link> / <span>Lot #{id}</span>
-      </div>
+       {/* 💎 BEAUTIFUL BREADCRUMB */}
+             <div className={styles.breadcrumb}>
+               <Link to="/" className={styles.link}>
+                 Home
+               </Link>
+               <span className={styles.separator}>›</span>
+               <Link to={`/${category}`} className={styles.link}>{category}</Link>
+              <span className={styles.separator}>›</span>
+               <Link to={`/${category}/${gemName}`} className={styles.link}>{gemName}</Link>
+              <span className={styles.separator}>›</span> 
+               <span className={styles.current}>{id}</span>
+             </div>
+
+             
 
       {/* Main Section */}
       <div className={styles.main}>

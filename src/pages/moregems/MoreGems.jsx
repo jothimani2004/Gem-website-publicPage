@@ -6,8 +6,8 @@ import GemCategory from "../../Components/gem/GemCategory/GemCategory";
 import api from "../../services/api";
 import Loader from "../../Components/common/Loader/Loader";
 
-function MoreGems (){
-    const {category} = useParams();
+function MoreGems ({category}){
+    console.log("category", category);
     const [preciousGems, setPreciousGems] = useState([]);
     const [semiPreciousGems, setSemiPreciousGems] = useState([]);
 const [loading, setLoading] = useState(true);

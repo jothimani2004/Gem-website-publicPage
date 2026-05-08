@@ -15,27 +15,60 @@
 }
 
 /* Breadcrumbs Layer */
+
 .breadcrumb {
+  margin: 40px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
   font-size: 13px;
-  margin-bottom: 40px;
-  color: #9ca3af;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
+  
 }
 
-.breadcrumb a {
-  color: #6b7280;
+/* LINKS */
+.link {
+  color: #4b5158;
   text-decoration: none;
-  transition: color 0.3s ease;
+  text-transform: capitalize;
+
+  position: relative;
+  transition: all 0.3s ease;
 }
 
-.breadcrumb a:hover {
+/* ✨ HOVER EFFECT */
+.link:hover {
   color: #111827;
 }
 
-.breadcrumb span {
-  color: #111827;
+/* subtle underline animation */
+.link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0%;
+  height: 1px;
+  background: #7c3aed;
+  transition: width 0.3s ease;
+}
+
+.link:hover::after {
+  width: 100%;
+}
+
+/* SEPARATOR */
+.separator {
+  color: #0e0e0e;
+  font-size: 16px;
+  font-weight: bolder;
+}
+
+/* CURRENT PAGE */
+.current {
+  color: #040404;
   font-weight: 600;
+  letter-spacing: 0.3px;
 }
 
 /* Master Grid */

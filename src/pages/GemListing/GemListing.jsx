@@ -10,9 +10,9 @@ import Pagination from "../../Components/common/Pagination/Pagination";
 
 import styles from "./GemListing.module.css";
 
-function GemListing() {
+function GemListing({category}) {
   const dispatch = useDispatch();
-  const { category, gemName } = useParams();
+  const { gemName } = useParams();
 
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
@@ -68,10 +68,10 @@ function GemListing() {
       
 <div className={styles.breadcrumb}>
   <Link to="/" className={styles.link}>
-    {category === "precious" || category === "semiprecious"
-      ? category
-      : "Home"}
+    Home
   </Link>
+  <span className={styles.separator}>›</span> 
+   <Link to={`/${category}`} className={styles.link}>{category}</Link>
 
   <span className={styles.separator}>›</span>
 
@@ -131,7 +131,7 @@ function GemListing() {
 
         {/* Content */}
         <main className={styles.content}>
-          <Gemgrid />
+          <Gemgrid category={category}/>
 
           <Pagination
             category={category}
