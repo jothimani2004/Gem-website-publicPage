@@ -1,39 +1,69 @@
+import { useState } from "react";
 import styles from "./Weightfilter.module.css"
 
-function weightfilter({ value, onChange }){
+function Weightfilter({ value, onChange, isActive, onToggle }){
+    const [isOpen, setIsOpen] = useState(true);
     const safeValue = value === "" || value === null || value === undefined ? 10 : Number(value);
-    const percentage = ((safeValue - 0.1) / (150 - 0.1)) * 100;
+    const [localValue, setLocalValue] = useState(safeValue);
+    const percentage = ((localValue - 0.1) / (150 - 0.1)) * 100;
 
     return(
-  <div className={styles.block}>
-      <h3 className={styles.title}>Carat Weight</h3>
-
-      <div className={styles.value}>
-         <strong>{safeValue.toFixed(1)} ct</strong>
+  <div className={styles.block} style={{ opacity: isActive ? 1 : 0.6 }}>
+      <div className={styles.header}>
+        <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', margin: 0 }} onClick={(e) => e.stopPropagation()}>
+          <label className="globalSwitch">
+            <input 
+              type="checkbox" 
+              checked={isActive} 
+              onChange={onToggle} 
+            />
+            <span className="globalSwitchSlider"></span>
+          </label>
+          <h3 className={styles.title} style={{ margin: 0 }}>Carat Weight</h3>
+        </label>
+        {isActive && (
+          <span className={styles.toggleIcon} onClick={() => setIsOpen(!isOpen)}>
+            <i className={`fa-solid fa-chevron-${isOpen ? 'up' : 'down'}`}></i>
+          </span>
+        )}
       </div>
 
-      <div className={styles.sliderWrapper}>
-  <div className={styles.track}></div>
+      {isActive && isOpen && (
+        <>
+          <div className={styles.value} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+             <strong>{localValue.toFixed(1)} ct</strong>
+             <button 
+               type="button" 
+               className={styles.applyBtn}
+               onClick={() => onChange(localValue)}
+             >
+               Apply
+             </button>
+          </div>
 
-  <div
-    className={styles.progress}
-    style={{ width: `${percentage}%` }}
-  ></div>
+          <div className={styles.sliderWrapper}>
+            <div className={styles.track}></div>
 
-  <input
-    type="range"
-    min="0.1"
-    max="150"
-    step="0.1"
-    value={safeValue}
-    onChange={(e) => onChange(Number(e.target.value))}
-    className={styles.slider}
-  />
-</div>
+            <div
+              className={styles.progress}
+              style={{ width: `${percentage}%` }}
+            ></div>
 
+            <input
+              type="range"
+              min="0.1"
+              max="150"
+              step="0.1"
+              value={localValue}
+              onChange={(e) => setLocalValue(Number(e.target.value))}
+              className={styles.slider}
+            />
+          </div>
+        </>
+      )}
     </div>
     
 )
 }
 
-export default weightfilter;
+export default Weightfilter;

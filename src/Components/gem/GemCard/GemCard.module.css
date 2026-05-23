@@ -15,7 +15,7 @@
 
 .card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 0 50px 12px rgba(0, 0, 0, 0.2); /* All sides hover shadow */
+  box-shadow: 0 0 40px 4px rgba(0, 0, 0, 0.12); /* All sides hover shadow */
   border-color: rgba(0, 0, 0, 0.08);
 }
 
@@ -60,14 +60,15 @@
 }
 
 .card:hover .title {
-  color: #1e3a8a;
+  color: #000000;
   transition: color 0.3s ease;
 }
 
 .data {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  flex-wrap: nowrap;
+  gap: 6px;
   align-items: center;
   padding-bottom: 4px;
 }
@@ -76,34 +77,40 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Times New Roman', Times, serif;
-  /* Normal font */
-  font-size: 13px;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  font-size: 10px;
   font-weight: 600;
-  color: #070809;
+  color: #000000;
   background-color: #f3f4f6;
-  padding: 6px 14px;
-  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 4px 10px;
+  border-radius: 999px;
   text-transform: uppercase;
   letter-spacing: 1px;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 .pilll {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Times New Roman', Times, serif;
-  /* Normal font */
-  font-size: 13px;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  font-size: 10px;
   font-weight: 600;
-  color: #070809;
+  color: #000000;
   background-color: #f3f4f6;
-  padding: 6px 14px;
-  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 4px 10px;
+  border-radius: 999px;
   text-transform: uppercase;
   letter-spacing: 1px;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 /* Add a subtle shine overlay on hover */
@@ -163,7 +170,7 @@
 
 .categoryVariant:hover {
   transform: translateY(-8px) !important;
-  box-shadow: 0 0 50px 12px rgba(0, 0, 0, 0.2) !important;
+  box-shadow: 0 0 40px 4px rgba(0, 0, 0, 0.12) !important;
 }
 
 .categoryVariant .imageWrapper {
@@ -199,7 +206,7 @@
 }
 
 .categoryVariant:hover .catTitleAlt {
-  color: #1e3a8a;
+  color: #000000;
 }
 
 /* Extreme Mobile Minimization */

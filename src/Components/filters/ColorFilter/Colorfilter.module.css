@@ -62,3 +62,27 @@
   font-weight: 700;
   color: #111827;
 }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 20px;
+  padding-bottom: 4px;
+  transition: opacity 0.2s ease;
+}
+
+.header:hover {
+  opacity: 0.8;
+}
+
+.header .title {
+  margin-bottom: 0;
+}
+
+.toggleIcon {
+  font-size: 14px;
+  color: #94a3b8;
+  transition: transform 0.2s ease;
+}

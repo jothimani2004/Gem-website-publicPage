@@ -1,20 +1,23 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { fetchGems } from "../../features/gems/gemSlice";
 import { fetchShapes } from "../../features/shapes/shapeSlice";
 import { fetchColors } from "../../features/colors/colorSlice";
 import FilterSidebar from "../../Components/filters/FilterSidebar/Filtersidebar";
 import Gemgrid from "../../Components/gem/GemGrid/Gemgrid";
 import Pagination from "../../Components/common/Pagination/Pagination";
+import api from "../../services/api";
 
 import styles from "./GemListing.module.css";
 
 function GemListing({category}) {
   const dispatch = useDispatch();
   const { gemName } = useParams();
+  const navigate = useNavigate();
 
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [isValidating, setIsValidating] = useState(true);
 
   const [appliedFilters, setAppliedFilters] = useState({
     type: "single",
@@ -29,6 +32,39 @@ function GemListing({category}) {
     dispatch(fetchShapes());
     dispatch(fetchColors());
   }, [dispatch]);
+
+  // Route Validation (Non-blocking)
+  useEffect(() => {
+    const validateRoute = async () => {
+      try {
+        const response = await api.get("/public/get_gem_types");
+        if (response.data && response.data.result && response.data.result.gems) {
+          const allDivisions = response.data.result.gems;
+          const divisionMatch = allDivisions.find(
+            (div) => 
+              div.division.toLowerCase() === category.toLowerCase() || 
+              div.division.toLowerCase() === category.toLowerCase().replace("-", "")
+          );
+
+          if (divisionMatch && divisionMatch.gems) {
+            const isValidGem = divisionMatch.gems.some(
+              (g) => g.gemName.toLowerCase() === gemName.toLowerCase()
+            );
+
+            if (!isValidGem) {
+              navigate("/404-not-found", { replace: true });
+            }
+          } else {
+             navigate("/404-not-found", { replace: true });
+          }
+        }
+      } catch (error) {
+        console.error("Failed to validate gem route:", error);
+      }
+    };
+    
+    validateRoute();
+  }, [category, gemName, navigate]);
 
   useEffect(() => {
     dispatch(

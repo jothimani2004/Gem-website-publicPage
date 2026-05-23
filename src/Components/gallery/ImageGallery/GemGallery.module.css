@@ -48,26 +48,27 @@
   }
   
   /* Thumbnails */
-  .thumbnailcontainer{
+  .thumbnailcontainer {
     display: flex;
     flex-direction: row;
     gap: 15px;
     margin-top: 15px;
     overflow-x: auto;
     scroll-behavior: smooth;
-    justify-content: center;
+    justify-content: flex-start; /* Fixed: center causes left-cutoff on overflow */
     align-items: center;
+    padding-bottom: 8px; /* Room for scrollbar */
   }
+  
   /* Hide scrollbar (optional clean look) */
-.thumbnailContainer::-webkit-scrollbar {
+  .thumbnailcontainer::-webkit-scrollbar {
     height: 6px;
   }
   
-  .thumbnailContainer::-webkit-scrollbar-thumb {
+  .thumbnailcontainer::-webkit-scrollbar-thumb {
     background: #ccc;
     border-radius: 10px;
   }
-  
   
   .thumbnail {
     min-width: 85px; 
@@ -82,12 +83,14 @@
     transition: 0.3s ease;
     flex-shrink: 0;
     border-radius: 15%;
+    background-color: #f8fafc; /* Match main preview background */
   }
   
   .thumbnail img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain; /* Fixed: show perfect image content instead of cropping */
+    padding: 5px; /* Add slight padding so image doesn't touch borders */
   }
   
   .thumbnail:hover {

@@ -18,6 +18,38 @@ function ProductDetails({category}) {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // Route Validation (Non-blocking)
+  useEffect(() => {
+    const validateRoute = async () => {
+      try {
+        const typeResponse = await api.get("/public/get_gem_types");
+        if (typeResponse.data?.result?.gems) {
+          const allDivisions = typeResponse.data.result.gems;
+          const divisionMatch = allDivisions.find(
+            (div) => 
+              div.division.toLowerCase() === category.toLowerCase() || 
+              div.division.toLowerCase() === category.toLowerCase().replace("-", "")
+          );
+
+          if (divisionMatch && divisionMatch.gems) {
+            const isValidGem = divisionMatch.gems.some(
+              (g) => g.gemName.toLowerCase() === gemName.toLowerCase()
+            );
+
+            if (!isValidGem) {
+              window.location.replace("/404-not-found");
+            }
+          } else {
+            window.location.replace("/404-not-found");
+          }
+        }
+      } catch (error) {
+        console.error("Failed to validate route:", error);
+      }
+    };
+    validateRoute();
+  }, [category, gemName]);
+
   useEffect(() => {
     window.scrollTo(0, 0);
     const fetchGemDetails = async () => {
@@ -28,10 +60,9 @@ function ProductDetails({category}) {
           const gemData = response.data.data.data[0];
           console.log(gemData);
           
-        
-          
           setProduct({
-            name: `${gemName} (${gemData.lot_number || id})`,
+            name: `${gemName} (${gemData.lot_number})`,
+            lotNumber: gemData.lot_number,
             price: "Enquire for Price",
             shape: gemData.shape_name || "N/A",
             weight: gemData.crt ? `${gemData.crt} Carat` : "N/A",
@@ -49,10 +80,11 @@ function ProductDetails({category}) {
              mappedImages.push(`https://d1wugj5ru4kx2.cloudfront.net/${gemData.video.file}#video`);
           }
           if (mappedImages.length === 0) {
-             // fallback placeholder
              mappedImages.push("https://via.placeholder.com/600x400?text=No+Image+Available");
           }
           setImages(mappedImages);
+        } else {
+           window.location.replace("/404-not-found");
         }
       } catch (error) {
         console.error("Failed to fetch gem details:", error);
@@ -85,7 +117,7 @@ function ProductDetails({category}) {
               <span className={styles.separator}>›</span>
                <Link to={`/${category}/${gemName}`} className={styles.link}>{gemName}</Link>
               <span className={styles.separator}>›</span> 
-               <span className={styles.current}>{id}</span>
+               <span className={styles.current}>{product.lotNumber}</span>
              </div>
 
              
@@ -134,7 +166,7 @@ function ProductDetails({category}) {
 
       {/* Bottom Section */}
       <div className={styles.bottom}>
-        <RelatedGems />
+        <RelatedGems category={category} />
       </div>
     </div>
   );

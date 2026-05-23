@@ -27,24 +27,41 @@ export default function GemVideo({ src }) {
 
   // 🎯 Seek
   const handleSeek = (e) => {
-    const rect = e.target.getBoundingClientRect();
+    if (!videoRef.current) return;
+    const rect = e.currentTarget.getBoundingClientRect();
     const clickX = e.clientX - rect.left;
     const width = rect.width;
     const percent = clickX / width;
-    videoRef.current.currentTime =
-      percent * videoRef.current.duration;
+    videoRef.current.currentTime = percent * videoRef.current.duration;
+  };
+
+  // 🔄 Handle video end
+  const handleEnded = () => {
+    setIsPlaying(false);
+    setProgress(0);
+    if (videoRef.current) {
+      videoRef.current.currentTime = 0;
+    }
   };
 
   // 🖥 Fullscreen
   const handleFullscreen = () => {
-    videoRef.current.requestFullscreen();
+    if (videoRef.current) {
+      if (videoRef.current.requestFullscreen) {
+        videoRef.current.requestFullscreen();
+      } else if (videoRef.current.webkitRequestFullscreen) { /* Safari */
+        videoRef.current.webkitRequestFullscreen();
+      } else if (videoRef.current.msRequestFullscreen) { /* IE11 */
+        videoRef.current.msRequestFullscreen();
+      }
+    }
   };
 
   return (
     <div className={styles.videoCard}
-     onClick={(e) => e.stopPropagation()}   // 🔥 IMPORTANT
-  onMouseDown={(e) => e.stopPropagation()} // 🔥 IMPORTANT
-    onPointerDown={(e) => e.stopPropagation()} // 🔥 BEST FIX
+      onClick={(e) => e.stopPropagation()}   
+      onMouseDown={(e) => e.stopPropagation()} 
+      onPointerDown={(e) => e.stopPropagation()} 
     >
       <video
         ref={videoRef}
@@ -52,6 +69,7 @@ export default function GemVideo({ src }) {
         className={styles.video}
         onTimeUpdate={handleTimeUpdate}
         onClick={togglePlay}
+        onEnded={handleEnded}
       />
 
       {/* Overlay Controls */}

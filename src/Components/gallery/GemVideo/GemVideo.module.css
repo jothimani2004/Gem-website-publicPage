@@ -1,14 +1,14 @@
 .videoCard {
   position: relative;
   width: 100%;
-  
-  aspect-ratio: 1 / 1;   /* 🔥 PERFECT FIX */
-  border-radius: 20px;
+  height: 100%;
+  border-radius: 8px; /* Match main preview container */
   overflow: hidden;
-  background: #000;
-  box-shadow: 
-    0 10px 30px rgba(0,0,0,0.3),
-    0 0 20px rgba(124,58,237,0.2);
+  background: #000; /* Classic black for video container */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* VIDEO */
@@ -16,8 +16,7 @@
   width: 100%;
   height: 100%;
   display: block;
- 
-    object-fit:cover; 
+  object-fit: contain; /* Fit video perfectly without cropping */
 }
 
 /* CONTROLS */
@@ -34,47 +33,83 @@
 
   background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
 
-  z-index: 20;           /* 🔥 VERY IMPORTANT */
-  pointer-events: auto;  /* 🔥 VERY IMPORTANT */
+  z-index: 20;
+  pointer-events: auto;
 }
 
 /* PLAY BUTTON */
 .playBtn {
-  background: rgba(255,255,255,0.1);
-  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   color: white;
-  font-size: 18px;
-  padding: 8px 12px;
+  font-size: 16px;
+  padding: 8px 14px;
   border-radius: 50%;
   cursor: pointer;
   backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.playBtn:hover {
+  background: #fff;
+  color: #000;
 }
 
 /* FULLSCREEN BUTTON */
 .fullBtn {
-  background: rgba(255,255,255,0.1);
-  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   color: white;
-  font-size: 16px;
-  padding: 8px;
+  font-size: 14px;
+  padding: 8px 10px;
   border-radius: 50%;
   cursor: pointer;
   margin-left: auto;
+  transition: all 0.3s ease;
+}
+
+.fullBtn:hover {
+  background: #fff;
+  color: #000;
 }
 
 /* PROGRESS BAR */
 .progressBar {
   flex: 1;
   height: 6px;
-  background: rgba(255,255,255,0.2);
+  background: rgba(255, 255, 255, 0.3);
   border-radius: 10px;
   cursor: pointer;
-  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .progress {
   height: 100%;
-  background: linear-gradient(90deg, #7c3aed, #ec4899);
+  background: #fff; /* Clean white progress */
   width: 0%;
-  transition: width 0.2s;
+  border-radius: 10px;
+  transition: width 0.1s linear;
+  position: relative;
+}
+
+/* Scrubber Dot */
+.progress::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -6px; /* Centers the dot on the current progress edge */
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease;
+  pointer-events: none; /* Let clicks pass through to the progress bar */
+}
+
+.progressBar:hover .progress::after {
+  transform: translateY(-50%) scale(1.3); /* Enlarge dot on hover */
 }

@@ -16,7 +16,7 @@ function Gemgrid({category}){
       
       
     
-      if (status === "loading") {
+      if (status === "loading" && items.length === 0) {
         return <Loader text="Loading Collection..." />;
       }
     
@@ -37,7 +37,7 @@ function Gemgrid({category}){
       }
     
       return (
-        <div className={styles.grid}>
+        <div className={styles.grid} style={{ opacity: status === "loading" ? 0.5 : 1, transition: "opacity 0.2s" }}>
           {items.map((gem) => (
             <GemCard
               key={gem.id}

@@ -103,8 +103,8 @@ function GemCategory({ title, gems, category, showExplore = true }) {
                 className={styles.endArrowBtn}
                 aria-label="View all gems"
               >
-                 {/* <span>View All</span> */}
-                  <div className={styles.arrow}><i class="fa-solid fa-arrow-right"></i></div>
+                 <span className={styles.viewAllText}>View All</span>
+                 <div className={styles.arrow}><i className="fa-solid fa-arrow-right"></i></div>
               </Link>
             </motion.div>
           )}

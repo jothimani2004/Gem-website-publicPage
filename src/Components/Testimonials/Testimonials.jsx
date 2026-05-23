@@ -30,35 +30,37 @@ function Testimonials() {
           <p>Trusted by gemstone lovers across the country</p>
         </div>
 
-        {/* CARDS */}
-        <div className={styles.grid}>
-          {reviews.map((review, index) => (
-            <div key={index} className={styles.card}>
-              
-              {/* ✨ Quote Icon */}
-              <FaQuoteLeft className={styles.quoteIcon} />
+        {/* CARDS MARQUEE */}
+        <div className={styles.marquee}>
+          <div className={styles.track}>
+            {[...reviews, ...reviews, ...reviews, ...reviews].map((review, index) => (
+              <div key={index} className={styles.card}>
+                
+                {/* ✨ Quote Icon */}
+                <FaQuoteLeft className={styles.quoteIcon} />
 
-              {/* ⭐ Rating */}
-              <div className={styles.stars}>
-                {"★".repeat(review.rating)}
-                {"☆".repeat(5 - review.rating)}
-              </div>
-
-              {/* 💬 Text */}
-              <p className={styles.text}>
-                {review.text}
-              </p>
-
-              {/* 👤 USER */}
-              <div className={styles.user}>
-                <div className={styles.avatar}>
-                  {review.name.charAt(0)}
+                {/* ⭐ Rating */}
+                <div className={styles.stars}>
+                  {"★".repeat(review.rating)}
+                  {"☆".repeat(5 - review.rating)}
                 </div>
-                <h4>{review.name}</h4>
-              </div>
 
-            </div>
-          ))}
+                {/* 💬 Text */}
+                <p className={styles.text}>
+                  {review.text}
+                </p>
+
+                {/* 👤 USER */}
+                <div className={styles.user}>
+                  <div className={styles.avatar}>
+                    {review.name.charAt(0)}
+                  </div>
+                  <h4>{review.name}</h4>
+                </div>
+
+              </div>
+            ))}
+          </div>
         </div>
 
       </div>

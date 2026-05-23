@@ -9,7 +9,7 @@ export const fetchGems = createAsyncThunk(
         category, // Frontend URL string "Precious" / "Semi-Precious"
         gemName,  // Frontend URL string "Ruby", etc.
         page = 1,
-        limit = 6,
+        limit = 12,
         shape,
         color,
         maxCarat,
@@ -128,7 +128,7 @@ const gemSlice = createSlice({
     items: [],
     total: 0,
     page: 1,
-    limit: 6,
+    limit: 12,
     filters: {},
     status: "idle",
     error: null,

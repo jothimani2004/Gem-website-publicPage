@@ -94,7 +94,7 @@
   display: flex;
   overflow-x: auto;
   gap: 32px;
-  padding: 30px 30px;
+  padding: 60px 30px;
   border-radius: 16px;
   
   scroll-behavior: smooth;
@@ -129,24 +129,43 @@
 .endArrowBtn {
   flex: 0 0 auto;
 
-  width: 56px;
   height: 56px;
+  padding: 0 28px;
 
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 10px;
 
-  border-radius: 50%;
+  border-radius: 999px;
   text-decoration: none;
 
   background: #ffffff;
-  color: #000;
+  color: #111;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 
-  border: 1px solid #111;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
 
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+.endArrowBtn::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: #111;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
 
-  transition: all 0.3s ease;
+.viewAllText {
+  white-space: nowrap;
+  font-weight: 600;
+  font-size: 16px;
 }
 
 /* ➡️ ARROW */
@@ -155,18 +174,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s ease;
 }
 
 /* ✨ HOVER */
 .endArrowBtn:hover {
-  background: #000;
   color: #fff;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  border-color: transparent;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  transform: translateY(-3px);
+}
+
+.endArrowBtn:hover::before {
+  opacity: 1;
 }
 
 .endArrowBtn:hover .arrow {
-  transform: translateX(4px);
+  transform: translateX(5px);
 }
 
 /* --- FOOTER & BUTTON --- */
@@ -202,8 +226,12 @@
   }
   @media (max-width: 992px) {
   .endArrowBtn {
-    width: 50px;
     height: 50px;
+    padding: 0 24px;
+  }
+
+  .viewAllText {
+    font-size: 15px;
   }
 
   .arrow {
@@ -231,8 +259,13 @@
   }
 @media (max-width: 600px) {
   .endArrowBtn {
-    width: 44px;
     height: 44px;
+    padding: 0 20px;
+    gap: 8px;
+  }
+
+  .viewAllText {
+    font-size: 14px;
   }
 
   .arrow {
@@ -259,8 +292,13 @@
   }
  @media (max-width: 380px) {
   .endArrowBtn {
-    width: 40px;
     height: 40px;
+    padding: 0 16px;
+    gap: 6px;
+  }
+
+  .viewAllText {
+    font-size: 13px;
   }
 
   .arrow {

@@ -32,20 +32,20 @@ function App() {
             <Route path="/" element={<Home />} />
            <Route path="/Precious" element={<MoreGems category="Precious" />} />
 
-<Route path="/Semi-Precious" element={<MoreGems category="Semi-Precious"/>} />
+          <Route path="/Semi-Precious" element={<MoreGems category="Semi-Precious"/>} />
 
-<Route path="/Precious/:gemName" element={<GemListing category="Precious"/>} />
-<Route path="/Semi-Precious/:gemName" element={<GemListing category="Semi-Precious"/>} />
+          <Route path="/Precious/:gemName" element={<GemListing category="Precious"/>} />
+          <Route path="/Semi-Precious/:gemName" element={<GemListing category="Semi-Precious"/>} />
 
-<Route
-  path="/Precious/:gemName/:id"
-  element={<ProductDetails category="Precious"/>}
-/>
+          <Route
+            path="/Precious/:gemName/:id"
+            element={<ProductDetails category="Precious"/>}
+          />
 
-<Route
-  path="/Semi-Precious/:gemName/:id"
-  element={<ProductDetails category="Semi-Precious"/>}
-/>
+          <Route
+            path="/Semi-Precious/:gemName/:id"
+            element={<ProductDetails category="Semi-Precious"/>}
+          />
 
 
             <Route

@@ -4,8 +4,8 @@ import GemCard from "../GemCard/GemCard";
 import styles from "./RelatedGems.module.css";
 import api from "../../../services/api";
 
-function RelatedGems() {
-  const { category, gemName, id } = useParams();
+function RelatedGems({ category }) {
+  const { gemName, id } = useParams();
   const navigate = useNavigate();
 
   const [relatedGems, setRelatedGems] = useState([]);
@@ -33,15 +33,27 @@ function RelatedGems() {
             return;
         }
 
-        // 2. Fetch gems list
+        // 2. Fetch a larger pool of gems to randomize from
         const categoryId = category?.toLowerCase() === "mixed" ? 2 : 1; 
-        const url = `/public/gem_List/${gem_id}/${categoryId}?page=1&limit=6`;
+        const url = `/public/gem_List/${gem_id}/${categoryId}?page=1&limit=30`;
         const dataRes = await api.get(url);
         
-        const items = dataRes.data?.data || [];
+        let items = dataRes.data?.data || [];
         
-        // 3. Map and filter
-        const mappedItems = items.map(item => ({
+        // Filter out current active gem first
+        const currentIdStr = String(id);
+        items = items.filter(item => String(item.each_gem_id) !== currentIdStr);
+
+        // Shuffle the items array (Fisher-Yates)
+        for (let i = items.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [items[i], items[j]] = [items[j], items[i]];
+        }
+
+        // 3. Map and pick the top 4 random items
+        const selectedItems = items.slice(0, 4);
+
+        const mappedItems = selectedItems.map(item => ({
            id: item.each_gem_id,
            name: gemName,
            lotNumber: item.lot_number,
@@ -53,11 +65,7 @@ function RelatedGems() {
                   null
         }));
 
-        // Filter out current active gem
-        const currentIdStr = String(id);
-        const filtered = mappedItems.filter(g => String(g.id) !== currentIdStr).slice(0, 4);
-        
-        setRelatedGems(filtered);
+        setRelatedGems(mappedItems);
       } catch (error) {
         console.error("Error fetching related gems", error);
       } finally {
@@ -81,8 +89,16 @@ function RelatedGems() {
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
-        <h3 className={styles.title}>You May Also Like</h3>
-        <p className={styles.subtitle}>Discover hand-picked gems similar to this {gemName}</p>
+        <div className={styles.headerText}>
+          <h3 className={styles.title}>You May Also Like</h3>
+          <p className={styles.subtitle}>Discover hand-picked gems similar to this {gemName}</p>
+        </div>
+        <button
+          className={styles.moreBtn}
+          onClick={handleMoreClick}
+        >
+          Explore All {gemName}s <i className="fa-solid fa-arrow-right" style={{marginLeft: "8px"}}></i>
+        </button>
       </div>
 
       <div className={styles.grid}>
@@ -97,15 +113,6 @@ function RelatedGems() {
             />
           </div>
         ))}
-      </div>
-
-      <div className={styles.moreContainer}>
-        <button
-          className={styles.moreBtn}
-          onClick={handleMoreClick}
-        >
-          Explore All {gemName}s
-        </button>
       </div>
     </div>
   );
