@@ -1,73 +1,91 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Shapefilter from "../ShapeFilter/Shapefilter";
 import Typefilter from "../TypeFilter/Typefilter";
 import Colorfilter from "../ColorFilter/Colorfilter";
 import Weightfilter from "../WeightFilter/Weightfilter";
+import Applyresetbutton from "../ApplyResetButtons/Applyresetbutton";
 import styles from "./Filtersidebar.module.css";
 
-function Filtersidebar({ onApply }) {
-  const [selectedShape, setSelectedShape] = useState("");
-  const [selectedType, setSelectedType] = useState("single");
-  const [selectedColor, setSelectedColor] = useState("");
-  const [carat, setCarat] = useState("");
+function Filtersidebar({ onApply, appliedFilters }) {
+  const [selectedShape, setSelectedShape] = useState(appliedFilters?.shape || "");
+  const [selectedType, setSelectedType] = useState(appliedFilters?.type || "single");
+  const [selectedColor, setSelectedColor] = useState(appliedFilters?.color || "");
+  const [carat, setCarat] = useState(appliedFilters?.maxCarat || "");
 
   const [activeFilters, setActiveFilters] = useState({
-    shape: false,
-    color: false,
-    carat: false
+    shape: !!appliedFilters?.shape,
+    color: !!appliedFilters?.color,
+    carat: !!appliedFilters?.maxCarat
   });
 
-  const getFiltersPayload = (typeOverride = null, shapeOverride = null, colorOverride = null, caratOverride = null, activeOverride = null) => {
-    const type = typeOverride ?? selectedType;
-    const active = activeOverride ?? activeFilters;
-    const shapeVal = shapeOverride ?? selectedShape;
-    const colorVal = colorOverride ?? selectedColor;
-    const caratVal = caratOverride ?? carat;
+  useEffect(() => {
+    setSelectedShape(appliedFilters?.shape || "");
+    setSelectedType(appliedFilters?.type || "single");
+    setSelectedColor(appliedFilters?.color || "");
+    setCarat(appliedFilters?.maxCarat || "");
+    setActiveFilters({
+      shape: !!appliedFilters?.shape,
+      color: !!appliedFilters?.color,
+      carat: !!appliedFilters?.maxCarat
+    });
+  }, [appliedFilters]);
 
+  const getFiltersPayload = () => {
     return {
-      type,
-      shape: type === "single" && active.shape ? shapeVal : "",
-      color: type === "single" && active.color ? colorVal : "",
-      maxCarat: active.carat ? caratVal : "",
+      type: selectedType,
+      shape: selectedType === "single" && activeFilters.shape ? selectedShape : "",
+      color: selectedType === "single" && activeFilters.color ? selectedColor : "",
+      maxCarat: activeFilters.carat ? carat : "",
     };
   };
 
   const handleTypeChange = (newType) => {
     setSelectedType(newType);
-    if (onApply) {
-      onApply(getFiltersPayload(newType));
-    }
   };
 
   const handleShapeChange = (value) => {
     setSelectedShape(value);
-    if (onApply) {
-      onApply(getFiltersPayload(null, value));
-    }
   };
 
   const handleColorChange = (value) => {
     setSelectedColor(value);
-    if (onApply) {
-      onApply(getFiltersPayload(null, null, value));
-    }
   };
 
   const handleCaratChange = (value) => {
     setCarat(value);
-    if (onApply) {
-      onApply(getFiltersPayload(null, null, null, value));
-    }
   };
 
   const toggleFilter = (filterName) => {
-    setActiveFilters((prev) => {
-      const newActiveFilters = { ...prev, [filterName]: !prev[filterName] };
-      if (onApply) {
-        onApply(getFiltersPayload(null, null, null, null, newActiveFilters));
-      }
-      return newActiveFilters;
+    setActiveFilters((prev) => ({
+      ...prev,
+      [filterName]: !prev[filterName]
+    }));
+  };
+
+  const handleApplyClick = () => {
+    if (onApply) {
+      onApply(getFiltersPayload());
+    }
+  };
+
+  const handleResetClick = () => {
+    setSelectedShape("");
+    setSelectedType("single");
+    setSelectedColor("");
+    setCarat("");
+    setActiveFilters({
+      shape: false,
+      color: false,
+      carat: false
     });
+    if (onApply) {
+      onApply({
+        type: "single",
+        shape: "",
+        color: "",
+        maxCarat: ""
+      });
+    }
   };
 
   return (
@@ -104,6 +122,11 @@ function Filtersidebar({ onApply }) {
         onChange={handleCaratChange}
         isActive={activeFilters.carat}
         onToggle={() => toggleFilter("carat")}
+      />
+
+      <Applyresetbutton
+        onApply={handleApplyClick}
+        onReset={handleResetClick}
       />
     </div>
   );

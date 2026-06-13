@@ -1,10 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./Weightfilter.module.css"
 
 function Weightfilter({ value, onChange, isActive, onToggle }){
     const [isOpen, setIsOpen] = useState(true);
     const safeValue = value === "" || value === null || value === undefined ? 10 : Number(value);
     const [localValue, setLocalValue] = useState(safeValue);
+    
+    useEffect(() => {
+      const safeVal = value === "" || value === null || value === undefined ? 10 : Number(value);
+      setLocalValue(safeVal);
+    }, [value]);
+
     const percentage = ((localValue - 0.1) / (150 - 0.1)) * 100;
 
     return(

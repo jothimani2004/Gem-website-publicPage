@@ -136,7 +136,7 @@ function GemListing({category}) {
 
         {/* Desktop Sidebar */}
         <aside className={styles.sidebar}>
-          <FilterSidebar onApply={handleApply} />
+          <FilterSidebar onApply={handleApply} appliedFilters={appliedFilters} />
         </aside>
 
         {/* Mobile Drawer */}
@@ -160,7 +160,7 @@ function GemListing({category}) {
                 </button>
               </div>
 
-              <FilterSidebar onApply={handleApply} />
+              <FilterSidebar onApply={handleApply} appliedFilters={appliedFilters} />
             </div>
           </>
         )}
