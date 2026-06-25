@@ -149,7 +149,7 @@ function GemListing({category}) {
 
             <div className={styles.mobileSidebar}>
               <div className={styles.mobileHeader}>
-                <h3>Filters</h3>
+                <h3>  </h3>
             
 
                 <button

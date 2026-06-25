@@ -41,6 +41,14 @@ function Filtersidebar({ onApply, appliedFilters }) {
 
   const handleTypeChange = (newType) => {
     setSelectedType(newType);
+    if (onApply) {
+      onApply({
+        type: newType,
+        shape: newType === "single" && activeFilters.shape ? selectedShape : "",
+        color: newType === "single" && activeFilters.color ? selectedColor : "",
+        maxCarat: activeFilters.carat ? carat : "",
+      });
+    }
   };
 
   const handleShapeChange = (value) => {
