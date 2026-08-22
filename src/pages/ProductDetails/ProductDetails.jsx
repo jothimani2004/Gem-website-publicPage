@@ -63,7 +63,7 @@ function ProductDetails({category}) {
           setProduct({
             name: `${gemName} (${gemData.lot_number})`,
             lotNumber: gemData.lot_number,
-            price: "Enquire for Price",
+            price: gemData.price != null ? gemData.price : "Enquire for Price",
             shape: gemData.shape_name || "N/A",
             weight: gemData.crt ? `${gemData.crt} Carat` : "N/A",
             color: gemData.color_name || "N/A",

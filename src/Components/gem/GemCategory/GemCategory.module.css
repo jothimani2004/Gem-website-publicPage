@@ -6,6 +6,13 @@
 }
 
 
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
 .header h2 {
   position: relative; /* 🔥 REQUIRED */
   display: inline-block;
@@ -38,7 +45,53 @@
 .section h2 {
   font-size: 28px;
   font-weight: 600;
-  margin-bottom: 28px;
+  margin-bottom: 0;
+}
+
+/* ✨ VIEW MORE LINK */
+.viewMoreLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #5d2bb3;
+  text-decoration: none;
+  white-space: nowrap;
+  letter-spacing: 0.4px;
+
+  padding: 6px 16px;
+  border: 1.5px solid #c4a8e8;
+  border-radius: 999px;
+  background: transparent;
+
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+
+  transition: color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* fill sweep on hover */
+.viewMoreLink::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #5d2bb3, #8561c3);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+  border-radius: 999px;
+}
+
+.viewMoreLink:hover {
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 4px 14px rgba(93, 43, 179, 0.3);
+}
+
+.viewMoreLink:hover::before {
+  opacity: 1;
 }
 
 /* --- CAROUSEL WRAPPER & NAV BUTTONS --- */

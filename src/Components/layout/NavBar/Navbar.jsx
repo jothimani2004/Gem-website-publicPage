@@ -2,6 +2,7 @@ import styles from "./Navbar.module.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
+import logo from "../../../assets/images/logo.png";
 
 function Navbar() {
   const [open, setOpen] = useState(false);
@@ -11,7 +12,8 @@ function Navbar() {
 
       {/* 💎 LOGO */}
       <Link to="/" className={styles.logo}>
-        Aimpluss Gems
+        <img src={logo} alt="Aimpluss Gems Logo" className={styles.logoImg} />
+        <span className={styles.logoText}>Aimpluss Gems</span>
       </Link>
 
       {/* 🔗 MENU */}

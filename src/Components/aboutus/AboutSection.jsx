@@ -32,14 +32,16 @@ function AboutSection() {
           <h2>About Aimpluss Gems</h2>
 
           <p>
-            At Aimpluss Gems, we specialize in sourcing premium, certified gemstones
-            with complete transparency and trust. Each gem is carefully selected
-            to ensure authenticity, brilliance, and unmatched quality.
+            <strong>Aimpluss</strong> means <em>Positive Motivations of Life</em>. Based in the
+            Gemstone World of <strong>Bangkok, Thailand</strong>, we have been in the gemstone
+            business since <strong>2004</strong> — selling high-quality, natural earth-mined
+            loose gemstones and colour stones worldwide.
           </p>
 
           <p>
-            Our mission is to deliver not just gemstones, but confidence and value
-            to every customer.
+            We source natural rough stones from <strong>Sri Lanka &amp; Thailand</strong>, cut and
+            polish them to perfection. Most gems are certified by Bangkok and Sri Lanka laboratories.
+            We also attend international Gem &amp; Jewellery Shows in Bangkok, Hong Kong, and the USA.
           </p>
 
           <a href="/about" className={styles.btn}>

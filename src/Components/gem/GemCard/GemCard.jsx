@@ -20,9 +20,18 @@ function GemCard({ gem, variant = "category" }) {
         )}
 
         {variant === "listing" && (
-          <div className={styles.data}>
-            <span className={styles.pill}>LOT #{gem.lotNumber || 'N/A'}</span>
-            <span className={styles.pilll}>{gem.carat} CT</span>
+          <div className={styles.listingDetails}>
+            <div className={styles.data}>
+              <span className={styles.pill}>LOT #{gem.lotNumber || 'N/A'}</span>
+              <span className={styles.pilll}>{gem.carat} CT</span>
+            </div>
+            <div className={styles.priceWrapper}>
+              {gem.price != null ? (
+                <span className={styles.cardPrice}>${Number(gem.price).toLocaleString()}</span>
+              ) : (
+                <span className={styles.cardPriceEnquire}>Price on Enquiry</span>
+              )}
+            </div>
           </div>
         )}
       </div>

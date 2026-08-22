@@ -97,6 +97,7 @@ export const fetchGems = createAsyncThunk(
          shape: item.shape_name,
          color: item.color_name,
          carat: item.crt,
+         price: item.price ?? null,
          image: item.thumbnail ? `https://d1wugj5ru4kx2.cloudfront.net/${item.thumbnail}` : 
                 (item.images && item.images.length > 0) ? `https://d1wugj5ru4kx2.cloudfront.net/${item.image}` : 
                 null

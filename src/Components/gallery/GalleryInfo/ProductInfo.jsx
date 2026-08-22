@@ -10,7 +10,19 @@ const ProductInfo = ({ product }) => {
   return (
     <div className={styles.info}>
       <h1 className={styles.title}>{product.name}</h1>
-      
+
+      {/* 💰 PRICE */}
+      <div className={styles.priceBlock}>
+        <span className={styles.priceLabel}>Price</span>
+        {product.price != null && product.price !== "Enquire for Price" ? (
+          <span className={styles.priceValue}>
+            ${Number(product.price).toLocaleString()}
+          </span>
+        ) : (
+          <span className={styles.priceEnquire}>Enquire for Price</span>
+        )}
+      </div>
+
       <div className={styles.divider}></div>
 
       <div className={styles.specsGrid}>

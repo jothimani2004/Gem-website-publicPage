@@ -66,7 +66,7 @@ useEffect(() => {
       <section className={styles.hero}>
         <h1>About Aimpluss Gems</h1>
         <p>
-          Discover the beauty, authenticity, and craftsmanship behind every gemstone we offer.
+          "Aimpluss" means <em>Positive Motivations of Life</em> — based in the Gemstone World of Bangkok, Thailand.
         </p>
       </section>
 
@@ -75,13 +75,23 @@ useEffect(() => {
         <div className={styles.text}>
           <h2>Our Story</h2>
           <p>
-            At Aimpluss Gems, we specialize in sourcing and delivering high-quality,
-            certified gemstones. Every stone is carefully selected to ensure
-            authenticity, brilliance, and lasting value.
+            <strong>Aimpluss</strong> means <em>Positive Motivations of Life</em>. Based in the
+            "Gemstone World Bangkok, Thailand", we started our business in Thailand in <strong>2004</strong>.
+            We sell high-quality, natural earth-mined loose gemstones and colour stones.
           </p>
           <p>
-            Our mission is to bring nature’s finest treasures closer to you,
-            with transparency and trust at every step.
+            Our main head office is in <strong>Bangkok, Thailand</strong>. We mostly purchase
+            natural rough stones, then cut and polish them in Sri Lanka and Thailand. We have a great collection
+            of precious and semi-precious gemstones — including natural unheated Sapphires in Blue, Pink,
+            Green, and more — ranging from Top Grade to Medium Quality.
+          </p>
+          <p>
+            We offer genuine item descriptions in all our listings. Minor colour variation may occur due
+            to different monitor brightness. Most of our gemstones are certified by laboratories
+            in <strong>Bangkok</strong> and <strong>Sri Lanka</strong>.
+          </p>
+          <p>
+            We also attend major <strong>Gem &amp; Jewellery Shows</strong> in Bangkok, Hong Kong, and the USA.
           </p>
         </div>
 
@@ -95,8 +105,8 @@ useEffect(() => {
 
     <section className={styles.stats} ref={statsRef}>
   <div>
-    <CountUp end={500} start={startCount} />
-    <p>Happy Customers</p>
+    <CountUp end={20} start={startCount} />
+    <p>Years in Business</p>
   </div>
 
   <div>
@@ -105,8 +115,13 @@ useEffect(() => {
   </div>
 
   <div>
-    <CountUp end={100} start={startCount} />
-    <p>Certified Stones</p>
+    <CountUp end={500} start={startCount} />
+    <p>Happy Customers</p>
+  </div>
+
+  <div>
+    <CountUp end={3} start={startCount} />
+    <p>Global Trade Shows</p>
   </div>
 </section>
 
@@ -117,23 +132,23 @@ useEffect(() => {
 
         <div className={styles.grid}>
           <div className={styles.card}>
-            <h3>💎 Certified Gems</h3>
-            <p>All gemstones are verified and authentic.</p>
+            <h3>💎 Lab Certified</h3>
+            <p>Certified by Bangkok &amp; Sri Lanka laboratories.</p>
           </div>
 
           <div className={styles.card}>
-            <h3>🌱 Ethical Sourcing</h3>
-            <p>Responsibly sourced with care and transparency.</p>
+            <h3>🌿 Natural &amp; Unheated</h3>
+            <p>Responsibly sourced rough stones, cut and polished by experts.</p>
           </div>
 
           <div className={styles.card}>
             <h3>🚚 Safe Delivery</h3>
-            <p>Secure packaging with reliable shipping.</p>
+            <p>Secure packaging with reliable worldwide shipping.</p>
           </div>
 
           <div className={styles.card}>
-            <h3>🤝 Trusted Service</h3>
-            <p>Customer satisfaction is our priority.</p>
+            <h3>🤝 Since 2004</h3>
+            <p>20+ years of trusted experience in the gemstone trade.</p>
           </div>
         </div>
       </section>

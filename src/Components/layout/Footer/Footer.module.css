@@ -4,57 +4,44 @@
   color: #e2e8f0;
   padding-top: 60px;
 }
-/* 🔗 LINKS RESET */
-.links a,
-.gems a {
-  text-decoration: none;
-  color: #cbd5f5; /* soft light color */
-  font-size: 14px;
-  transition: all 0.3s ease;
-}
-
-/* ✨ HOVER EFFECT */
-.links a:hover,
-.gems a:hover {
-  color: #ffffff;
-  transform: translateX(4px);
-}
-
-/* ❌ REMOVE VISITED PURPLE */
-.links a:visited,
-.gems a:visited {
-  color: #cbd5f5;
-}
-
-/* ✨ ACTIVE CLICK */
-.links a:active,
-.gems a:active {
-  color: #a78bfa;
-}
 
 /* 📦 CONTAINER */
 .container {
   max-width: 1200px;
   margin: auto;
-
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: 2fr 1fr 1fr 1.6fr;
   gap: 40px;
-
-  padding: 0 20px 40px;
+  padding: 0 30px 50px;
 }
 
 /* 💎 BRAND */
+.brandLogo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.logoImg {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 .brand h2 {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
   color: white;
-  margin-bottom: 10px;
+  margin: 0;
 }
 
 .brand p {
-  font-size: 14px;
+  font-size: 13px;
   color: #94a3b8;
+  line-height: 1.6;
+  max-width: 260px;
 }
 
 /* 🔗 HEADINGS */
@@ -62,9 +49,12 @@
 .contact h4,
 .social h4,
 .gems h4 {
-  font-size: 14px;
+  font-size: 13px;
+  font-weight: 600;
   color: #f1f5f9;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 /* 📜 LIST */
@@ -72,14 +62,14 @@
 .gems ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .links li,
 .gems li {
   font-size: 14px;
   color: #94a3b8;
-  margin-bottom: 8px;
-  cursor: pointer;
+  margin-bottom: 10px;
   transition: all 0.2s ease;
 }
 
@@ -89,46 +79,122 @@
   transform: translateX(4px);
 }
 
-/* 📞 CONTACT */
-.contact p {
-  font-size: 14px;
+/* 🔗 LINKS RESET */
+.links a,
+.gems a {
+  text-decoration: none;
   color: #94a3b8;
-  margin-bottom: 6px;
-}
-
-/* 📱 SOCIAL */
-.icons {
-  display: flex;
-  gap: 12px;
-}
-
-.icons span {
-  width: 36px;
-  height: 36px;
-
+  font-size: 14px;
   display: flex;
   align-items: center;
-  justify-content: center;
-
-  background: rgba(255,255,255,0.05);
-  border-radius: 50%;
-
-  cursor: pointer;
+  gap: 7px;
   transition: all 0.3s ease;
 }
 
-.icons span:hover {
+.links a:hover,
+.gems a:hover {
+  color: #ffffff;
+  transform: translateX(4px);
+}
+
+.links a:visited,
+.gems a:visited {
+  color: #94a3b8;
+}
+
+/* 🛍️ SHOP ICON */
+.shopIcon {
+  font-size: 16px;
+  opacity: 0.8;
+}
+
+/* 📞 CONTACT LINKS */
+.contactLink {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #94a3b8;
+  text-decoration: none;
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
+  word-break: break-all;
+}
+
+.contactLink:hover {
+  color: #ffffff;
+}
+
+.contactIcon {
+  flex-shrink: 0;
+  font-size: 13px;
+  color: #7c3aed;
+}
+
+/* 📱 SOCIAL ICONS ROW */
+.icons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.iconLink {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  color: #94a3b8;
+  font-size: 16px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.iconLink:hover {
   background: linear-gradient(135deg, #7c3aed, #ec4899);
+  border-color: transparent;
   color: white;
   transform: translateY(-3px);
 }
 
-/* 🔻 BOTTOM */
+/* 🔻 BOTTOM BAR */
 .bottom {
   text-align: center;
-  padding: 16px;
+  padding: 16px 20px;
   font-size: 13px;
-
-  border-top: 1px solid rgba(255,255,255,0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   color: #64748b;
+}
+
+.bottomLink {
+  color: #64748b;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.bottomLink:hover {
+  color: #94a3b8;
+}
+
+/* 📱 RESPONSIVE */
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 0 20px 40px;
+  }
+
+  .brand p {
+    max-width: 100%;
+  }
 }

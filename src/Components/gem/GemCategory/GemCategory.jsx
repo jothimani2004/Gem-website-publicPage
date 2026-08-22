@@ -52,6 +52,11 @@ function GemCategory({ title, gems, category, showExplore = true }) {
     <section className={styles.section}>
       <header className={styles.header}>
         <h2>{title}</h2>
+        {showExplore && (
+          <Link to={`/${category}`} className={styles.viewMoreLink}>
+            View More
+          </Link>
+        )}
       </header>
 
       <div className={styles.carouselWrapper}>
@@ -89,25 +94,7 @@ function GemCategory({ title, gems, category, showExplore = true }) {
             </motion.div>
           ))}
 
-          {/* Small impressive arrow button at the end of the scroll */}
-          {showExplore && (
-            <motion.div
-              style={{ flex: "0 0 auto", scrollSnapAlign: "center", display: "flex" }}
-              initial={{ opacity: 0, x: 60 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.7, ease: "easeOut", delay: gems.length * 0.12 }}
-            >
-              <Link
-                to={`/${category}`}
-                className={styles.endArrowBtn}
-                aria-label="View all gems"
-              >
-                 <span className={styles.viewAllText}>View All</span>
-                 <div className={styles.arrow}><i className="fa-solid fa-arrow-right"></i></div>
-              </Link>
-            </motion.div>
-          )}
+
         </div>
 
         {showExplore && canScrollRight && (

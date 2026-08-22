@@ -1,7 +1,7 @@
 import styles from "./WhatsAppButton.module.css";
 
 function WhatsAppButton() {
-  const phoneNumber = "917448523223"; // 👉 your number (no +, no spaces)
+  const phoneNumber = "66948210195"; // 🇹🇭 Thailand: 0066948210195 → 66948210195
   const message = "Hi, I'm interested in your gemstones.";
 
   const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
