@@ -17,7 +17,7 @@ function Gemgrid({category}){
       
     
       if (status === "loading" && items.length === 0) {
-        return <Loader text="Loading Collection..." />;
+        return <Loader text="Loading Collection..." fullScreen={false} />;
       }
     
       if (status === "failed") {

@@ -157,9 +157,9 @@ function ProductDetails({category}) {
           >
             Download Certificate
           </a>
-             <p className={styles.certificateFallback}>
+             {/* <p className={styles.certificateFallback}>
               <strong>Certification:</strong> After Purchasing I will Make GFCO Thailand
-            </p>
+            </p> */}
 
         </div>
       )}

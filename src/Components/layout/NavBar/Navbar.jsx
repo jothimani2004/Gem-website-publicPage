@@ -1,5 +1,5 @@
 import styles from "./Navbar.module.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import logo from "../../../assets/images/logo.png";
@@ -19,11 +19,52 @@ function Navbar() {
       {/* 🔗 MENU */}
       <nav className={`${styles.nav} ${open ? styles.active : ""}`}>
         <ul className={styles.menu}>
-          <li><Link to="/" onClick={() => setOpen(false)}>Home</Link></li>
-          <li><Link to="/Precious" onClick={() => setOpen(false)}>Precious</Link></li>
-          <li><Link to="/Semi-Precious" onClick={() => setOpen(false)}>Semi-Precious</Link></li>
-          <li><Link to="/about" onClick={() => setOpen(false)}>About</Link></li>
-          <li><Link to="/#faq" onClick={() => setOpen(false)}>FAQ</Link></li>
+          <li>
+            <NavLink
+              to="/"
+              end
+              className={({ isActive }) => (isActive ? styles.activeLink : "")}
+              onClick={() => setOpen(false)}
+            >
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/Precious"
+              className={({ isActive }) => (isActive ? styles.activeLink : "")}
+              onClick={() => setOpen(false)}
+            >
+              Precious
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/Semi-Precious"
+              className={({ isActive }) => (isActive ? styles.activeLink : "")}
+              onClick={() => setOpen(false)}
+            >
+              Semi-Precious
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/about"
+              className={({ isActive }) => (isActive ? styles.activeLink : "")}
+              onClick={() => setOpen(false)}
+            >
+              About
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/faq"
+              className={({ isActive }) => (isActive ? styles.activeLink : "")}
+              onClick={() => setOpen(false)}
+            >
+              FAQ
+            </NavLink>
+          </li>
         </ul>
       </nav>
 

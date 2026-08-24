@@ -54,7 +54,7 @@ function GemCategory({ title, gems, category, showExplore = true }) {
         <h2>{title}</h2>
         {showExplore && (
           <Link to={`/${category}`} className={styles.viewMoreLink}>
-            View More
+            View All
           </Link>
         )}
       </header>
@@ -93,6 +93,22 @@ function GemCategory({ title, gems, category, showExplore = true }) {
               />
             </motion.div>
           ))}
+
+          {showExplore && (
+            <motion.div
+              className={styles.cardWrapper}
+              initial={{ opacity: 0, x: 60 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: gems.length * 0.12 }}
+              style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+            >
+              <Link to={`/${category}`} className={styles.endArrowBtn}>
+                <span className={styles.viewAllText}>View More</span>
+                <span className={styles.arrow}><BsArrowRight /></span>
+              </Link>
+            </motion.div>
+          )}
 
 
         </div>

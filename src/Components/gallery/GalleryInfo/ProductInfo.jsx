@@ -9,7 +9,12 @@ const ProductInfo = ({ product }) => {
 
   return (
     <div className={styles.info}>
-      <h1 className={styles.title}>{product.name}</h1>
+      <h1 className={styles.title}>
+        {product.name.split(" (")[0]}
+        {product.lotNumber && (
+          <span className={styles.lotNumber}> ({product.lotNumber})</span>
+        )}
+      </h1>
 
       {/* 💰 PRICE */}
       <div className={styles.priceBlock}>

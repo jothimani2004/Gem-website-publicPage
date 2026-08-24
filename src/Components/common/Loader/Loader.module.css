@@ -10,6 +10,18 @@
   z-index: 999;
 }
 
+.inlineContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  min-height: 300px;
+  padding: 40px 20px;
+  background: transparent;
+}
+
 .gemWrapper {
   position: relative;
   width: 80px;

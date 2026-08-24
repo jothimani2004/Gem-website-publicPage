@@ -11,6 +11,7 @@ import GemCategory from "./Components/gem/GemCategory/GemCategory.jsx";
 import About from "./pages/about/About.jsx";
 import MoreGems from "./pages/moregems/MoreGems.jsx";
 import NotFoundPage from "./pages/NotFound/NotFound.jsx";
+import ScrollToTop from "./Components/common/ScrollToTop.jsx";
 
 // Code splitting - dynamically fetching pages only when the user routes to them
 const Home = lazy(() => import("./pages/Home/Home.jsx"));
@@ -24,6 +25,7 @@ function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
+        <ScrollToTop />
         <Navbar />
         {/* Seamless loading hook while javascript chunks transfer */}
         <Suspense fallback={<Loader text="Loading Experience..." fullScreen={false} />}>

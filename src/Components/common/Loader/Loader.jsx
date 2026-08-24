@@ -1,8 +1,10 @@
 import styles from "./Loader.module.css";
 
-function Loader() {
+function Loader({ text = "AIMPLUSS", fullScreen = true }) {
+  const containerClass = fullScreen ? styles.container : styles.inlineContainer;
+
   return (
-    <div className={styles.container}>
+    <div className={containerClass}>
       <div className={styles.gemWrapper}>
         <svg
           viewBox="0 0 100 100"
@@ -26,7 +28,7 @@ function Loader() {
       </div>
 
       <div className={styles.textContainer}>
-        <h2 className={styles.title}>AIMPLUSS</h2>
+        <h2 className={styles.title}>{text}</h2>
         <div className={styles.loaderBar}></div>
         <p className={styles.subtitle}>CRAFTING BRILLIANCE</p>
       </div>

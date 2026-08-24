@@ -25,7 +25,7 @@ function Testimonials() {
       item: "2.22ct Certified Unheated Teal Sapphire",
       date: "Jan 2026",
     },
-  
+
     {
       name: "MIGUEL",
       text: "Highly recommended, I bought it without hesitation. A very honest and responsible person.",
@@ -33,13 +33,7 @@ function Testimonials() {
       item: "1.59ct Octagon Color Change Sapphire",
       date: "Jan 2026",
     },
-    {
-      name: "MIGUEL",
-      text: "I highly recommend him; he is very serious, honest, and a very good person.",
-      rating: 5,
-      item: "1.07ct Padparadscha Sapphire",
-      date: "Jan 2026",
-    },
+
     {
       name: "Marina",
       text: "Very nice stone with good color saturation. Arrived in time.",
@@ -80,7 +74,7 @@ function Testimonials() {
   return (
     <section className={styles.section}>
       <div className={styles.container}>
-        
+
         {/* HEADER */}
         <div className={styles.header}>
           <h2>What Our Customers Say</h2>
@@ -102,7 +96,7 @@ function Testimonials() {
           <div className={styles.track}>
             {[...reviews, ...reviews].map((review, index) => (
               <div key={index} className={styles.card}>
-                
+
                 {/* ✨ Quote Icon */}
                 <FaQuoteLeft className={styles.quoteIcon} />
 

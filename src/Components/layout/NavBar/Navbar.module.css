@@ -80,6 +80,16 @@
   width: 100%;
 }
 
+.activeLink {
+  color: #7c3aed !important;
+  font-weight: 600 !important;
+}
+
+.activeLink::after {
+  width: 100% !important;
+  background: #7c3aed !important;
+}
+
 /* CTA BUTTON (OUTLINE STYLE 💎) */
 .cta {
   padding: 8px 18px;
@@ -162,5 +172,14 @@
   .menu a {
     font-size: 20px;
     color: white;
+  }
+
+  .activeLink {
+    color: #c084fc !important;
+  }
+
+  .activeLink::after {
+    background: #c084fc !important;
+    width: 100% !important;
   }
 }

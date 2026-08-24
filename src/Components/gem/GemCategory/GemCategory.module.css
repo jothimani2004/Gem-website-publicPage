@@ -53,45 +53,23 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
-  color: #5d2bb3;
+  color: #000000;
   text-decoration: none;
   white-space: nowrap;
-  letter-spacing: 0.4px;
 
-  padding: 6px 16px;
-  border: 1.5px solid #c4a8e8;
+  padding: 8px 18px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 999px;
   background: transparent;
 
-  position: relative;
-  overflow: hidden;
-  z-index: 0;
-
-  transition: color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* fill sweep on hover */
-.viewMoreLink::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, #5d2bb3, #8561c3);
-  opacity: 0;
-  z-index: -1;
-  transition: opacity 0.3s ease;
-  border-radius: 999px;
+  transition: 0.3s;
 }
 
 .viewMoreLink:hover {
-  color: #ffffff;
-  border-color: transparent;
-  box-shadow: 0 4px 14px rgba(93, 43, 179, 0.3);
-}
-
-.viewMoreLink:hover::before {
-  opacity: 1;
+  background: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
 }
 
 /* --- CAROUSEL WRAPPER & NAV BUTTONS --- */
