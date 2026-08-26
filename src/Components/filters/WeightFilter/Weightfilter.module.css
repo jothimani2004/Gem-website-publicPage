@@ -162,3 +162,18 @@
 .applyBtn:hover {
   background-color: #374151;
 }
+
+.appliedTag {
+  margin-top: -10px;
+  margin-bottom: 15px;
+  display: inline-flex;
+  align-items: center;
+  background-color: #f1f5f9;
+  color: #0f172a;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}

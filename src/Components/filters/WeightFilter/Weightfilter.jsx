@@ -13,6 +13,17 @@ function Weightfilter({ value, onChange, isActive, onToggle }){
 
     const percentage = ((localValue - 0.1) / (150 - 0.1)) * 100;
 
+    const displayCaratRange = (val) => {
+      const num = Number(val);
+      const lower = Math.floor(num);
+      const upper = lower + 1;
+      if (num % 1 === 0) {
+        return `${lower} to ${upper}`;
+      } else {
+        return `${lower} to ${upper} carat`;
+      }
+    };
+
     return(
   <div className={styles.block} style={{ opacity: isActive ? 1 : 0.6 }}>
       <div className={styles.header}>
@@ -33,6 +44,12 @@ function Weightfilter({ value, onChange, isActive, onToggle }){
           </span>
         )}
       </div>
+
+      {isActive && value !== "" && (
+        <div className={styles.appliedTag}>
+          {displayCaratRange(value)}
+        </div>
+      )}
 
       {isActive && isOpen && (
         <>
