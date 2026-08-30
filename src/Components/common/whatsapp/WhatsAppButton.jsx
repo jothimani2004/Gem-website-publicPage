@@ -12,6 +12,7 @@ function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       className={styles.whatsapp}
+      aria-label="Contact us on WhatsApp"
     >
       <i className="fa-brands fa-whatsapp"></i>
     </a>

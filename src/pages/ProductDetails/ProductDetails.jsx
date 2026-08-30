@@ -6,6 +6,8 @@ import ProductInfo from "../../Components/gallery/GalleryInfo/ProductInfo";
 import RelatedGems from "../../Components/gem/RelatedGems/RelatedGems";
 import api from "../../services/api";
 import Loader from "../../Components/common/Loader/Loader";
+import fallbackGem from "../../assets/images/gem2.png";
+import SEO from "../../Components/common/SEO/SEO";
 
 
 
@@ -80,7 +82,7 @@ function ProductDetails({category}) {
              mappedImages.push(`https://d1wugj5ru4kx2.cloudfront.net/${gemData.video.file}#video`);
           }
           if (mappedImages.length === 0) {
-             mappedImages.push("https://via.placeholder.com/600x400?text=No+Image+Available");
+             mappedImages.push(fallbackGem);
           }
           setImages(mappedImages);
         } else {
@@ -105,8 +107,77 @@ function ProductDetails({category}) {
      return <div className={styles.page} style={{textAlign:"center", padding:"50px"}}>Gem not found.</div>;
   }
 
+  const productTitle = `${gemName} (Lot #${product.lotNumber}) — ${product.weight} Natural ${gemName}`;
+  const productDescription = `Buy natural earth-mined ${gemName} (Lot #${product.lotNumber}). Weight: ${product.weight}, Shape: ${product.shape}, Color: ${product.color}. Certified loose gemstone from Aimpluss Gems.`;
+  const primaryImage = images && images.length > 0 && !images[0].endsWith("#video") ? images[0] : fallbackGem;
+
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Product",
+        "name": product.name,
+        "image": images.filter(img => typeof img === "string" && !img.endsWith("#video")),
+        "description": product.description || productDescription,
+        "sku": product.lotNumber,
+        "mpn": product.lotNumber,
+        "brand": {
+          "@type": "Brand",
+          "name": "Aimpluss Gems"
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": `https://aimplussgems.com/${category}/${gemName}/${id}`,
+          "priceCurrency": "USD",
+          "price": typeof product.price === "number" ? product.price : 0,
+          "priceValidUntil": "2030-12-31",
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://aimplussgems.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": category,
+            "item": `https://aimplussgems.com/${category}`
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": gemName,
+            "item": `https://aimplussgems.com/${category}/${gemName}`
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": product.lotNumber,
+            "item": `https://aimplussgems.com/${category}/${gemName}/${id}`
+          }
+        ]
+      }
+    ]
+  };
+
   return (
     <div className={styles.page}>
+      <SEO
+        title={productTitle}
+        description={productDescription}
+        keywords={`natural ${gemName}, certified ${gemName}, ${gemName} lot ${product.lotNumber}, ${product.weight} ${gemName}, ${product.color} ${gemName}, loose ${gemName}`}
+        canonical={`https://aimplussgems.com/${category}/${gemName}/${id}`}
+        ogImage={primaryImage}
+        ogType="product"
+        schema={productSchema}
+      />
        {/* 💎 BEAUTIFUL BREADCRUMB */}
              <div className={styles.breadcrumb}>
                <Link to="/" className={styles.link}>

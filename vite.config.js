@@ -11,5 +11,16 @@ export default defineConfig({
         changeOrigin: true,
       }
     }
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          reactVendor: ['react', 'react-dom', 'react-router-dom'],
+          reduxVendor: ['@reduxjs/toolkit', 'react-redux'],
+          uiVendor: ['framer-motion', 'embla-carousel-react', 'embla-carousel-autoplay', 'swiper', 'react-icons']
+        }
+      }
+    }
   }
 })

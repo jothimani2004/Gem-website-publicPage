@@ -12,7 +12,7 @@ function Navbar() {
 
       {/* 💎 LOGO */}
       <Link to="/" className={styles.logo}>
-        <img src={logo} alt="Aimpluss Gems Logo" className={styles.logoImg} />
+        <img src={logo} alt="Aimpluss Gems Logo" className={styles.logoImg} width="40" height="40" fetchpriority="high" />
         <span className={styles.logoText}>Aimpluss Gems</span>
       </Link>
 
@@ -74,9 +74,15 @@ function Navbar() {
       </Link>
 
       {/* 🍔 HAMBURGER */}
-      <div className={styles.hamburger} onClick={() => setOpen(!open)} style={{ color: open ? "white" : "black" }}>
+      <button
+        type="button"
+        aria-label="Toggle navigation menu"
+        className={styles.hamburger}
+        onClick={() => setOpen(!open)}
+        style={{ color: open ? "white" : "black", background: "none", border: "none", cursor: "pointer" }}
+      >
         {open ? <FaTimes /> : <FaBars />}
-      </div>
+      </button>
 
     </header>
   );

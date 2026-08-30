@@ -1,7 +1,8 @@
 import styles from "./About.module.css";
 import { Link } from "react-router-dom";
-import aboutimg from "../../../public/aboutus/aboutus_image.jpg"
+import aboutimg from "../../../public/aboutus/aboutus_image.jpg";
 import { useEffect, useRef, useState } from "react";
+import SEO from "../../Components/common/SEO/SEO";
 
 
 /* 💎 COUNT UP COMPONENT */
@@ -59,8 +60,40 @@ useEffect(() => {
 }, []);
 
 
+  const aboutSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "AboutPage",
+        "@id": "https://aimplussgems.com/about#webpage",
+        "url": "https://aimplussgems.com/about",
+        "name": "About Aimpluss Gems",
+        "description": "Learn about Aimpluss Gems, founded in 2004 in Bangkok & Sri Lanka. Natural, unheated certified gemstones with global delivery."
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://aimplussgems.com/#localbusiness",
+        "name": "Aimpluss Gems",
+        "url": "https://aimplussgems.com",
+        "description": "Natural loose gemstones merchant in Bangkok, Thailand since 2004.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Bangkok",
+          "addressCountry": "Thailand"
+        }
+      }
+    ]
+  };
+
   return (
     <div className={styles.page}>
+      <SEO
+        title="About Us | 20+ Years Premium Gemstone Trader"
+        description="Learn about Aimpluss Gems — founded in 2004 in Bangkok, Thailand. We source, cut, and polish natural earth-mined precious & semi-precious gemstones."
+        keywords="about aimpluss gems, bangkok gemstone trader, natural unheated sapphires, gemstone certification, sri lanka gem cutting"
+        canonical="https://aimplussgems.com/about"
+        schema={aboutSchema}
+      />
 
       {/* 💎 HERO */}
       <section className={styles.hero}>
@@ -98,7 +131,9 @@ useEffect(() => {
         <div className={styles.image}>
           <img
             src={aboutimg}
-            alt="Gemstones"
+            alt="Natural Earth-Mined Gemstones"
+            loading="lazy"
+            decoding="async"
           />
         </div>
       </section>
@@ -181,7 +216,7 @@ useEffect(() => {
       <section className={styles.cta}>
         <h2>Explore Our Collection</h2>
         <Link to="/" className={styles.ctaBtn}>
-          Browse Gems <i class="fa-solid fa-arrow-right"></i> 
+          Browse Gems <i className="fa-solid fa-arrow-right"></i> 
         </Link>
       </section>
 

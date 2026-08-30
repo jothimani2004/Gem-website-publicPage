@@ -8,6 +8,7 @@ import FilterSidebar from "../../Components/filters/FilterSidebar/Filtersidebar"
 import Gemgrid from "../../Components/gem/GemGrid/Gemgrid";
 import Pagination from "../../Components/common/Pagination/Pagination";
 import api from "../../services/api";
+import SEO from "../../Components/common/SEO/SEO";
 
 import styles from "./GemListing.module.css";
 
@@ -95,8 +96,53 @@ function GemListing({category}) {
     setIsFilterOpen(false); // close on apply
   };
 
+  const listingTitle = `Certified ${gemName} Gemstones | Buy Natural ${gemName}`;
+  const listingDescription = `Browse authentic natural earth-mined ${gemName} loose gemstones. Lab certified, custom cut & polished in Bangkok & Sri Lanka. Worldwide secure shipping.`;
+
+  const listingSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "name": `${gemName} Gemstones`,
+        "description": listingDescription,
+        "url": `https://aimplussgems.com/${category}/${encodeURIComponent(gemName)}`
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://aimplussgems.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": category,
+            "item": `https://aimplussgems.com/${category}`
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": gemName,
+            "item": `https://aimplussgems.com/${category}/${encodeURIComponent(gemName)}`
+          }
+        ]
+      }
+    ]
+  };
+
   return (
     <div className={styles.page}>
+      <SEO
+        title={listingTitle}
+        description={listingDescription}
+        keywords={`natural ${gemName}, certified ${gemName}, buy ${gemName} loose stone, ${gemName} bangkok, ${category} gemstones`}
+        canonical={`https://aimplussgems.com/${category}/${encodeURIComponent(gemName)}`}
+        schema={listingSchema}
+      />
 
 
       {/* 💎 BEAUTIFUL BREADCRUMB */}
@@ -125,8 +171,9 @@ function GemListing({category}) {
         <button
           className={styles.filterBtn}
           onClick={() => setIsFilterOpen(true)}
+          aria-label="Filter gemstones"
         >
-        <i class="fa-solid fa-filter"></i>
+          <i className="fa-solid fa-filter"></i>
           Filter
         </button>
           

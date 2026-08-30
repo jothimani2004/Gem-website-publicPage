@@ -8,6 +8,7 @@
 
 .embla {
   height: 100%;
+  overflow: hidden;
 }
 
 .emblaContainer {
@@ -20,6 +21,7 @@
   position: relative;
   min-width: 100%;
   background: #000;
+  overflow: hidden; /* Prevent text or visual overflow from leaking into adjacent slides */
 }
 
 .slideImage {
@@ -49,7 +51,8 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 0 20px;
+  padding: 0 120px; /* Keep text centered and clear of navigation buttons */
+  box-sizing: border-box;
 }
 
 .title {
@@ -59,6 +62,10 @@
   margin-bottom: 20px;
   letter-spacing: -2.5px;
   text-transform: uppercase;
+  width: 100%; /* Enforce width to enable proper word-wrap */
+  max-width: 850px; /* Constrain width of title to prevent overlapping */
+  word-wrap: break-word;
+  overflow-wrap: break-word; /* Wrap extremely long words */
   animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   text-shadow: 0 4px 20px rgba(0,0,0,0.5);
   line-height: 1.1;
@@ -69,7 +76,10 @@
   font-weight: 300;
   color: #f1f5f9;
   letter-spacing: 1.5px;
+  width: 100%; /* Enforce width to enable proper word-wrap */
   max-width: 700px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
   animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   animation-delay: 0.2s;
   opacity: 0;
@@ -105,6 +115,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 10; /* Ensure navigation buttons stay on top of the slide content */
 }
 
 .navButton:hover {
@@ -152,10 +163,13 @@
   100% { transform: translate(-50%, -5px); }
 }
 
-/* Responsive Text */
+/* Responsive Text & Spacing */
 @media (max-width: 992px) {
+  .overlay {
+    padding: 0 90px;
+  }
   .title {
-    font-size: 4.5rem;
+    font-size: 3.8rem;
     letter-spacing: -1.5px;
   }
   .description {
@@ -164,13 +178,17 @@
 }
 
 @media (max-width: 768px) {
+  .overlay {
+    padding: 0 60px;
+  }
   .title {
-    font-size: 3.5rem;
+    font-size: 2.2rem;
     letter-spacing: -1px;
+    margin-bottom: 12px;
   }
   .description {
-    font-size: 1rem;
-    padding: 0 10px;
+    font-size: 0.95rem;
+    padding: 0 5px;
   }
   .navButton {
     width: 44px;

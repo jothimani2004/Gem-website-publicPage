@@ -1,10 +1,16 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import styles from "./NotFound.module.css";
+import SEO from "../../Components/common/SEO/SEO";
 
 function NotFound() {
   return (
     <div className={styles.container}>
+      <SEO
+        title="404 — Page Not Found"
+        description="The requested page could not be found on Aimpluss Gems."
+        noindex={true}
+      />
 
       {/* Background Glow */}
       <div className={styles.glow}></div>

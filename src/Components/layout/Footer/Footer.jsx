@@ -13,7 +13,7 @@ function Footer() {
         {/* 💎 BRAND */}
         <div className={styles.brand}>
           <Link to="/" className={styles.brandLogo}>
-            <img src={logo} alt="Aimpluss Gems" className={styles.logoImg} />
+            <img src={logo} alt="Aimpluss Gems" className={styles.logoImg} width="40" height="40" loading="lazy" decoding="async" />
             <h2>Aimpluss Gems</h2>
           </Link>
           <p>Premium certified gemstones — crafted by nature, curated for you.</p>
