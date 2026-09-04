@@ -57,7 +57,7 @@
 
 /* SHOW ANSWER */
 .active .answer {
-  max-height: 200px;
+  max-height: 500px;
   padding: 0 18px 16px;
 }
 
@@ -65,4 +65,5 @@
   font-size: 13px;
   color: #64748b;
   line-height: 1.6;
+  white-space: pre-line;
 }

@@ -1,5 +1,4 @@
 import styles from "./AboutSection.module.css";
-import aboutUsImage from "../../../public/aboutus/aboutus_image.jpg";
 import { motion } from "framer-motion";
 
 function AboutSection() {
@@ -7,7 +6,7 @@ function AboutSection() {
     <section className={styles.about}>
       <div className={styles.container}>
         
-        {/* LEFT - IMAGE */}
+        {/* LEFT - VIDEO */}
         <motion.div 
           className={styles.image}
           initial={{ opacity: 0, x: -80 }}
@@ -15,10 +14,16 @@ function AboutSection() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <img
-            src={aboutUsImage}
-            alt="Gemstone"
-          />
+          <video
+            src="/aboutus/aboutus_video.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className={styles.video}
+          >
+            Your browser does not support the video tag.
+          </video>
         </motion.div>
 
         {/* RIGHT - TEXT */}

@@ -1,6 +1,5 @@
 import styles from "./About.module.css";
 import { Link } from "react-router-dom";
-import aboutimg from "../../../public/aboutus/aboutus_image.jpg";
 import { useEffect, useRef, useState } from "react";
 import SEO from "../../Components/common/SEO/SEO";
 
@@ -129,12 +128,16 @@ useEffect(() => {
         </div>
 
         <div className={styles.image}>
-          <img
-            src={aboutimg}
-            alt="Natural Earth-Mined Gemstones"
-            loading="lazy"
-            decoding="async"
-          />
+          <video
+            src="/aboutus/aboutus_video.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className={styles.video}
+          >
+            Your browser does not support the video tag.
+          </video>
         </div>
       </section>
 
