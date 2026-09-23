@@ -78,15 +78,18 @@ function Testimonials() {
         {/* HEADER */}
         <div className={styles.header}>
           <h2>What Our Customers Say</h2>
-          <p>Real reviews from verified buyers on&nbsp;
+          <p className={styles.subtitle}>
+            Real reviews from verified buyers on{" "}
             <a
               href="https://www.etsy.com/shop/aimpluss#reviews"
               target="_blank"
               rel="noopener noreferrer"
-              className={styles.etsyLink}
+              className={styles.etsyBadge}
             >
-              <SiEtsy style={{ verticalAlign: "middle", marginRight: "3px" }} />
-              Etsy
+              <span className={styles.etsyIconWrapper}>
+                <SiEtsy className={styles.etsyBadgeIcon} />
+              </span>
+              <span className={styles.etsyText}>Etsy</span>
             </a>
           </p>
         </div>

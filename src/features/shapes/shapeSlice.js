@@ -3,7 +3,6 @@ import api from "../../services/api";
 
 export const fetchShapes = createAsyncThunk("shapes/fetchShapes", async () => {
   const response = await api.get("/public/shape_types");
-  console.log(response.data.data);
   return response.data.data.map((shape) => ({
     id: shape.shape_id,
     name: shape.shape_name,

@@ -86,7 +86,6 @@ export const fetchGems = createAsyncThunk(
    
       
       const items = dataRes.data?.data || [];
-   console.log(items);
       
       // We will map the backend keys to the frontend expectations.
       // Frontend expects: id, name, lotNumber, shape, color, carat, image.

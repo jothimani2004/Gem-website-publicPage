@@ -197,14 +197,50 @@ border: 2px solid white ;
   margin-top: 1px;
 }
 
-/* 🔗 ETSY LINK */
-.etsyLink {
-  color: #f56400;
-  font-weight: 600;
-  text-decoration: none;
-  transition: opacity 0.2s ease;
+/* 🔗 ETSY BADGE */
+.subtitle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 15px;
+  color: #64748b;
+  margin-top: 8px;
 }
 
-.etsyLink:hover {
-  opacity: 0.8;
+.etsyBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  padding: 0 4px;
+  text-decoration: none;
+  vertical-align: middle;
+}
+
+.etsyIconWrapper {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #f1641e;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.etsyBadgeIcon {
+  font-size: 11px;
+  color: #ffffff;
+}
+
+.etsyText {
+  font-family: "Georgia", serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: #f1641e;
+  letter-spacing: -0.2px;
+  line-height: 1;
 }

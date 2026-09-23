@@ -13,9 +13,6 @@ import SEO from "../../Components/common/SEO/SEO";
 
 function ProductDetails({category}) {
   const {  gemName, id } = useParams();
-  console.log("category", category);
-  console.log("gemName", gemName);
-  console.log("id", id);
   const [product, setProduct] = useState(null);
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -106,7 +103,6 @@ function ProductDetails({category}) {
         
         if (response.data && response.data.success && response.data.data.data.length > 0) {
           const gemData = response.data.data.data[0];
-          console.log(gemData);
           
           setProduct({
             name: `${gemName} (${gemData.lot_number})`,

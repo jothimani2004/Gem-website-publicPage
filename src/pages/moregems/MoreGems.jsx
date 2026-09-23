@@ -8,7 +8,6 @@ import Loader from "../../Components/common/Loader/Loader";
 import SEO from "../../Components/common/SEO/SEO";
 
 function MoreGems ({category}){
-    console.log("category", category);
     const [preciousGems, setPreciousGems] = useState([]);
     const [semiPreciousGems, setSemiPreciousGems] = useState([]);
     const [loading, setLoading] = useState(true);

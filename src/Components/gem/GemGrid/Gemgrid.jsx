@@ -7,7 +7,6 @@ import Loader from "../../common/Loader/Loader";
 function Gemgrid({category}){
 
   const {gemName}=useParams();
-  console.log("category from gemgrid", category);
  
 
     const { items = [], status, error } = useSelector(
