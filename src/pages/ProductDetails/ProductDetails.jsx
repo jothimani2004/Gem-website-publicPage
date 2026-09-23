@@ -19,6 +19,52 @@ function ProductDetails({category}) {
   const [product, setProduct] = useState(null);
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isDownloading, setIsDownloading] = useState(false);
+
+  const handleDownloadCertificate = async (e) => {
+    e.preventDefault();
+    if (!product?.certificate || isDownloading) return;
+
+    setIsDownloading(true);
+
+    try {
+      const response = await fetch(product.certificate);
+      if (!response.ok) throw new Error("Failed to fetch certificate file");
+
+      const blob = await response.blob();
+      const blobUrl = window.URL.createObjectURL(blob);
+
+      // Extract file name from URL or create a default one
+      const rawFileName = product.certificate.split("/").pop() || "";
+      const cleanFileName = rawFileName ? rawFileName.split("?")[0] : "";
+      const fallbackName = `${gemName || "Gem"}-Certificate.pdf`;
+      const finalFileName = cleanFileName
+        ? (cleanFileName.toLowerCase().endsWith(".pdf") ? cleanFileName : `${cleanFileName}.pdf`)
+        : fallbackName;
+
+      const link = document.createElement("a");
+      link.href = blobUrl;
+      link.setAttribute("download", finalFileName);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      window.URL.revokeObjectURL(blobUrl);
+    } catch (error) {
+      console.error("Direct download failed, attempting fallback:", error);
+      // Fallback: trigger direct link download
+      const link = document.createElement("a");
+      link.href = product.certificate;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.setAttribute("download", `${gemName || "Gem"}-Certificate.pdf`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } finally {
+      setIsDownloading(false);
+    }
+  };
 
   // Route Validation (Non-blocking)
   useEffect(() => {
@@ -220,14 +266,14 @@ function ProductDetails({category}) {
           />
 
           {/* Download Button */}
-          <a
-            href={product.certificate}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            type="button"
+            onClick={handleDownloadCertificate}
+            disabled={isDownloading}
             className={styles.downloadBtn}
           >
-            Download Certificate
-          </a>
+            {isDownloading ? "Downloading..." : "Download Certificate"}
+          </button>
              {/* <p className={styles.certificateFallback}>
               <strong>Certification:</strong> After Purchasing I will Make GFCO Thailand
             </p> */}
