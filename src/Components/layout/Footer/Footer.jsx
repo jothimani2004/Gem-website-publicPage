@@ -107,8 +107,6 @@ function Footer() {
       {/* 🔻 BOTTOM BAR */}
       <div className={styles.bottom}>
         © {new Date().getFullYear()} Aimpluss Gems. All rights reserved.
-        &nbsp;·&nbsp;
-        <a href="mailto:mahapluss@gmail.com" className={styles.bottomLink}>mahapluss@gmail.com</a>
       </div>
 
     </footer>

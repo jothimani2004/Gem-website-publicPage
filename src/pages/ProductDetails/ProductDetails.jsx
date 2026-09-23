@@ -31,13 +31,10 @@ function ProductDetails({category}) {
       const blob = await response.blob();
       const blobUrl = window.URL.createObjectURL(blob);
 
-      // Extract file name from URL or create a default one
-      const rawFileName = product.certificate.split("/").pop() || "";
-      const cleanFileName = rawFileName ? rawFileName.split("?")[0] : "";
-      const fallbackName = `${gemName || "Gem"}-Certificate.pdf`;
-      const finalFileName = cleanFileName
-        ? (cleanFileName.toLowerCase().endsWith(".pdf") ? cleanFileName : `${cleanFileName}.pdf`)
-        : fallbackName;
+      // Format a clean, human-readable filename for the user
+      const cleanGemName = (gemName || "Gem").replace(/[^a-zA-Z0-9\s-]/g, "").trim();
+      const lotSuffix = product?.lotNumber ? `-${product.lotNumber}` : (id ? `-${id}` : "");
+      const finalFileName = `${cleanGemName}${lotSuffix}-Certificate.pdf`;
 
       const link = document.createElement("a");
       link.href = blobUrl;
@@ -54,7 +51,7 @@ function ProductDetails({category}) {
       link.href = product.certificate;
       link.target = "_blank";
       link.rel = "noopener noreferrer";
-      link.setAttribute("download", `${gemName || "Gem"}-Certificate.pdf`);
+      link.setAttribute("download", finalFileName);
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
