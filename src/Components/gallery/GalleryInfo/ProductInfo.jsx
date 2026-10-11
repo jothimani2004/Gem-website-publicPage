@@ -1,3 +1,4 @@
+import { FaWhatsapp } from "react-icons/fa";
 import styles from "./ProductInfo.module.css";
 
 const ProductInfo = ({ product }) => {
@@ -6,6 +7,16 @@ const ProductInfo = ({ product }) => {
     const lowerValue = String(value).toLowerCase();
     return !lowerValue.includes("null") && lowerValue !== "n/a";
   };
+
+  const phoneNumber = "66948210195";
+  const lotText = product?.lotNumber ? ` (Lot #${product.lotNumber})` : "";
+  const weightText = product?.weight ? ` [${product.weight}]` : "";
+  const priceText = product?.price != null && product.price !== "Enquire for Price"
+    ? ` - $${Number(product.price).toLocaleString()}`
+    : "";
+  const pageUrl = typeof window !== "undefined" ? window.location.href : "";
+  const defaultMsg = `Hello Aimpluss Gems! I'm interested in ${product?.name || "this gemstone"}${lotText}${weightText}${priceText}.\nIs this gemstone currently available?\nLink: ${pageUrl}`;
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(defaultMsg)}`;
 
   return (
     <div className={styles.info}>
@@ -26,6 +37,28 @@ const ProductInfo = ({ product }) => {
         ) : (
           <span className={styles.priceEnquire}>Enquire for Price</span>
         )}
+      </div>
+
+      {/* 💬 WHATSAPP INQUIRY CTA */}
+      <div className={styles.actionBlock}>
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.inquireBtn}
+          aria-label={`Inquire about ${product.name} on WhatsApp`}
+        >
+          <FaWhatsapp className={styles.inquireIcon} />
+          <span>Inquire via WhatsApp</span>
+        </a>
+        <div className={styles.trustBadges}>
+          <span className={styles.trustItem}>
+            <i className="fa-solid fa-check"></i> 100% Natural & Certified
+          </span>
+          <span className={styles.trustItem}>
+            <i className="fa-solid fa-plane"></i> Worldwide Express Shipping
+          </span>
+        </div>
       </div>
 
       <div className={styles.divider}></div>

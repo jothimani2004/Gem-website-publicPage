@@ -25,17 +25,17 @@ function ProductDetails({category}) {
 
     setIsDownloading(true);
 
+    // Format a clean, human-readable filename for the user
+    const cleanGemName = (gemName || "Gem").replace(/[^a-zA-Z0-9\s-]/g, "").trim();
+    const lotSuffix = product?.lotNumber ? `-${product.lotNumber}` : (id ? `-${id}` : "");
+    const finalFileName = `${cleanGemName}${lotSuffix}-Certificate.pdf`;
+
     try {
       const response = await fetch(product.certificate);
       if (!response.ok) throw new Error("Failed to fetch certificate file");
 
       const blob = await response.blob();
       const blobUrl = window.URL.createObjectURL(blob);
-
-      // Format a clean, human-readable filename for the user
-      const cleanGemName = (gemName || "Gem").replace(/[^a-zA-Z0-9\s-]/g, "").trim();
-      const lotSuffix = product?.lotNumber ? `-${product.lotNumber}` : (id ? `-${id}` : "");
-      const finalFileName = `${cleanGemName}${lotSuffix}-Certificate.pdf`;
 
       const link = document.createElement("a");
       link.href = blobUrl;

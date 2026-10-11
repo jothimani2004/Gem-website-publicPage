@@ -7,8 +7,9 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://67.211.219.18',
+        target: 'https://aimpluss.info',
         changeOrigin: true,
+        secure: true,
       }
     }
   },
