@@ -1,7 +1,7 @@
 .block {
   margin-bottom: 40px;
 }
-  
+
 .title {
   font-size: 13px;
   font-weight: 700;
@@ -39,5 +39,5 @@
 .active {
   background: #ffffff;
   color: #111827;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }

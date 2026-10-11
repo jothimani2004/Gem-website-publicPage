@@ -1,11 +1,11 @@
 import styles from "./MoreGems.module.css";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import GemCategory from "../../Components/gem/GemCategory/GemCategory";
 import api from "../../services/api";
 import Loader from "../../Components/common/Loader/Loader";
 import SEO from "../../Components/common/SEO/SEO";
+import { CLOUDFRONT_URL } from "../../utils/constants";
 
 function MoreGems ({category}){
     const [preciousGems, setPreciousGems] = useState([]);
@@ -19,13 +19,14 @@ useEffect(() => {
         if (response.data && response.data.result && response.data.result.gems) {
           const allDivisions = response.data.result.gems;
           
-          const precious = allDivisions.find((div) => div.division.toLowerCase() === "precious");
-          const semiPrecious = allDivisions.find((div) => div.division.toLowerCase() === "semiprecious" || div.division.toLowerCase() === "semi-precious");
+          const cleanDiv = (name) => (name || "").toLowerCase().replace(/[\s-_]/g, "");
+          const precious = allDivisions.find((div) => cleanDiv(div.division) === "precious");
+          const semiPrecious = allDivisions.find((div) => cleanDiv(div.division) === "semiprecious");
 
-          if (precious && precious.gems) {
+          if (precious && Array.isArray(precious.gems)) {
              setPreciousGems(precious.gems);
           }
-          if (semiPrecious && semiPrecious.gems) {
+          if (semiPrecious && Array.isArray(semiPrecious.gems)) {
              setSemiPreciousGems(semiPrecious.gems);
           }
         }
@@ -99,7 +100,7 @@ const collectionSchema = {
 
 
 
-   <div>
+    <div className={styles.contentWrapper}>
       {loading ? (
         <Loader text="Retrieving Gem Specifications" fullScreen={true} />
       ) : (
@@ -108,7 +109,7 @@ const collectionSchema = {
           gems={gemsToShow.map((g) => ({
             ...g,
             name: g.gemName,
-            image: `https://d1wugj5ru4kx2.cloudfront.net/${g.image}`,
+            image: `${CLOUDFRONT_URL}/${g.image}`,
           }))}
           category={category}
           showExplore={false}

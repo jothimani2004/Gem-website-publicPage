@@ -35,8 +35,8 @@
   border: 1px solid rgba(0, 0, 0, 0.05);
 
   box-shadow:
-    0 4px 12px rgba(0,0,0,0.04),
-    inset 0 1px 0 rgba(255,255,255,0.5);
+    0 4px 12px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
 
   cursor: pointer;
 
@@ -48,10 +48,10 @@
   transform: translateY(-4px) scale(1.02);
 
   box-shadow:
-    0 12px 30px rgba(0,0,0,0.08),
-    0 0 0 1px rgba(124,58,237,0.2);
+    0 12px 30px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(124, 58, 237, 0.2);
 
-  border-color: rgba(124,58,237,0.3);
+  border-color: rgba(124, 58, 237, 0.3);
 }
 
 /* ICON */
@@ -85,11 +85,11 @@
 /* 💎 ACTIVE STATE (LUXURY) */
 .active {
   background: linear-gradient(135deg, #111827, #1f2937);
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 
   box-shadow:
-    0 10px 30px rgba(0,0,0,0.25),
-    0 0 20px rgba(124,58,237,0.3);
+    0 10px 30px rgba(0, 0, 0, 0.25),
+    0 0 20px rgba(124, 58, 237, 0.3);
 }
 
 .active .label {
@@ -116,6 +116,7 @@
     grid-template-columns: repeat(1, 1fr);
   }
 }
+
 @media (max-width: 768px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
@@ -160,7 +161,7 @@
   margin-top: 2px;
 }
 
-.switch input { 
+.switch input {
   opacity: 0;
   width: 0;
   height: 0;
@@ -169,7 +170,10 @@
 .switchSlider {
   position: absolute;
   cursor: pointer;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-color: #cbd5e1;
   transition: .3s;
   border-radius: 34px;
@@ -185,13 +189,13 @@
   background-color: white;
   transition: .3s;
   border-radius: 50%;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-.switch input:checked + .switchSlider {
+.switch input:checked+.switchSlider {
   background-color: #111827;
 }
 
-.switch input:checked + .switchSlider:before {
+.switch input:checked+.switchSlider:before {
   transform: translateX(14px);
 }

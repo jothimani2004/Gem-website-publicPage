@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import api from "../../services/api";
+import { CLOUDFRONT_URL } from "../../utils/constants";
 
 export const fetchGems = createAsyncThunk(
   "gems/fetchGems",
@@ -97,8 +98,8 @@ export const fetchGems = createAsyncThunk(
          color: item.color_name,
          carat: item.crt,
          price: item.price ?? null,
-         image: item.thumbnail ? `https://d1wugj5ru4kx2.cloudfront.net/${item.thumbnail}` : 
-                (item.images && item.images.length > 0 && item.images[0].file) ? `https://d1wugj5ru4kx2.cloudfront.net/${item.images[0].file}` : 
+         image: item.thumbnail ? `${CLOUDFRONT_URL}/${item.thumbnail}` : 
+                (item.images && item.images.length > 0 && item.images[0].file) ? `${CLOUDFRONT_URL}/${item.images[0].file}` : 
                 null
       }));
 

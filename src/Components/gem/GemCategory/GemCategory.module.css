@@ -14,7 +14,8 @@
 }
 
 .header h2 {
-  position: relative; /* 🔥 REQUIRED */
+  position: relative;
+  /* 🔥 REQUIRED */
   display: inline-block;
   font-size: 28px;
   font-weight: 700;
@@ -30,13 +31,11 @@
   width: 100%;
   height: 3px;
 
-  background: linear-gradient(
-    90deg,
-    #5d2bb3,
-    #8561c3,
-    #f3f1f2,
-    transparent
-  );
+  background: linear-gradient(90deg,
+      #5d2bb3,
+      #8561c3,
+      #f3f1f2,
+      transparent);
 
   border-radius: 999px;
   opacity: 0.9;
@@ -76,7 +75,7 @@
 .carouselWrapper {
   position: relative;
   width: 100%;
-  
+
 }
 
 .navBtn {
@@ -127,13 +126,13 @@
   gap: 32px;
   padding: 60px 30px;
   border-radius: 16px;
-  
+
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   scrollbar-width: thin;
   scrollbar-color: #cbd5e1 transparent;
   align-items: center;
-    scrollbar-width: none;
+  scrollbar-width: none;
   -ms-overflow-style: none;
 
 }
@@ -141,9 +140,11 @@
 .scrollContainer::-webkit-scrollbar {
   height: 6px;
 }
+
 .scrollContainer::-webkit-scrollbar-track {
   background: transparent;
 }
+
 .scrollContainer::-webkit-scrollbar-thumb {
   background-color: #cbd5e1;
   border-radius: 10px;
@@ -153,7 +154,7 @@
   flex: 0 0 auto;
   scroll-snap-align: start;
   width: 280px;
- 
+
 }
 
 /* 💎 BASE (DESKTOP FIRST) */
@@ -185,8 +186,10 @@
 .endArrowBtn::before {
   content: "";
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: #111;
   z-index: -1;
   opacity: 0;
@@ -255,20 +258,21 @@
     font-size: 24px;
     margin-bottom: 24px;
   }
+
   @media (max-width: 992px) {
-  .endArrowBtn {
-    height: 50px;
-    padding: 0 24px;
-  }
+    .endArrowBtn {
+      height: 50px;
+      padding: 0 24px;
+    }
 
-  .viewAllText {
-    font-size: 15px;
-  }
+    .viewAllText {
+      font-size: 15px;
+    }
 
-  .arrow {
-    font-size: 16px;
+    .arrow {
+      font-size: 16px;
+    }
   }
-}
 
 }
 
@@ -278,31 +282,35 @@
     font-size: 22px;
     margin-bottom: 20px;
   }
+
   .grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
   }
+
   .scrollContainer {
     gap: 16px;
   }
+
   .cardWrapper {
     width: 220px;
   }
-@media (max-width: 600px) {
-  .endArrowBtn {
-    height: 44px;
-    padding: 0 20px;
-    gap: 8px;
-  }
 
-  .viewAllText {
-    font-size: 14px;
-  }
+  @media (max-width: 600px) {
+    .endArrowBtn {
+      height: 44px;
+      padding: 0 20px;
+      gap: 8px;
+    }
 
-  .arrow {
-    font-size: 14px;
+    .viewAllText {
+      font-size: 14px;
+    }
+
+    .arrow {
+      font-size: 14px;
+    }
   }
-}
 }
 
 /* Extra Small Mobile */
@@ -311,32 +319,164 @@
     font-size: 22px;
     margin-bottom: 18px;
   }
+
   .grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
   }
+
   .scrollContainer {
     gap: 16px;
   }
+
   .cardWrapper {
     width: 180px;
   }
- @media (max-width: 380px) {
-  .endArrowBtn {
-    height: 40px;
-    padding: 0 16px;
-    gap: 6px;
-  }
 
-  .viewAllText {
-    font-size: 13px;
-  }
+  @media (max-width: 380px) {
+    .endArrowBtn {
+      height: 40px;
+      padding: 0 16px;
+      gap: 6px;
+    }
 
-  .arrow {
-    font-size: 13px;
+    .viewAllText {
+      font-size: 13px;
+    }
+
+    .arrow {
+      font-size: 13px;
+    }
   }
 }
 
+/* --- NO GEMS FOUND EMPTY STATE --- */
+.noGemsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 24px;
+  background: #ffffff;
+  border: 1px dashed #e2e8f0;
+  border-radius: 20px;
+  margin: 20px 0 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
 }
 
+.noGemsIconBox {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+  color: #7c3aed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.15);
+}
 
+.noGemsTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 8px;
+  letter-spacing: -0.2px;
+}
+
+.noGemsText {
+  font-size: 15px;
+  color: #64748b;
+  max-width: 440px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.noGemsActions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.noGemsPrimaryBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 26px;
+  border-radius: 999px;
+  background: #111111;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid #111111;
+  transition: all 0.3s ease;
+}
+
+.noGemsPrimaryBtn:hover {
+  background: #7c3aed;
+  border-color: #7c3aed;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(124, 58, 237, 0.25);
+}
+
+.noGemsSecondaryBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 26px;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #1e293b;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid #cbd5e1;
+  transition: all 0.3s ease;
+}
+
+.noGemsSecondaryBtn:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+  .noGemsContainer {
+    padding: 40px 16px;
+    margin: 15px 0 30px;
+  }
+
+  .noGemsIconBox {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+
+  .noGemsTitle {
+    font-size: 20px;
+  }
+
+  .noGemsText {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .noGemsActions {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .noGemsPrimaryBtn,
+  .noGemsSecondaryBtn {
+    width: 100%;
+    max-width: 280px;
+  }
+}

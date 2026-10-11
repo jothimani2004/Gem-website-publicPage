@@ -8,6 +8,7 @@ import api from "../../services/api";
 import Loader from "../../Components/common/Loader/Loader";
 import fallbackGem from "../../assets/images/gem2.png";
 import SEO from "../../Components/common/SEO/SEO";
+import { CLOUDFRONT_URL } from "../../utils/constants";
 
 
 
@@ -110,15 +111,15 @@ function ProductDetails({category}) {
             color: gemData.color_name || "N/A",
             origin: "Verified Source",
             description: gemData.description || `Beautiful natural ${gemName}.`,
-            certificate: gemData.pdf && gemData.pdf.file ? `https://d1wugj5ru4kx2.cloudfront.net/${gemData.pdf.file}` : null
+            certificate: gemData.pdf && gemData.pdf.file ? `${CLOUDFRONT_URL}/${gemData.pdf.file}` : null
           });
 
           let mappedImages = [];
           if (gemData.images && Array.isArray(gemData.images)) {
-             mappedImages = gemData.images.map(img => `https://d1wugj5ru4kx2.cloudfront.net/${img.file}`);
+             mappedImages = gemData.images.map(img => `${CLOUDFRONT_URL}/${img.file}`);
           }
           if (gemData.video && gemData.video.file) {
-             mappedImages.push(`https://d1wugj5ru4kx2.cloudfront.net/${gemData.video.file}#video`);
+             mappedImages.push(`${CLOUDFRONT_URL}/${gemData.video.file}#video`);
           }
           if (mappedImages.length === 0) {
              mappedImages.push(fallbackGem);

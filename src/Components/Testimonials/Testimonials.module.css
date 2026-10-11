@@ -31,7 +31,8 @@
   width: 100%;
   overflow: hidden;
   position: relative;
-  padding: 20px 0; /* Space for hover shadow */
+  padding: 20px 0;
+  /* Space for hover shadow */
 }
 
 /* FADE EDGES */
@@ -70,24 +71,30 @@
 }
 
 @keyframes scrollMarquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(calc(-50% - 12.5px)); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(calc(-50% - 12.5px));
+  }
 }
 
 /* CARD */
 .card {
   position: relative;
-  width: 320px; /* Fixed width */
+  width: 320px;
+  /* Fixed width */
   flex: 0 0 auto;
   padding: 28px;
   border-radius: 20px;
 
-  background: rgba(255,255,255,0.6);
+  background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(12px);
 
-  border: 1px solid rgba(255,255,255,0.4);
+  border: 1px solid rgba(255, 255, 255, 0.4);
 
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 
   transition: all 0.4s ease;
 }
@@ -98,11 +105,9 @@
   position: absolute;
   inset: 0;
   border-radius: 20px;
-  background: radial-gradient(
-    circle at top,
-    rgba(124,58,237,0.12),
-    transparent
-  );
+  background: radial-gradient(circle at top,
+      rgba(124, 58, 237, 0.12),
+      transparent);
   opacity: 0;
   transition: 0.4s;
 }
@@ -114,7 +119,7 @@
 /* HOVER */
 .card:hover {
   transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
 }
 
 /* QUOTE ICON */
@@ -158,8 +163,8 @@
 
   font-weight: 600;
   color: rgb(255, 255, 255);
-border: 2px solid white ;
-  background: rgb(0, 0, 0) ;
+  border: 2px solid white;
+  background: rgb(0, 0, 0);
 }
 
 /* NAME */
@@ -197,50 +202,14 @@ border: 2px solid white ;
   margin-top: 1px;
 }
 
-/* 🔗 ETSY BADGE */
-.subtitle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  font-size: 15px;
-  color: #64748b;
-  margin-top: 8px;
-}
-
-.etsyBadge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: transparent;
-  border: none;
-  padding: 0 4px;
+/* 🔗 ETSY LINK */
+.etsyLink {
+  color: #f56400;
+  font-weight: 600;
   text-decoration: none;
-  vertical-align: middle;
+  transition: opacity 0.2s ease;
 }
 
-.etsyIconWrapper {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: #f1641e;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+.etsyLink:hover {
+  opacity: 0.8;
 }
-
-.etsyBadgeIcon {
-  font-size: 11px;
-  color: #ffffff;
-}
-
-.etsyText {
-  font-family: "Georgia", serif;
-  font-weight: 700;
-  font-size: 15px;
-  color: #f1641e;
-  letter-spacing: -0.2px;
-  line-height: 1;
-}

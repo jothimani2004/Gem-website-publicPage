@@ -1,9 +1,10 @@
 import { useEffect } from "react";
+import { CLOUDFRONT_URL } from "../../../utils/constants";
 
 const DEFAULT_TITLE = "Aimpluss Gems — Premium Certified Loose Gemstones";
 const DEFAULT_DESCRIPTION = "Discover natural earth-mined precious and semi-precious loose gemstones, certified Sapphires, Rubies & Emeralds from Bangkok & Sri Lanka since 2004.";
 const DEFAULT_KEYWORDS = "gemstones, certified gemstones, loose gems, sapphires, rubies, emeralds, bangkok gemstones, natural gems, aimpluss gems";
-const DEFAULT_IMAGE = "https://d1wugj5ru4kx2.cloudfront.net/logo.png";
+const DEFAULT_IMAGE = `${CLOUDFRONT_URL}/logo.png`;
 const DOMAIN = "https://aimplussgems.com";
 
 /**

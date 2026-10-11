@@ -8,6 +8,7 @@ import AboutSection from "../../Components/aboutus/AboutSection";
 import Testimonials from "../../Components/Testimonials/Testimonials";  
 import FaqPage from "../Faq/FaqPage";
 import SEO from "../../Components/common/SEO/SEO";
+import { CLOUDFRONT_URL } from "../../utils/constants";
 
 function Home() {
   const [preciousGems, setPreciousGems] = useState([]);
@@ -22,7 +23,7 @@ function Home() {
         "@id": "https://aimplussgems.com/#organization",
         "name": "Aimpluss Gems",
         "url": "https://aimplussgems.com",
-        "logo": "https://d1wugj5ru4kx2.cloudfront.net/logo.png",
+        "logo": `${CLOUDFRONT_URL}/logo.png`,
         "description": "Supplier of high quality, natural earth-mined loose gemstones based in Bangkok, Thailand since 2004.",
         "foundingDate": "2004",
         "address": {
@@ -50,13 +51,14 @@ function Home() {
         if (response.data && response.data.result && response.data.result.gems) {
           const allDivisions = response.data.result.gems;
           
-          const precious = allDivisions.find((div) => div.division.toLowerCase() === "precious");
-          const semiPrecious = allDivisions.find((div) => div.division.toLowerCase() === "semiprecious" || div.division.toLowerCase() === "semi-precious");
+          const cleanDiv = (name) => (name || "").toLowerCase().replace(/[\s-_]/g, "");
+          const precious = allDivisions.find((div) => cleanDiv(div.division) === "precious");
+          const semiPrecious = allDivisions.find((div) => cleanDiv(div.division) === "semiprecious");
 
-          if (precious && precious.gems) {
+          if (precious && Array.isArray(precious.gems)) {
              setPreciousGems(precious.gems);
           }
-          if (semiPrecious && semiPrecious.gems) {
+          if (semiPrecious && Array.isArray(semiPrecious.gems)) {
              setSemiPreciousGems(semiPrecious.gems);
           }
         }
@@ -94,12 +96,12 @@ function Home() {
          <>
           <GemCategory 
              title="Precious Gemstones" 
-             gems={preciousGems.slice(0, 8).map(g => ({...g, name: g.gemName, image: `https://d1wugj5ru4kx2.cloudfront.net/${g.image}`}))} 
+             gems={preciousGems.slice(0, 8).map(g => ({...g, name: g.gemName, image: `${CLOUDFRONT_URL}/${g.image}`}))} 
              category="Precious" 
           />
           <GemCategory 
              title="Semi-Precious Gemstones" 
-             gems={semiPreciousGems.slice(0, 8).map(g => ({...g, name: g.gemName, image: `https://d1wugj5ru4kx2.cloudfront.net/${g.image}`}))} 
+             gems={semiPreciousGems.slice(0, 8).map(g => ({...g, name: g.gemName, image: `${CLOUDFRONT_URL}/${g.image}`}))} 
              category="Semi-Precious" 
           />
          </>

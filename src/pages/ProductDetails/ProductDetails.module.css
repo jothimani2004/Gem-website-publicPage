@@ -1,5 +1,7 @@
 /* Universal Box Model Protection */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -23,7 +25,7 @@
   gap: 8px;
 
   font-size: 13px;
-  
+
 }
 
 /* LINKS */
@@ -143,7 +145,6 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
   padding: 16px 32px;
   background-color: #111827;
   color: #ffffff;
@@ -151,20 +152,13 @@
   font-weight: 600;
   letter-spacing: 1px;
   text-transform: uppercase;
-  border: none;
   border-radius: 30px;
   text-decoration: none;
-  cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.downloadBtn:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-}
-
-.downloadBtn:hover:not(:disabled) {
+.downloadBtn:hover {
   background-color: #374151;
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);

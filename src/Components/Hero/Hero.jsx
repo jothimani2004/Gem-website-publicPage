@@ -3,6 +3,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import api from "../../services/api";
 import Loader from "../common/Loader/Loader";
+import { CLOUDFRONT_URL } from "../../utils/constants";
 
 import styles from "./Hero.module.css";
 
@@ -61,7 +62,7 @@ function HeroSlider() {
                 src={
                   slide.image_url.startsWith("http") || slide.image_url.startsWith("/")
                     ? slide.image_url
-                    : `https://d1wugj5ru4kx2.cloudfront.net/${slide.image_url}`
+                    : `${CLOUDFRONT_URL}/${slide.image_url}`
                 } 
                 alt={slide.title || "Exquisite Gemstone Showcase"} 
                 onError={(e) => { e.target.src = "/hero_section_imgs/slide1.jpg"; }}
