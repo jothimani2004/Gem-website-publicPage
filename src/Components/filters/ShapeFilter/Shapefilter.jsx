@@ -9,12 +9,8 @@ function ShapeFilter({ value, onChange, isActive, onToggle }) {
     (state) => state.shapes || {}
   );
 
-  if (status === "loading") {
-    return <div className={styles.block}>Loading shapes...</div>;
-  }
-
   return (
-    <div className={styles.block} style={{ opacity: isActive ? 1 : 0.6 }}>
+    <div className={styles.block}>
       <div className={styles.header}>
         <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', margin: 0 }} onClick={(e) => e.stopPropagation()}>
           <label className="globalSwitch">
@@ -35,33 +31,37 @@ function ShapeFilter({ value, onChange, isActive, onToggle }) {
       </div>
 
       {isActive && isOpen && (
-        <div
-          className={`${styles.grid}`}
-        >
-          {shapes.map((shape) => {
-            const isActive = value === shape.slug;
+        status === "loading" ? (
+          <div className={styles.emptyMessage}>Loading shapes...</div>
+        ) : shapes.length === 0 ? (
+          <div className={styles.emptyMessage}>No shape found</div>
+        ) : (
+          <div className={styles.grid}>
+            {shapes.map((shape) => {
+              const isSelected = value === shape.slug;
 
-            return (
-              <button
-                key={shape.id}
-                type="button"
-                aria-pressed={isActive}
-                className={`${styles.card} ${
-                  isActive ? styles.active : ""
-                }`}
-                onClick={() => onChange?.(isActive ? "" : shape.slug)}
+              return (
+                <button
+                  key={shape.id}
+                  type="button"
+                  aria-pressed={isSelected}
+                  className={`${styles.card} ${
+                    isSelected ? styles.active : ""
+                  }`}
+                  onClick={() => onChange?.(isSelected ? "" : shape.slug)}
                 >
-                <div className={styles.icon}>
-                  <ShapeIcon slug={shape.slug} />
-                </div>
+                  <div className={styles.icon}>
+                    <ShapeIcon slug={shape.slug} />
+                  </div>
 
-                <span className={styles.label}>
-                  {shape.name}
-                </span>
-              </button>
-            );
-          })}
-        </div>
+                  <span className={styles.label}>
+                    {shape.name}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        )
       )}
     </div>
   );

@@ -4,12 +4,12 @@ import { useSelector } from "react-redux";
 
 function Colorfilter({ value, onChange, isActive, onToggle }){
     const [isOpen, setIsOpen] = useState(true);
-    const { items: colors = [] } = useSelector(
+    const { items: colors = [], status } = useSelector(
         (state) => state.colors || {}
       );
 
     return(
-        <div className={styles.block} style={{ opacity: isActive ? 1 : 0.6 }}>
+        <div className={styles.block}>
       <div className={styles.header}>
         <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', margin: 0 }} onClick={(e) => e.stopPropagation()}>
           <label className="globalSwitch">
@@ -30,32 +30,38 @@ function Colorfilter({ value, onChange, isActive, onToggle }){
       </div>
 
       {isActive && isOpen && (
-        <div className={styles.grid}>
-          {colors.map((color) => {
-            const isActive = value === color.slug;
+        status === "loading" ? (
+          <div className={styles.emptyMessage}>Loading colors...</div>
+        ) : colors.length === 0 ? (
+          <div className={styles.emptyMessage}>No colors found</div>
+        ) : (
+          <div className={styles.grid}>
+            {colors.map((color) => {
+              const isSelected = value === color.slug;
 
-            return (
-              <button
-                key={color.id}
-                type="button"
-                aria-pressed={isActive}
-                className={`${styles.swatchWrapper} ${
-                  isActive ? styles.active : ""
-                }`}
-                onClick={() => onChange?.(isActive ? "" : color.slug)}
-              >
-                <div
-                  className={styles.swatch}
-                  style={{ backgroundColor: color.hex }}
-                />
+              return (
+                <button
+                  key={color.id}
+                  type="button"
+                  aria-pressed={isSelected}
+                  className={`${styles.swatchWrapper} ${
+                    isSelected ? styles.active : ""
+                  }`}
+                  onClick={() => onChange?.(isSelected ? "" : color.slug)}
+                >
+                  <div
+                    className={styles.swatch}
+                    style={{ backgroundColor: color.hex }}
+                  />
 
-                <span className={styles.label}>
-                  {color.name}
-                </span>
-              </button>
-            );
-          })}
-        </div>
+                  <span className={styles.label}>
+                    {color.name}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        )
       )}
     </div>
     )

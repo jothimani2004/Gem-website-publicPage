@@ -25,7 +25,7 @@ function Weightfilter({ value, onChange, isActive, onToggle }){
     };
 
     return(
-  <div className={styles.block} style={{ opacity: isActive ? 1 : 0.6 }}>
+  <div className={styles.block}>
       <div className={styles.header}>
         <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', margin: 0 }} onClick={(e) => e.stopPropagation()}>
           <label className="globalSwitch">

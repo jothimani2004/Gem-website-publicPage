@@ -101,7 +101,7 @@ function GemCategory({ title, gems = [], category, showExplore = true }) {
               </motion.div>
             ))}
 
-            {showExplore && (
+            {showExplore && gems.length >= 8 && (
               <motion.div
                 className={styles.cardWrapper}
                 initial={{ opacity: 0, x: 60 }}

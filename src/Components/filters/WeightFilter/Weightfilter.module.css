@@ -5,7 +5,7 @@
 .title {
   font-size: 13px;
   font-weight: 700;
-  color: #64748b;
+  color: #111827;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   margin-bottom: 20px;
@@ -99,7 +99,7 @@
 
 .toggleIcon {
   font-size: 14px;
-  color: #94a3b8;
+  color: #111827;
   transition: transform 0.2s ease;
 }
 

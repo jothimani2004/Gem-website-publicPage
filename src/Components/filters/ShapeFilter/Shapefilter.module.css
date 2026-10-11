@@ -4,11 +4,11 @@
 
 /* TITLE */
 .title {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
-  color: #94a3b8;
+  color: #111827;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   margin-bottom: 20px;
 }
 
@@ -149,7 +149,7 @@
 
 .toggleIcon {
   font-size: 14px;
-  color: #94a3b8;
+  color: #111827;
   transition: transform 0.2s ease;
 }
 
@@ -198,4 +198,15 @@
 
 .switch input:checked+.switchSlider:before {
   transform: translateX(14px);
+}
+
+.emptyMessage {
+  padding: 14px 12px;
+  font-size: 13px;
+  color: #64748b;
+  text-align: center;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1px dashed #e2e8f0;
+  margin-top: 4px;
 }
