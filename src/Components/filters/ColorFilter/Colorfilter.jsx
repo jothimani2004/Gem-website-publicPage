@@ -51,7 +51,7 @@ function Colorfilter({ value, onChange, isActive, onToggle }){
                 >
                   <div
                     className={styles.swatch}
-                    style={{ backgroundColor: color.hex }}
+                    style={{ background: color.hex }}
                   />
 
                   <span className={styles.label}>

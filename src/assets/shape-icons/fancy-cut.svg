@@ -1,0 +1,15 @@
+<svg width="100" height="120" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer Shield / Geometric Polygon Outline -->
+  <path d="M50 10 L88 38 L72 108 L28 108 L12 38 Z" stroke="black" stroke-width="2"/>
+  <!-- Inner Faceted Table -->
+  <path d="M50 32 L70 48 L60 90 L40 90 L30 48 Z" stroke="black" stroke-width="1.5"/>
+  <!-- Connecting Facet Lines -->
+  <line x1="50" y1="10" x2="50" y2="32" stroke="black" stroke-width="1.5"/>
+  <line x1="88" y1="38" x2="70" y2="48" stroke="black" stroke-width="1.5"/>
+  <line x1="72" y1="108" x2="60" y2="90" stroke="black" stroke-width="1.5"/>
+  <line x1="28" y1="108" x2="40" y2="90" stroke="black" stroke-width="1.5"/>
+  <line x1="12" y1="38" x2="30" y2="48" stroke="black" stroke-width="1.5"/>
+  <!-- Star Facet Highlights -->
+  <line x1="50" y1="32" x2="60" y2="90" stroke="black" stroke-width="1" stroke-opacity="0.5"/>
+  <line x1="50" y1="32" x2="40" y2="90" stroke="black" stroke-width="1" stroke-opacity="0.5"/>
+</svg>

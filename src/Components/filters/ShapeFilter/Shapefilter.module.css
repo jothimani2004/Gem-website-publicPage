@@ -103,6 +103,10 @@
   transform: scale(1.1);
 }
 
+.active .icon img {
+  filter: brightness(0) invert(1);
+}
+
 /* DISABLED */
 .disabled {
   opacity: 0.3;

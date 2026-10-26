@@ -1,0 +1,11 @@
+<svg width="100" height="140" viewBox="0 0 100 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer Smooth Oval Contour -->
+  <ellipse cx="50" cy="70" rx="38" ry="54" stroke="black" stroke-width="2"/>
+  <!-- Inner Dome Contour -->
+  <ellipse cx="48" cy="67" rx="27" ry="40" stroke="black" stroke-width="1.2" stroke-opacity="0.35"/>
+  <!-- Highlight / Specular Reflection Curve -->
+  <path d="M35 44 C40 32, 54 30, 64 36" stroke="black" stroke-width="2.2" stroke-linecap="round"/>
+  <circle cx="36" cy="50" r="1.5" fill="black"/>
+  <!-- Smooth Base Contour -->
+  <path d="M26 82 C34 110, 66 110, 74 82" stroke="black" stroke-width="1.2" stroke-opacity="0.45"/>
+</svg>

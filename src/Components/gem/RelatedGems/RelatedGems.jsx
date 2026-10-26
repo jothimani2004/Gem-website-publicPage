@@ -5,9 +5,13 @@ import styles from "./RelatedGems.module.css";
 import api from "../../../services/api";
 import { CLOUDFRONT_URL } from "../../../utils/constants";
 
-function RelatedGems({ category }) {
-  const { gemName, id } = useParams();
+function RelatedGems({ category, gemName: propGemName, id: propId }) {
+  const params = useParams();
   const navigate = useNavigate();
+
+  const rawGemName = propGemName || params.gemName;
+  const gemName = rawGemName ? decodeURIComponent(rawGemName.replace(/\+/g, " ")) : "";
+  const id = propId || params.id;
 
   const [relatedGems, setRelatedGems] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -34,8 +38,8 @@ function RelatedGems({ category }) {
             return;
         }
 
-        // 2. Fetch a larger pool of gems to randomize from
-        const categoryId = category?.toLowerCase() === "mixed" ? 2 : 1; 
+        // 2. Fetch a pool of gems
+        const categoryId = 1; 
         const url = `/public/gem_List/${gem_id}/${categoryId}?page=1&limit=30`;
         const dataRes = await api.get(url);
         
@@ -81,7 +85,7 @@ function RelatedGems({ category }) {
   }, [category, gemName, id]);
 
   const handleMoreClick = () => {
-    navigate(`/${category}/${gemName}`);
+    navigate(`/${category}/${encodeURIComponent(gemName)}`);
   };
 
   if (loading || relatedGems.length === 0) {
@@ -109,7 +113,7 @@ function RelatedGems({ category }) {
             <GemCard
               gem={{
                 ...gem,
-                link: `/${category}/${gemName}/${gem.id}`,
+                link: `/${category}/${encodeURIComponent(gemName)}/${gem.id}`,
               }}
               variant="listing"
             />

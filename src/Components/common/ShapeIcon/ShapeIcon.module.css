@@ -1,3 +1,7 @@
-svg {
-  stroke: #000000 
+.iconImg {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.2s ease, filter 0.2s ease;
 }

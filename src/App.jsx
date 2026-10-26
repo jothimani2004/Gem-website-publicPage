@@ -58,6 +58,7 @@ function App() {
               path="/about"
               element={<About />}
             />
+            <Route path="/404-not-found" element={<NotFoundPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>

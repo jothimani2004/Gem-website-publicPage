@@ -94,7 +94,7 @@ function GemCategory({ title, gems = [], category, showExplore = true }) {
                 <GemCard
                   gem={{
                     ...gem,
-                    link: `/${category}/${gem.name}`
+                    link: `/${category}/${encodeURIComponent(gem.name)}`
                   }}
                   variant="category"
                 />

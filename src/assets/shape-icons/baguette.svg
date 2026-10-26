@@ -1,0 +1,16 @@
+<svg width="100" height="140" viewBox="0 0 100 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer Baguette Rectangle -->
+  <rect x="22" y="15" width="56" height="110" rx="2" stroke="black" stroke-width="2"/>
+  <!-- Inner Table Step Cut -->
+  <rect x="34" y="32" width="32" height="76" stroke="black" stroke-width="1.5"/>
+  <!-- Corner Miter Facets -->
+  <path d="M22 15 L34 32" stroke="black" stroke-width="1.5"/>
+  <path d="M78 15 L66 32" stroke="black" stroke-width="1.5"/>
+  <path d="M78 125 L66 108" stroke="black" stroke-width="1.5"/>
+  <path d="M22 125 L34 108" stroke="black" stroke-width="1.5"/>
+  <!-- Step Facet Accent Lines -->
+  <line x1="22" y1="52" x2="34" y2="52" stroke="black" stroke-width="1" stroke-opacity="0.6"/>
+  <line x1="66" y1="52" x2="78" y2="52" stroke="black" stroke-width="1" stroke-opacity="0.6"/>
+  <line x1="22" y1="88" x2="34" y2="88" stroke="black" stroke-width="1" stroke-opacity="0.6"/>
+  <line x1="66" y1="88" x2="78" y2="88" stroke="black" stroke-width="1" stroke-opacity="0.6"/>
+</svg>

@@ -5,8 +5,8 @@ import { useParams } from "react-router-dom";
 import Loader from "../../common/Loader/Loader";
 
 function Gemgrid({category}){
-
-  const {gemName}=useParams();
+  const { gemName: rawGemName } = useParams();
+  const gemName = rawGemName ? decodeURIComponent(rawGemName.replace(/\+/g, " ")) : "";
  
 
     const { items = [], status, error } = useSelector(
@@ -42,7 +42,7 @@ function Gemgrid({category}){
               key={gem.id}
               gem={{
                 ...gem,
-                link: `/${category}/${gemName}/${gem.id}`,
+                link: `/${category}/${encodeURIComponent(gemName)}/${gem.id}`,
               }}
               variant="listing"
             />

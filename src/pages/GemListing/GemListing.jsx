@@ -14,11 +14,11 @@ import styles from "./GemListing.module.css";
 
 function GemListing({category}) {
   const dispatch = useDispatch();
-  const { gemName } = useParams();
+  const { gemName: rawGemName } = useParams();
+  const gemName = rawGemName ? decodeURIComponent(rawGemName.replace(/\+/g, " ")) : "";
   const navigate = useNavigate();
 
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const [isValidating, setIsValidating] = useState(true);
 
   const [appliedFilters, setAppliedFilters] = useState({
     type: "single",

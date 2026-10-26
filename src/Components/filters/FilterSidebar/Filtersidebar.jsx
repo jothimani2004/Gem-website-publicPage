@@ -13,8 +13,8 @@ function Filtersidebar({ onApply, appliedFilters }) {
   const [carat, setCarat] = useState(appliedFilters?.maxCarat || "");
 
   const [activeFilters, setActiveFilters] = useState({
-    shape: !!appliedFilters?.shape,
-    color: !!appliedFilters?.color,
+    shape: true,
+    color: true,
     carat: !!appliedFilters?.maxCarat
   });
 
@@ -23,11 +23,11 @@ function Filtersidebar({ onApply, appliedFilters }) {
     setSelectedType(appliedFilters?.type || "single");
     setSelectedColor(appliedFilters?.color || "");
     setCarat(appliedFilters?.maxCarat || "");
-    setActiveFilters({
-      shape: !!appliedFilters?.shape,
-      color: !!appliedFilters?.color,
+    setActiveFilters((prev) => ({
+      shape: appliedFilters?.shape ? true : prev.shape,
+      color: appliedFilters?.color ? true : prev.color,
       carat: !!appliedFilters?.maxCarat
-    });
+    }));
   }, [appliedFilters]);
 
   const getFiltersPayload = () => {

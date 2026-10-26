@@ -1,5 +1,6 @@
 import styles from "./AboutSection.module.css";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 function AboutSection() {
   return (
@@ -49,9 +50,9 @@ function AboutSection() {
             We also attend international Gem &amp; Jewellery Shows in Bangkok, Hong Kong, and the USA.
           </p>
 
-          <a href="/about" className={styles.btn}>
+          <Link to="/about" className={styles.btn}>
             Learn More
-          </a>
+          </Link>
         </motion.div>
 
       </div>
