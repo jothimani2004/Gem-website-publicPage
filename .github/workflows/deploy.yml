@@ -17,5 +17,6 @@ jobs:
           host: 67.211.219.18
           username: root
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          passphrase: ${{ secrets.VPS_SSH_PASSPHRASE }}
           script: |
             bash /var/www/deploy.sh
